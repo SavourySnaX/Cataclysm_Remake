@@ -1,0 +1,32 @@
+# =============== #
+# Unity generated #
+# =============== #
+Cataclysm/[Tt]emp/
+Cataclysm/[Oo]bj/
+Cataclysm/[Bb]uild
+Cataclysm/[Bb]uilds/
+Cataclysm/[Ll]ibrary/
+Cataclysm/sysinfo.txt
+Cataclysm/*.stackdump
+Cataclysm/Assets/AssetStoreTools*
+Cataclysm/*.apk
+Cataclysm/*.unitypackage
+Cataclysm/TestPackage/
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+Cataclysm/[Ee]xported[Oo]bj/
+Cataclysm/.vs/
+Cataclysm/*.userprefs
+Cataclysm/*.csproj
+Cataclysm/*.pidb
+Cataclysm/*.pidb.meta
+Cataclysm/*.suo
+Cataclysm/*.sln*
+Cataclysm/*.user
+Cataclysm/*.unityproj
+Cataclysm/*.booproj
+Cataclysm/.consulo/
+Cataclysm/*.tmp
+Cataclysm/*.svd
