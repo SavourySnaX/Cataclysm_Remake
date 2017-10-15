@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1507727208
+timeCreated: 1508082581
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -87,8 +87,8 @@ TextureImporter:
     21300160: Tiles_80
     21300162: Tiles_81
     21300164: Tiles_82
-    21300166: Tiles_83
-    21300168: Tiles_84
+    21300166: Water_R
+    21300168: Water_L
     21300170: Tiles_85
     21300172: Tiles_86
     21300174: Tiles_87
@@ -97,8 +97,8 @@ TextureImporter:
     21300180: Tiles_90
     21300182: Tiles_91
     21300184: Tiles_92
-    21300186: Tiles_93
-    21300188: Tiles_94
+    21300186: Water_D
+    21300188: Water_U
     21300190: Tiles_95
     21300192: Tiles_96
     21300194: Tiles_97
@@ -2036,7 +2036,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_83
+      name: Water_R
       rect:
         serializedVersion: 2
         x: 72
@@ -2058,7 +2058,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_84
+      name: Water_L
       rect:
         serializedVersion: 2
         x: 96
@@ -2256,7 +2256,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_93
+      name: Water_D
       rect:
         serializedVersion: 2
         x: 72
@@ -2278,7 +2278,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_94
+      name: Water_U
       rect:
         serializedVersion: 2
         x: 96
