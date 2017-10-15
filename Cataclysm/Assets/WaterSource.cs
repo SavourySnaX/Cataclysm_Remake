@@ -9,6 +9,7 @@ public class WaterSource : MonoBehaviour {
 	public Vector3 spawnLocation;
 	float nextSpawn=0.0f;
 	public GameObject prefab;
+	public GameObject background;
 	BoxCollider2D bc;
 	int layerMaskForMovement;
 
@@ -33,7 +34,7 @@ public class WaterSource : MonoBehaviour {
 				{
 					totalDrops--;
 
-					Instantiate (prefab, spawnLocation, Quaternion.identity);
+					Instantiate (prefab, spawnLocation, Quaternion.identity).GetComponent<WaterDrop> ().bmpCol = background.GetComponent<BitmapCollision> ();
 				}
 			}
 		}
