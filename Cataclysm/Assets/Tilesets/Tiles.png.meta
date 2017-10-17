@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1508082581
+timeCreated: 1508243134
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -65,8 +65,8 @@ TextureImporter:
     21300116: Tiles_58
     21300118: Tiles_59
     21300120: Tiles_60
-    21300122: Tiles_61
-    21300124: Tiles_62
+    21300122: Pressure_T
+    21300124: Plug_A
     21300126: Tiles_63
     21300128: Tiles_64
     21300130: Tiles_65
@@ -74,9 +74,9 @@ TextureImporter:
     21300134: Tiles_67
     21300136: Tiles_68
     21300138: Tiles_69
-    21300140: Tiles_70
-    21300142: Tiles_71
-    21300144: Tiles_72
+    21300140: Collapse
+    21300142: Pressure_B
+    21300144: Plug_B
     21300146: Tiles_73
     21300148: Tiles_74
     21300150: Tiles_75
@@ -165,7 +165,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -175,7 +174,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1552,7 +1550,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_61
+      name: Pressure_T
       rect:
         serializedVersion: 2
         x: 24
@@ -1574,7 +1572,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_62
+      name: Plug_A
       rect:
         serializedVersion: 2
         x: 48
@@ -1750,7 +1748,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_70
+      name: Collapse
       rect:
         serializedVersion: 2
         x: 0
@@ -1772,7 +1770,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_71
+      name: Pressure_B
       rect:
         serializedVersion: 2
         x: 24
@@ -1794,7 +1792,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_72
+      name: Plug_B
       rect:
         serializedVersion: 2
         x: 48

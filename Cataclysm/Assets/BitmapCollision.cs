@@ -44,6 +44,50 @@ public class BitmapCollision : MonoBehaviour
 		return texture.GetPixel (cellPos.x, cellPos.y) != Color.black;
 	}
 
+	public void DeleteTile(Tilemap tm2, Vector3 wPos)
+	{
+		Vector3 lPos = tm.WorldToLocal (wPos);
+		Vector3Int cellPos = tm.LocalToCell (lPos);
+
+		tm2.SetTile (tm2.WorldToCell(wPos), null);
+		cellPos -= tm.origin;
+		cellPos *= 12;
+		for (int x = cellPos.x; x < cellPos.x + 12; x++)
+		{
+			for (int y = cellPos.y; y < cellPos.y + 12; y++)
+			{
+				texture.SetPixel (x, y, Color.black);
+			}
+		}
+	}
+
+	public bool HandleCollapse(Tilemap tm2, Vector3 wPos)
+	{
+		Vector3 lPos = tm.WorldToLocal (wPos);
+		Vector3Int cellPos = tm.LocalToCell (lPos);
+		Vector3Int origPos = tm2.WorldToCell(wPos);
+
+		// Get Cell above this one
+		cellPos += new Vector3Int(0,1,0);
+		cellPos -= tm.origin;
+		cellPos *= 12;
+		int cnt = 0;
+		for (int x = cellPos.x; x < cellPos.x + 12; x++)
+		{
+			if (texture.GetPixel (x, cellPos.y) == Color.blue)
+			{
+				cnt++;
+			}
+		}
+
+		if (cnt > 2)
+		{
+			DeleteTile (tm2, wPos);
+			return true;
+		}
+		return false;
+	}
+
 	public void RemovePixel(Vector3 worldPos)
 	{
 		Vector3Int cellPos = GetPixelCoord (worldPos);
