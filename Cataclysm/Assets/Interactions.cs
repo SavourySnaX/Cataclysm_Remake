@@ -55,6 +55,10 @@ public class Interactions : MonoBehaviour
 
 	void CheckPressure()
 	{
+		foreach (var v in collapseLocations)
+		{
+			bmpCol.HandlePressure (tm,v);
+		}
 	}
 
 	// Update is called once per frame

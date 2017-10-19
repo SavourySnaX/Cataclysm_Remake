@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1508243134
+timeCreated: 1508314682
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -136,13 +136,13 @@ TextureImporter:
     mipBias: -1
     wrapU: 2
     wrapV: 2
-    wrapW: 1
+    wrapW: 2
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
-  spriteMeshType: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -790,30 +790,30 @@ TextureImporter:
       - - {x: 1, y: 3}
         - {x: -1, y: 3}
       physicsShape:
-      - - {x: -12, y: 12}
-        - {x: -12, y: 10}
-        - {x: -4, y: 10}
-        - {x: -4, y: 12}
-      - - {x: 4, y: 10}
-        - {x: 4, y: 12}
-        - {x: 12, y: 12}
-        - {x: 12, y: 10}
-      - - {x: -4, y: 6}
-        - {x: -4, y: 8}
-        - {x: 4, y: 8}
-        - {x: 4, y: 6}
-      - - {x: 4, y: 2}
-        - {x: 4, y: 4}
-        - {x: 12, y: 4}
-        - {x: 12, y: 2}
-      - - {x: -12, y: 2}
-        - {x: -12, y: 4}
-        - {x: -4, y: 4}
-        - {x: -4, y: 2}
-      - - {x: -4, y: -2}
-        - {x: -4, y: 0}
-        - {x: 4, y: 0}
-        - {x: 4, y: -2}
+      - - {x: -11, y: 12}
+        - {x: -11, y: 10}
+        - {x: -5, y: 10}
+        - {x: -5, y: 12}
+      - - {x: 5, y: 10}
+        - {x: 5, y: 12}
+        - {x: 11, y: 12}
+        - {x: 11, y: 10}
+      - - {x: -3, y: 6}
+        - {x: -3, y: 8}
+        - {x: 3, y: 8}
+        - {x: 3, y: 6}
+      - - {x: 5, y: 2}
+        - {x: 5, y: 4}
+        - {x: 11, y: 4}
+        - {x: 11, y: 2}
+      - - {x: -11, y: 2}
+        - {x: -11, y: 4}
+        - {x: -5, y: 4}
+        - {x: -5, y: 2}
+      - - {x: -3, y: -2}
+        - {x: -3, y: 0}
+        - {x: 3, y: 0}
+        - {x: 3, y: -2}
       - - {x: 4, y: -6}
         - {x: 4, y: -4}
         - {x: 12, y: -4}

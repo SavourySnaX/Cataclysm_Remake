@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Z) && position == transform.position)
         {
-			sr.flipX = true;
+			transform.localRotation = Quaternion.AngleAxis (180, Vector3.up);
+//			transform.localScale=new Vector3 (-transform.localScale.x, transform.localScale.y);
 			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.left, 1.0f, layerMaskForMovement);
 			if (ray.collider == null)
 			{
@@ -54,7 +55,8 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.X) && position == transform.position)
         {
-			sr.flipX = false;
+			transform.localRotation = Quaternion.AngleAxis (0, Vector3.up);
+//			transform.localScale = new Vector2 (transform.localScale.x, transform.localScale.y);
 			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.right, 1.0f, layerMaskForMovement);
 			if (ray.collider == null) 
 			{

@@ -16,8 +16,8 @@ public class WaterDrop : MonoBehaviour {
 	{
 		sr = GetComponent<SpriteRenderer> ();
 
-		normal = new Color (1.0f, 1.0f, 1.0f, 1.0f);
-		medium = new Color (1.0f, 1.0f, 1.0f, 1.0f);
+		normal = new Color (1.0f, 1.0f, 1.0f, 0.75f);
+		medium = new Color (1.0f, 1.0f, 1.0f, 0.825f);
 		fast = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 	}
 
