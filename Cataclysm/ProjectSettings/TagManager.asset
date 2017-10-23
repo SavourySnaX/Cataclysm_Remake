@@ -41,11 +41,11 @@ TagManager:
   - name: Behind
     uniqueID: 2881155677
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Interaction
     uniqueID: 1249960739
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: PipeLayer
     uniqueID: 2052927647

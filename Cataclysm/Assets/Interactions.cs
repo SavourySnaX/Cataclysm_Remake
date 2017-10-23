@@ -5,8 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class Interactions : MonoBehaviour 
 {
+	public struct PressureData
+	{
+		public Vector3	position;
+		public int		totalSize;
+		public int		deltaCollapse;
+	};
+
 	public List<Vector3> collapseLocations;
-	public List<Vector3> pressureLocations;
+	public List<PressureData> pressureLocations;
 
 	public GameObject background;
 
@@ -17,7 +24,7 @@ public class Interactions : MonoBehaviour
 	void Start () 
 	{
 		collapseLocations = new List<Vector3>();
-		pressureLocations = new List<Vector3> ();
+		pressureLocations = new List<PressureData> ();
 
 		tm = GetComponent<Tilemap>();
 		bmpCol = background.GetComponent<BitmapCollision> ();
@@ -36,7 +43,28 @@ public class Interactions : MonoBehaviour
 					collapseLocations.Add (tm.CellToWorld (new Vector3Int (x, y, 0)));
 					continue;
 				case "Pressure_T":
-					pressureLocations.Add (tm.CellToWorld (new Vector3Int (x, y, 0)));
+					PressureData data;
+					data.position = tm.CellToWorld (new Vector3Int (x, y, 0));
+					data.deltaCollapse = 12;
+					// Compute size of pressure tile
+					data.totalSize = 1;
+					var nextTile = new Vector3Int (x, y - 1, 0);
+					while (true)
+					{
+						Sprite ns = tm.GetSprite (nextTile);
+						if (ns == null)
+							break;
+						if (ns.name == "Pressure_B")
+						{
+							data.totalSize++;
+							nextTile += new Vector3Int (0, -1, 0);
+						} 
+						else
+						{
+							break;
+						}
+					}
+					pressureLocations.Add (data);
 					continue;
 				default:
 					continue;
@@ -55,14 +83,16 @@ public class Interactions : MonoBehaviour
 
 	void CheckPressure()
 	{
-		foreach (var v in collapseLocations)
+		for (int a=0;a<pressureLocations.Count;a++)
 		{
-			bmpCol.HandlePressure (tm,v);
+			var t = pressureLocations [a];
+			bmpCol.HandlePressure (tm,ref t);
+			pressureLocations [a] = t;
 		}
 	}
 
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
 		CheckCollapse ();
 		CheckPressure ();

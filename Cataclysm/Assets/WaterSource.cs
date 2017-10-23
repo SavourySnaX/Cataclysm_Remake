@@ -39,16 +39,16 @@ public class WaterSource : MonoBehaviour {
 				switch (s.name) 
 				{
 				case "Water_L":
-					spawnStart = new Vector3 (-1 + 2/3.0f + (1/3.0f)/2.0f, 11/12.0f + ((1/12.0f)/2.0f), 0);
+					spawnStart = new Vector3 (-1 + 2/3.0f + (1/3.0f)/2.0f, 11/12.0f + (1/24.0f), 0);
 					break;
 				case "Water_R":
-					spawnStart = new Vector3 (1 + (1/3.0f)/2.0f, 11/12.0f+ ((1/12.0f)/2.0f), 0);
+					spawnStart = new Vector3 (1 + (1/3.0f)/2.0f, (11/12.0f) + (1/24.0f), 0);
 					break;
 /*				case "Water_U":
 					spawnStart = new Vector3 (0, 13 / 12.0f, 0);
 					break;*/
 				case "Water_D":
-					spawnStart = new Vector3 (1/3.0f + (1/3.0f)/2.0f, -1 / 12.0f - ((1/12.0f)/2.0f), 0);
+					spawnStart = new Vector3 (1/3.0f + (1/3.0f)/2.0f, -1 / 12.0f - (1/24.0f), 0);
 					break;
 				default:
 					continue;
@@ -92,7 +92,7 @@ public class WaterSource : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
 		SpoutWater ();
 	}

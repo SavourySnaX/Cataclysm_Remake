@@ -16,11 +16,7 @@ public class BitmapCollision : MonoBehaviour
 	// We currently assume mainTilemap is larger or equal to the others.. todo fix (easy to test)
 	void ComputeCollisionBitmap(Tilemap tilemap)
 	{
-		if (tilemap.cellBounds.min.x != mainTilemap.cellBounds.min.x)
-		{
-			Debug.Log ("Interesting case");
-		}
-
+		// Take care of maps that are a different offset than the mainTilemap
 		int ofx=tilemap.origin.x-mainTilemap.origin.x;
 		int ofy=tilemap.origin.y-mainTilemap.origin.y;
 
@@ -118,6 +114,26 @@ public class BitmapCollision : MonoBehaviour
 		}
 	}
 
+	public void MoveTile1PixelDown(Tilemap tm2, Vector3 wPos)
+	{
+		Tile t = tm2.GetTile<Tile> (tm2.WorldToCell (wPos));
+		Matrix4x4 mat = tm2.GetTransformMatrix(tm2.WorldToCell(wPos));
+		Vector4 v1 = mat.GetRow (1);
+		v1.w = v1.w - 1 / 12.0f;
+		mat.SetRow (1, v1);
+		tm2.SetTransformMatrix (tm2.WorldToCell (wPos), mat);
+	}
+
+	public void MoveTile12PixelsUp(Tilemap tm2, Vector3 wPos)
+	{
+		Tile t = tm2.GetTile<Tile> (tm2.WorldToCell (wPos));
+		Matrix4x4 mat = tm2.GetTransformMatrix(tm2.WorldToCell(wPos));
+		Vector4 v1 = mat.GetRow (1);
+		v1.w = v1.w + 12 / 12.0f;
+		mat.SetRow (1, v1);
+		tm2.SetTransformMatrix (tm2.WorldToCell (wPos), mat);
+	}
+
 	public bool HandleCollapse(Tilemap tm2, Vector3 wPos)
 	{
 		Vector3 lPos = mainTilemap.WorldToLocal (wPos);
@@ -145,33 +161,61 @@ public class BitmapCollision : MonoBehaviour
 		return false;
 	}
 
-	public bool HandlePressure(Tilemap tm2, Vector3 wPos)
+	public bool HandlePressure(Tilemap tm2, ref Interactions.PressureData pd)
 	{
-/*		Vector3 lPos = tm.WorldToLocal (wPos);
-		Vector3Int cellPos = tm.LocalToCell (lPos);
-		Vector3Int origPos = tm2.WorldToCell(wPos);
-
-		// Get Cell above this one
-		cellPos += new Vector3Int(0,1,0);
-		cellPos -= tm.origin;
-		cellPos *= 12;
-		int cnt = 0;
-		for (int x = cellPos.x; x < cellPos.x + 12; x++)
+		if (pd.totalSize > 0)
 		{
-			for (int y = cellPos.y; y < cellPos.y + 12; y++)
+			Vector3 wPos = pd.position;
+			Vector3 lPos = mainTilemap.WorldToLocal (wPos);
+			Vector3Int cellPos = mainTilemap.LocalToCell (lPos);
+			Vector3Int origPos = tm2.WorldToCell (wPos);
+
+			// Get Cell above this one
+			cellPos -= mainTilemap.origin;
+			cellPos *= new Vector3Int (sizeX, sizeY, 1);
+			cellPos += new Vector3Int (0, pd.deltaCollapse, 0);
+			int cnt = 0;
+			for (int x = cellPos.x; x < cellPos.x + sizeX; x++)
 			{
-				if (texture.GetPixel (x, cellPos.y) == Color.blue)
+				for (int y = cellPos.y; y < cellPos.y + sizeY; y++)
 				{
-					cnt++;
+					if (texture.GetPixel (x, y) == Color.blue)
+					{
+						cnt++;
+					}
+				}
+			}
+			if (cnt == sizeX * sizeY)
+			{
+				Vector3 nPos = wPos;
+				for (int a = 0; a < pd.totalSize; a++)
+				{
+					MoveTile1PixelDown (tm2, nPos);
+					nPos += new Vector3 (0, -1, 0);
+				}
+				cellPos -= new Vector3Int (0, sizeY, 0);
+				for (int x = cellPos.x; x < cellPos.x + sizeX; x++)
+				{
+					texture.SetPixel (x, cellPos.y + 11, Color.black);
+				}
+				pd.deltaCollapse--;
+				if (pd.deltaCollapse == 0)
+				{
+					var origTile = tm2.GetTile<Tile> (tm2.WorldToCell(pd.position));
+					tm2.SetTile (tm2.WorldToCell(pd.position), null);
+					pd.deltaCollapse = 12;
+					pd.totalSize--;
+					pd.position += new Vector3 (0, -1, 0);
+					tm2.SetTile(tm2.WorldToCell(pd.position), origTile);
+					nPos = pd.position;
+					for (int a = 0; a < pd.totalSize; a++)
+					{
+						MoveTile12PixelsUp (tm2, nPos);
+						nPos += new Vector3 (0, -1, 0);
+					}
 				}
 			}
 		}
-
-		if (cnt > 2)
-		{
-			DeleteTile (tm2, wPos);
-			return true;
-		}*/
 		return false;
 	}
 
