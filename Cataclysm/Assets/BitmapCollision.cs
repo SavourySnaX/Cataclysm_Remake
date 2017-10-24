@@ -5,11 +5,24 @@ using UnityEngine.Tilemaps;
 
 public class BitmapCollision : MonoBehaviour 
 {
+	[System.Flags]
+	public enum LayerMask
+	{
+		None=0,
+		Background=1,
+		Water=2,
+		Drain=4,
+		Player=8,
+		Block=16,
+
+		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block
+	}
+
 	readonly int sizeX = 3;
 	readonly int sizeY = 12;
 
 	public Texture2D collision;
-	public Texture2D texture;
+	LayerMask [,] collisionMap;
 	public Bounds mainTilemapBounds;
 	Tilemap mainTilemap;
 
@@ -36,7 +49,7 @@ public class BitmapCollision : MonoBehaviour
 						{
 							if (tilemap == mainTilemap)
 							{
-								texture.SetPixel (fx + xx, fy + yy, Color.black);
+								collisionMap [fx + xx, fy + yy] = LayerMask.None;
 							}
 						}
 						else
@@ -48,15 +61,19 @@ public class BitmapCollision : MonoBehaviour
 
 							if (col == Color.black)
 							{
-								texture.SetPixel (fx + xx, fy + yy, Color.green);
+								collisionMap [fx + xx, fy + yy] = LayerMask.Background;
+								if (tilemap == mainTilemap)
+								{
+									collisionMap [fx + xx, fy + yy] |= LayerMask.Player;
+								}
 							} 
 							else if (col == Color.magenta)
 							{
-								texture.SetPixel (fx + xx, fy + yy, Color.magenta);
+								collisionMap [fx + xx, fy + yy] |= LayerMask.Drain;
 							}
 							else if (tilemap==mainTilemap)
 							{
-								texture.SetPixel (fx + xx, fy + yy, Color.black);
+								collisionMap [fx + xx, fy + yy] = LayerMask.None;
 							}
 						}
 					}
@@ -80,7 +97,7 @@ public class BitmapCollision : MonoBehaviour
 	{
 		mainTilemap = GetComponent<Tilemap>();
 		mainTilemapBounds = mainTilemap.localBounds;
-		texture = new Texture2D (mainTilemap.cellBounds.size.x * sizeX, mainTilemap.cellBounds.size.y * sizeY);
+		collisionMap = new LayerMask[mainTilemap.cellBounds.size.x * sizeX, mainTilemap.cellBounds.size.y * sizeY];
 
 		ComputeCollisionBitmaps ();
 	}
@@ -95,16 +112,39 @@ public class BitmapCollision : MonoBehaviour
 		return cellPos;
 	}
 
-	public bool IsCollision(Vector3 worldPos)
+	Vector3Int GetCellCoord(Vector3 worldPos)
 	{
-		Vector3Int cellPos = GetPixelCoord (worldPos);
-		return texture.GetPixel (cellPos.x, cellPos.y) != Color.black;
+		Vector3 localPos = mainTilemap.WorldToLocal (worldPos) - mainTilemap.origin;
+		Vector3Int cellPos = mainTilemap.LocalToCell (localPos);
+		Vector3 cellDiff = localPos - cellPos;
+		cellPos *= new Vector3Int(sizeX, sizeY, 1);
+		return cellPos;
 	}
 
-	public Color GetCollisionColor(Vector3 worldPos)
+	public bool IsCollision(Vector3 worldPos,LayerMask compareMask)
 	{
 		Vector3Int cellPos = GetPixelCoord (worldPos);
-		return texture.GetPixel(cellPos.x,cellPos.y);
+		return (collisionMap [cellPos.x, cellPos.y] & compareMask) != LayerMask.None;
+	}
+
+	public bool IsBoxCollision(Vector3 worldPos,LayerMask compareMask)
+	{
+		Vector3Int cellPos = GetCellCoord (worldPos);
+		bool collision=false;
+		for (int x = 0; x < sizeX; x++)
+		{
+			for (int y = 0; y < sizeY; y++)
+			{
+				collision |= ((collisionMap[cellPos.x+x,cellPos.y+y] & compareMask)!=LayerMask.None);
+			}
+		}
+		return collision;
+	}
+
+	public LayerMask GetCollisionMask(Vector3 worldPos)
+	{
+		Vector3Int cellPos = GetPixelCoord (worldPos);
+		return collisionMap [cellPos.x, cellPos.y];
 	}
 
 	public void DeleteTile(Tilemap tm2, Vector3 wPos)
@@ -119,7 +159,7 @@ public class BitmapCollision : MonoBehaviour
 		{
 			for (int y = cellPos.y; y < cellPos.y + sizeY; y++)
 			{
-				texture.SetPixel (x, y, Color.black);
+				collisionMap [x, y] &= ~(LayerMask.Background|LayerMask.Player);
 			}
 		}
 	}
@@ -157,7 +197,7 @@ public class BitmapCollision : MonoBehaviour
 		int cnt = 0;
 		for (int x = cellPos.x; x < cellPos.x + sizeX; x++)
 		{
-			if (texture.GetPixel (x, cellPos.y) == Color.blue)
+			if ((collisionMap [x, cellPos.y] & LayerMask.Water)==LayerMask.Water)
 			{
 				cnt++;
 			}
@@ -189,7 +229,7 @@ public class BitmapCollision : MonoBehaviour
 			{
 				for (int y = cellPos.y; y < cellPos.y + sizeY; y++)
 				{
-					if (texture.GetPixel (x, y) == Color.blue)
+					if ((collisionMap [x, y] & LayerMask.Water)==LayerMask.Water)
 					{
 						cnt++;
 					}
@@ -206,7 +246,7 @@ public class BitmapCollision : MonoBehaviour
 				cellPos -= new Vector3Int (0, sizeY, 0);
 				for (int x = cellPos.x; x < cellPos.x + sizeX; x++)
 				{
-					texture.SetPixel (x, cellPos.y + 11, Color.black);
+					collisionMap [x, cellPos.y + 11] &= ~LayerMask.Background;
 				}
 				pd.deltaCollapse--;
 				if (pd.deltaCollapse == 0)
@@ -230,16 +270,40 @@ public class BitmapCollision : MonoBehaviour
 	}
 
 
-	public void RemovePixel(Vector3 worldPos)
+	public void RemovePixel(Vector3 worldPos,LayerMask removeMask)
 	{
 		Vector3Int cellPos = GetPixelCoord (worldPos);
-		texture.SetPixel (cellPos.x, cellPos.y, Color.black);
+		collisionMap [cellPos.x, cellPos.y] &= ~removeMask;
 	}
 
-	public void AddPixel(Vector3 worldPos, Color col)
+	public void AddPixel(Vector3 worldPos, LayerMask setMask)
 	{
 		Vector3Int cellPos = GetPixelCoord (worldPos);
-		texture.SetPixel (cellPos.x, cellPos.y, col);
+		collisionMap [cellPos.x, cellPos.y] |= setMask;
+	}
+
+	public void AddBox(Vector3 worldPos, LayerMask setMask)
+	{
+		Vector3Int cellPos = GetCellCoord (worldPos);
+		for (int x = 0; x < sizeX; x++)
+		{
+			for (int y = 0; y < sizeY; y++)
+			{
+				collisionMap [cellPos.x+x, cellPos.y+y] |= setMask;
+			}
+		}
+	}
+
+	public void DeleteBox(Vector3 worldPos,LayerMask removeMask)
+	{
+		Vector3Int cellPos = GetCellCoord (worldPos);
+		for (int x = 0; x < sizeX; x++)
+		{
+			for (int y = 0; y < sizeY; y++)
+			{
+				collisionMap [cellPos.x + x, cellPos.y + y] &= ~removeMask;
+			}
+		}
 	}
 
 	// Update is called once per frame

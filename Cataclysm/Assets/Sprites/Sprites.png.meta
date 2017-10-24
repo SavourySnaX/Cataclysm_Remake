@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3506818aaaf5da444a002639e8835734
-timeCreated: 1508504637
+timeCreated: 1508833554
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: Sprites_1
     21300004: Sprites_2
     21300006: Sprites_3
+    21300008: Sprites_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -163,6 +164,24 @@ TextureImporter:
         - {x: -4, y: -1}
         - {x: 4, y: -1}
         - {x: 4, y: 1}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
       tessellationDetail: 0
     outline: []
     physicsShape: []

@@ -24,19 +24,19 @@ public class WaterDrop : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		bool col = bmpCol.IsCollision (transform.position + Vector3.down * (1 / 12.0f));
+		bool col = bmpCol.IsCollision (transform.position + Vector3.down * (1 / 12.0f),BitmapCollision.LayerMask.All);
 		if (!col)
 		{
-			bmpCol.RemovePixel (transform.position);
+			bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
 			transform.position += Vector3.down * (1 / 12.0f);
-			bmpCol.AddPixel (transform.position, Color.blue);
+			bmpCol.AddPixel (transform.position,BitmapCollision.LayerMask.Water);
 			sr.color = fast;
 		} 
 		else
 		{
-			if (Color.magenta == bmpCol.GetCollisionColor (transform.position + Vector3.down * (1 / 12.0f)))
+			if ((BitmapCollision.LayerMask.Drain & bmpCol.GetCollisionMask (transform.position + Vector3.down * (1 / 12.0f)))==BitmapCollision.LayerMask.Drain)
 			{
-				bmpCol.RemovePixel (transform.position);
+				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
 				DestroyObject (gameObject);
 				return;
 			}
@@ -45,12 +45,12 @@ public class WaterDrop : MonoBehaviour {
 			{
 				direction = Vector3.left;
 			}
-			bool ccol = bmpCol.IsCollision (transform.position + direction * (1 / 3.0f));
+			bool ccol = bmpCol.IsCollision (transform.position + direction * (1 / 3.0f),BitmapCollision.LayerMask.All);
 			if (!ccol)
 			{
-				bmpCol.RemovePixel (transform.position);
+				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
 				transform.position += direction * (1 / 3.0f);
-				bmpCol.AddPixel (transform.position, Color.blue);
+				bmpCol.AddPixel (transform.position,BitmapCollision.LayerMask.Water);
 				sr.color = medium;
 			} 
 			else

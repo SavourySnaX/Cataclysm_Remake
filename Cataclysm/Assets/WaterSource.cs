@@ -68,9 +68,7 @@ public class WaterSource : MonoBehaviour {
 		nextSpawn += Time.deltaTime;
 		if (nextSpawn >= spawnTimer)
 		{
-			bool col = bmpCol.IsCollision (spawnLocations[curSpawnLoc]);
-			//var ray = Physics2D.BoxCast(spawnLocations[curSpawnLoc],bc.size,0.0f, Vector2.zero, layerMaskForMovement);
-			//if (ray.collider == null)
+			bool col = bmpCol.IsCollision (spawnLocations[curSpawnLoc],BitmapCollision.LayerMask.All);
 			if (!col)
 			{
 				nextSpawn = 0.0f;

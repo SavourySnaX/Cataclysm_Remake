@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     public float speed=1.0f;
 	public BitmapCollision bmpCol;
+	public GameObject boxPrefab;
     Vector3 position;
     BoxCollider2D bc;
-	SpriteRenderer sr;
 	int layerMaskForMovement;
 
 	// Use this for initialization
@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     {
         position = transform.position;
         bc = GetComponent<BoxCollider2D>();
-		sr = GetComponent<SpriteRenderer> ();
 		layerMaskForMovement = LayerMask.GetMask ("Background");
 	}
 
@@ -40,11 +39,18 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-
+		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
+		if (Input.GetKeyDown (KeyCode.Space) && position==transform.position)
+		{
+			if (!bmpCol.IsBoxCollision (transform.position,BitmapCollision.LayerMask.Block|BitmapCollision.LayerMask.Background))
+			{
+				bmpCol.AddBox (transform.position, BitmapCollision.LayerMask.Block);
+				Instantiate (boxPrefab, transform.position, Quaternion.identity);
+			}
+		}		
         if (Input.GetKey(KeyCode.Z) && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (180, Vector3.up);
-//			transform.localScale=new Vector3 (-transform.localScale.x, transform.localScale.y);
 			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.left, 1.0f, layerMaskForMovement);
 			if (ray.collider == null)
 			{
@@ -56,7 +62,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.X) && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (0, Vector3.up);
-//			transform.localScale = new Vector2 (transform.localScale.x, transform.localScale.y);
 			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.right, 1.0f, layerMaskForMovement);
 			if (ray.collider == null) 
 			{
@@ -87,5 +92,7 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, position, Time.deltaTime * speed);
+
+		bmpCol.AddBox (transform.position, BitmapCollision.LayerMask.Player);
 	}
 }
