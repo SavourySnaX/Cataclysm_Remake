@@ -12,7 +12,7 @@ Cataclysm/Assets/AssetStoreTools*
 Cataclysm/*.apk
 Cataclysm/*.unitypackage
 Cataclysm/TestPackage/
- 
+Build/ 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
