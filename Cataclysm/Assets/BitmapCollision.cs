@@ -50,6 +50,10 @@ public class BitmapCollision : MonoBehaviour
 							{
 								texture.SetPixel (fx + xx, fy + yy, Color.green);
 							} 
+							else if (col == Color.magenta)
+							{
+								texture.SetPixel (fx + xx, fy + yy, Color.magenta);
+							}
 							else if (tilemap==mainTilemap)
 							{
 								texture.SetPixel (fx + xx, fy + yy, Color.black);
@@ -95,6 +99,12 @@ public class BitmapCollision : MonoBehaviour
 	{
 		Vector3Int cellPos = GetPixelCoord (worldPos);
 		return texture.GetPixel (cellPos.x, cellPos.y) != Color.black;
+	}
+
+	public Color GetCollisionColor(Vector3 worldPos)
+	{
+		Vector3Int cellPos = GetPixelCoord (worldPos);
+		return texture.GetPixel(cellPos.x,cellPos.y);
 	}
 
 	public void DeleteTile(Tilemap tm2, Vector3 wPos)

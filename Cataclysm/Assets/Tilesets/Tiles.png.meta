@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1508314682
+timeCreated: 1508831778
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -84,7 +84,7 @@ TextureImporter:
     21300154: Tiles_77
     21300156: Tiles_78
     21300158: Tiles_79
-    21300160: Tiles_80
+    21300160: Drain
     21300162: Tiles_81
     21300164: Tiles_82
     21300166: Water_R
@@ -1392,8 +1392,12 @@ TextureImporter:
       physicsShape:
       - - {x: -12, y: 12}
         - {x: -12, y: -12}
+        - {x: 4, y: -12}
+        - {x: 4, y: 12}
+      - - {x: 4, y: -12}
+        - {x: 4, y: 2}
+        - {x: 12, y: 2}
         - {x: 12, y: -12}
-        - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_54
@@ -1412,10 +1416,10 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
+      - - {x: -12, y: -8}
         - {x: -12, y: -12}
-        - {x: 12, y: -12}
-        - {x: 12, y: 12}
+        - {x: -4, y: -12}
+        - {x: -4, y: -8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_55
@@ -1500,10 +1504,10 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
-        - {x: -12, y: -12}
+      - - {x: 4, y: -8}
+        - {x: 4, y: -12}
         - {x: 12, y: -12}
-        - {x: 12, y: 12}
+        - {x: 12, y: -8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_59
@@ -1522,10 +1526,14 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
-        - {x: -12, y: -12}
+      - - {x: -4, y: 12}
+        - {x: -4, y: -12}
         - {x: 12, y: -12}
         - {x: 12, y: 12}
+      - - {x: -12, y: -12}
+        - {x: -12, y: 2}
+        - {x: -4, y: 2}
+        - {x: -4, y: -12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_60
@@ -1634,8 +1642,16 @@ TextureImporter:
       physicsShape:
       - - {x: -12, y: 12}
         - {x: -12, y: -12}
+        - {x: -4, y: -12}
+        - {x: -4, y: 12}
+      - - {x: -4, y: -12}
+        - {x: -4, y: 6}
+        - {x: 4, y: 6}
+        - {x: 4, y: -12}
+      - - {x: 4, y: -12}
+        - {x: 4, y: -2}
+        - {x: 12, y: -2}
         - {x: 12, y: -12}
-        - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_65
@@ -1654,10 +1670,10 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
+      - - {x: -12, y: -10}
         - {x: -12, y: -12}
-        - {x: 12, y: -12}
-        - {x: 12, y: 12}
+        - {x: -4, y: -12}
+        - {x: -4, y: -10}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_66
@@ -1698,10 +1714,10 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
-        - {x: -12, y: -12}
+      - - {x: 4, y: -10}
+        - {x: 4, y: -12}
         - {x: 12, y: -12}
-        - {x: 12, y: 12}
+        - {x: 12, y: -10}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_68
@@ -1720,10 +1736,18 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
-        - {x: -12, y: -12}
+      - - {x: 4, y: 12}
+        - {x: 4, y: -12}
         - {x: 12, y: -12}
         - {x: 12, y: 12}
+      - - {x: -4, y: -12}
+        - {x: -4, y: 6}
+        - {x: 4, y: 6}
+        - {x: 4, y: -12}
+      - - {x: -12, y: -12}
+        - {x: -12, y: -2}
+        - {x: -4, y: -2}
+        - {x: -4, y: -12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_69
@@ -1876,8 +1900,16 @@ TextureImporter:
       physicsShape:
       - - {x: -12, y: 12}
         - {x: -12, y: -12}
+        - {x: -4, y: -12}
+        - {x: -4, y: 12}
+      - - {x: -4, y: -12}
+        - {x: -4, y: 8}
+        - {x: 4, y: 8}
+        - {x: 4, y: -12}
+      - - {x: 4, y: -12}
+        - {x: 4, y: 2}
+        - {x: 12, y: 2}
         - {x: 12, y: -12}
-        - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_76
@@ -1896,10 +1928,14 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
+      - - {x: -12, y: -2}
         - {x: -12, y: -12}
+        - {x: -4, y: -12}
+        - {x: -4, y: -2}
+      - - {x: 4, y: -12}
+        - {x: 4, y: -2}
+        - {x: 12, y: -2}
         - {x: 12, y: -12}
-        - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_77
@@ -1918,10 +1954,18 @@ TextureImporter:
         - {x: 12, y: -12}
         - {x: 12, y: 12}
       physicsShape:
-      - - {x: -12, y: 12}
-        - {x: -12, y: -12}
+      - - {x: 4, y: 12}
+        - {x: 4, y: -12}
         - {x: 12, y: -12}
         - {x: 12, y: 12}
+      - - {x: -4, y: -12}
+        - {x: -4, y: 8}
+        - {x: 4, y: 8}
+        - {x: 4, y: -12}
+      - - {x: -12, y: -12}
+        - {x: -12, y: 2}
+        - {x: -4, y: 2}
+        - {x: -4, y: -12}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Tiles_78
@@ -1968,7 +2012,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_80
+      name: Drain
       rect:
         serializedVersion: 2
         x: 0

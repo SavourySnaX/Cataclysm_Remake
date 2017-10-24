@@ -25,8 +25,6 @@ public class WaterDrop : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		bool col = bmpCol.IsCollision (transform.position + Vector3.down * (1 / 12.0f));
-//		var ray = Physics2D.BoxCast(bc.bounds.center + Vector3.down*(1/12.0f),bc.size,0.0f, Vector2.zero, layerMaskForMovement);
-//		if (ray.collider == null)
 		if (!col)
 		{
 			bmpCol.RemovePixel (transform.position);
@@ -36,14 +34,18 @@ public class WaterDrop : MonoBehaviour {
 		} 
 		else
 		{
+			if (Color.magenta == bmpCol.GetCollisionColor (transform.position + Vector3.down * (1 / 12.0f)))
+			{
+				bmpCol.RemovePixel (transform.position);
+				DestroyObject (gameObject);
+				return;
+			}
 			var direction = Vector3.right;
 			if (Random.Range (-10.0f, 10.0f) <= 0)
 			{
 				direction = Vector3.left;
 			}
 			bool ccol = bmpCol.IsCollision (transform.position + direction * (1 / 3.0f));
-			//var lray = Physics2D.BoxCast(bc.bounds.center + direction*(1/3.0f), bc.size, 0.0f, Vector2.zero, layerMaskForMovement);
-			//if (lray.collider == null)
 			if (!ccol)
 			{
 				bmpCol.RemovePixel (transform.position);
