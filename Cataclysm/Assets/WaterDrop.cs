@@ -34,7 +34,14 @@ public class WaterDrop : MonoBehaviour {
 		} 
 		else
 		{
-			if ((BitmapCollision.LayerMask.Drain & bmpCol.GetCollisionMask (transform.position + Vector3.down * (1 / 12.0f)))==BitmapCollision.LayerMask.Drain)
+			BitmapCollision.LayerMask lm = bmpCol.GetCollisionMask (transform.position + Vector3.down * (1 / 12.0f));
+			if ((BitmapCollision.LayerMask.Drain & lm)==BitmapCollision.LayerMask.Drain)
+			{
+				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
+				DestroyObject (gameObject);
+				return;
+			}
+			if ((BitmapCollision.LayerMask.FailDrain & lm)==BitmapCollision.LayerMask.FailDrain)
 			{
 				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
 				DestroyObject (gameObject);

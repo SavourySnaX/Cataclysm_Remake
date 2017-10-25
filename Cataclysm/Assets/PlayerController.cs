@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -47,7 +48,12 @@ public class PlayerController : MonoBehaviour
 				bmpCol.AddBox (transform.position, BitmapCollision.LayerMask.Block);
 				Instantiate (boxPrefab, transform.position, Quaternion.identity);
 			}
-		}		
+		}	
+		if (Input.GetKeyDown (KeyCode.Escape))
+		{
+			SceneManager.LoadScene ("mainmenu");
+			return;
+		}
         if (Input.GetKey(KeyCode.Z) && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (180, Vector3.up);

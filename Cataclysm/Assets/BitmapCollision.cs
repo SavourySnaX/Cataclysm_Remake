@@ -14,8 +14,9 @@ public class BitmapCollision : MonoBehaviour
 		Drain=4,
 		Player=8,
 		Block=16,
+		FailDrain=32,
 
-		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block
+		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain
 	}
 
 	readonly int sizeX = 3;
@@ -70,6 +71,10 @@ public class BitmapCollision : MonoBehaviour
 							else if (col == Color.magenta)
 							{
 								collisionMap [fx + xx, fy + yy] |= LayerMask.Drain;
+							}
+							else if (col == Color.cyan)
+							{
+								collisionMap [fx + xx, fy + yy] |= LayerMask.FailDrain;
 							}
 							else if (tilemap==mainTilemap)
 							{
