@@ -24,7 +24,11 @@ public class WaterDrop : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		bool col = bmpCol.IsCollision (transform.position + Vector3.down * (1 / 12.0f),BitmapCollision.LayerMask.All);
+		BitmapCollision.LayerMask checkCollision = BitmapCollision.LayerMask.All;
+		BitmapCollision.LayerMask curLayer = bmpCol.GetCollisionMask (transform.position);
+		if ((curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block)) != BitmapCollision.LayerMask.None)
+			checkCollision &= ~(curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block));
+		bool col = bmpCol.IsCollision (transform.position + Vector3.down * (1 / 12.0f),checkCollision);
 		if (!col)
 		{
 			bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
