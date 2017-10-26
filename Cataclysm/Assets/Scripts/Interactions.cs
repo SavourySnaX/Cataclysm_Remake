@@ -10,6 +10,7 @@ public class Interactions : MonoBehaviour
 		public Vector3	position;
 		public int		totalSize;
 		public int		deltaCollapse;
+		public float	failsafeCollapse;
 	};
 
 	public List<Vector3> collapseLocations;
@@ -17,6 +18,8 @@ public class Interactions : MonoBehaviour
 
 	public GameObject background;
 	public HudBehaviour hud;
+
+	public float failsafeDelay=1.0f;
 
 	Tilemap tm;
 	BitmapCollision bmpCol;
@@ -46,6 +49,7 @@ public class Interactions : MonoBehaviour
 					PressureData data;
 					data.position = tm.CellToWorld (new Vector3Int (x, y, 0));
 					data.deltaCollapse = 12;
+					data.failsafeCollapse = failsafeDelay;
 					// Compute size of pressure tile
 					data.totalSize = 1;
 					var nextTile = new Vector3Int (x, y - 1, 0);
@@ -95,7 +99,7 @@ public class Interactions : MonoBehaviour
 		for (int a=0;a<pressureLocations.Count;a++)
 		{
 			var t = pressureLocations [a];
-			bmpCol.HandlePressure (tm,ref t);
+			bmpCol.HandlePressure (tm,ref t,this);
 			pressureLocations [a] = t;
 		}
 	}

@@ -227,7 +227,7 @@ public class BitmapCollision : MonoBehaviour
 		return false;
 	}
 
-	public bool HandlePressure(Tilemap tm2, ref Interactions.PressureData pd)
+	public bool HandlePressure(Tilemap tm2, ref Interactions.PressureData pd,Interactions interacts)
 	{
 		if (pd.totalSize > 0)
 		{
@@ -250,8 +250,10 @@ public class BitmapCollision : MonoBehaviour
 					}
 				}
 			}
-			if (cnt == sizeX * sizeY)
+			pd.failsafeCollapse -= Time.deltaTime;
+			if (cnt == sizeX * sizeY || (pd.deltaCollapse!=12  &&  pd.failsafeCollapse<=0.0f))
 			{
+				pd.failsafeCollapse = interacts.failsafeDelay;
 				Vector3 nPos = wPos;
 				for (int a = 0; a < pd.totalSize; a++)
 				{
@@ -277,6 +279,10 @@ public class BitmapCollision : MonoBehaviour
 					{
 						MoveTile12PixelsUp (tm2, nPos);
 						nPos += new Vector3 (0, -1, 0);
+					}
+					if (pd.totalSize == 0) 
+					{
+						return true;
 					}
 				}
 			}
