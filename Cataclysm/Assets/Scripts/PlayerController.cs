@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     Vector3 position;
 	List<GameObject> blocksList;
 
-	// Use this for initialization
 	void Start ()
     {
 		blocksList = new List<GameObject> ();
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
 	void RemoveBlock(Vector3 position)
 	{
-		// Find GameObject in list
 		GameObject toRemove=null;
 		for (int a = 0; a < blocksList.Count; a++)
 		{
@@ -69,7 +67,6 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 
-	// Update is called once per frame
 	void FixedUpdate ()
     {
 		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore));

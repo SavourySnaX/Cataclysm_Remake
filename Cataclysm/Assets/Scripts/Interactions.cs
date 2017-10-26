@@ -21,7 +21,6 @@ public class Interactions : MonoBehaviour
 	Tilemap tm;
 	BitmapCollision bmpCol;
 
-	// Use this for initialization
 	void Start () 
 	{
 		collapseLocations = new List<Vector3>();
@@ -101,7 +100,6 @@ public class Interactions : MonoBehaviour
 		}
 	}
 
-	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		CheckCollapse ();

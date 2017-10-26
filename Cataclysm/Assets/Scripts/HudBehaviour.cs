@@ -13,22 +13,61 @@ public class HudBehaviour : MonoBehaviour
 	public float scoreWater=0.10f;
 	public float waterIncrement=1.0f;
 	public float failIncrement=0.2f;
-	public float timerStart=60.0f;
-	public float waterAmount=1000.0f;
-	public GameObject scoreObject;
-	public GameObject blockObject;
-	public GameObject scoreShadowObject;
-	public GameObject blockShadowObject;
-	public GameObject timerObject;
-	public GameObject waterObject;
+	public float timerStart=240.0f;
+	public float waterAmount=800.0f;
 
-	// Use this for initialization
+	public GameObject prefabUI;
+
+	Text scoreObject;
+	Text blockObject;
+	Text scoreShadowObject;
+	Text blockShadowObject;
+	RectTransform timerObject;
+	RectTransform waterObject;
+
 	void Start () 
 	{
 		score = 0.0f;
 		timer = 0;
 		blocksCount = 8;
 		water = 0;
+
+		GameObject t=Instantiate (prefabUI);
+		t.GetComponent<Canvas> ().worldCamera = Camera.main;
+
+		var list = t.GetComponentsInChildren<RectTransform> ();
+		foreach (var l in list)
+		{
+			if (l.name == "WaterMeterHeight")
+			{
+				waterObject = l;
+			}
+			if (l.name =="FailMeterHeight")
+			{
+				timerObject = l;
+			}
+		}
+		var tlist = t.GetComponentsInChildren<Text> ();
+		foreach (var l in tlist)
+		{
+			if (l.name == "Score")
+			{
+				scoreObject = l;
+			}
+			if (l.name =="ScoreDropShadow")
+			{
+				scoreShadowObject = l;
+			}
+			if (l.name == "BlockCount")
+			{
+				blockObject = l;
+			}
+			if (l.name =="BlockCountDropShadow")
+			{
+				blockShadowObject = l;
+			}
+		}
+
 	}
 
 	public void AddWater()
@@ -59,9 +98,9 @@ public class HudBehaviour : MonoBehaviour
 			// Win
 			return;
 		}
-		Vector3 lScale = waterObject.GetComponent<RectTransform> ().localScale;
+		Vector3 lScale = waterObject.localScale;
 		lScale.y = water / waterAmount;
-		waterObject.GetComponent<RectTransform> ().localScale = lScale;
+		waterObject.localScale = lScale;
 
 	}
 
@@ -72,26 +111,25 @@ public class HudBehaviour : MonoBehaviour
 			// Game Over
 			return;
 		}
-		Vector3 lScale = timerObject.GetComponent<RectTransform> ().localScale;
+		Vector3 lScale = timerObject.localScale;
 		lScale.y = timer / timerStart;
-		timerObject.GetComponent<RectTransform> ().localScale = lScale;
+		timerObject.localScale = lScale;
 	}
 
 	void UpdateScore()
 	{
 		string t = string.Format ("Score : {0:0000}", Mathf.FloorToInt(score));
-		scoreShadowObject.GetComponent<Text> ().text = t;
-		scoreObject.GetComponent<Text> ().text = t;
+		scoreShadowObject.text = t;
+		scoreObject.text = t;
 	}
 
 	void UpdateBlocks()
 	{
 		string t = string.Format ("* {0}", blocksCount);
-		blockShadowObject.GetComponent<Text> ().text = t;
-		blockObject.GetComponent<Text> ().text = t;
+		blockShadowObject.text = t;
+		blockObject.text = t;
 	}
 
-	// Update is called once per frame
 	void Update () 
 	{
 		timer += Time.deltaTime;

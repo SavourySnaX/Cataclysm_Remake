@@ -17,7 +17,6 @@ public class WaterSource : MonoBehaviour {
 	Tilemap tm;
 	BitmapCollision bmpCol;
 
-	// Use this for initialization
 	void Start () 
 	{
 		curSpawnLoc = 0;
@@ -54,7 +53,7 @@ public class WaterSource : MonoBehaviour {
 					continue;
 				}
 
-				var vec = tm.CellToWorld (new Vector3Int (x, y, 0));//+tm.origin;
+				var vec = tm.CellToWorld (new Vector3Int (x, y, 0));
 				vec += spawnStart;
 
 				spawnLocations.Add(vec);
@@ -97,7 +96,6 @@ public class WaterSource : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		SpoutWater ();

@@ -666,7 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collapseLocations: []
   background: {fileID: 749371207}
-  hud: {fileID: 0}
+  hud: {fileID: 749371211}
 --- !u!1 &749371207
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +678,7 @@ GameObject:
   - component: {fileID: 749371210}
   - component: {fileID: 749371209}
   - component: {fileID: 749371214}
+  - component: {fileID: 749371211}
   m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
@@ -6515,6 +6516,24 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
+--- !u!114 &749371211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749371207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd8936ad80dd094a83a1e85a3d4b890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreDestroyBlock: 3
+  scoreWater: 0.1
+  waterIncrement: 1
+  failIncrement: 0.2
+  timerStart: 240
+  waterAmount: 800
+  prefabUI: {fileID: 1003684285223146, guid: 7c4dcc0ad8c65cd4a808f4ee4508503e, type: 2}
 --- !u!114 &749371214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7430,7 +7449,7 @@ MonoBehaviour:
   speed: 10
   totalBlocks: 8
   bmpCol: {fileID: 749371214}
-  hud: {fileID: 0}
+  hud: {fileID: 749371211}
   boxPrefab: {fileID: 1475906738122714, guid: d0b05bf8b2d56814c83109faf42a7c9e, type: 2}
 --- !u!199 &1686036452
 ParticleSystemRenderer:
@@ -7546,7 +7565,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 853283617
+  randomSeed: -1712613978
   InitialModule:
     serializedVersion: 3
     enabled: 1
