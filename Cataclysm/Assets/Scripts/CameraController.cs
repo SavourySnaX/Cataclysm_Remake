@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 	public BitmapCollision bc;
 	public Transform target;
 
-	void FollowTargetInBounds()
+	void FollowTargetInBounds(bool snap=false)
 	{
 		Camera.main.orthographicSize = Screen.height / (2 * pixelWidth);
 		float vertExtent = Camera.main.orthographicSize;
@@ -38,15 +38,21 @@ public class CameraController : MonoBehaviour
 			pos.y = Mathf.Clamp (pos.y, bottomBound, topBound);
 		}
 
-		transform.position = Vector3.MoveTowards (transform.position, pos, 25.0f*Time.deltaTime);
+		if (snap)
+		{
+			transform.position = pos;
+		} 
+		else
+		{
+			transform.position = Vector3.MoveTowards (transform.position, pos, 25.0f * Time.deltaTime);
+		}
 	}
 
-	// Use this for initialization
 	void Start () 
 	{
+		FollowTargetInBounds (true);
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () 
 	{
 		FollowTargetInBounds ();
