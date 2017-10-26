@@ -15,8 +15,11 @@ public class BitmapCollision : MonoBehaviour
 		Player=8,
 		Block=16,
 		FailDrain=32,
+		Plug=64,
+		EnemyIgnore=128,
+		PlayerIgnore=256,
 
-		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain
+		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain|LayerMask.Plug|LayerMask.PlayerIgnore|LayerMask.EnemyIgnore
 	}
 
 	readonly int sizeX = 3;
@@ -25,7 +28,7 @@ public class BitmapCollision : MonoBehaviour
 	public Texture2D collision;
 	LayerMask [,] collisionMap;
 	public Bounds mainTilemapBounds;
-	Tilemap mainTilemap;
+	public Tilemap mainTilemap;
 
 	// We currently assume mainTilemap is larger or equal to the others.. todo fix (easy to test)
 	void ComputeCollisionBitmap(Tilemap tilemap)
@@ -71,10 +74,22 @@ public class BitmapCollision : MonoBehaviour
 							else if (col == Color.magenta)
 							{
 								collisionMap [fx + xx, fy + yy] |= LayerMask.Drain;
-							}
+							} 
 							else if (col == Color.cyan)
 							{
 								collisionMap [fx + xx, fy + yy] |= LayerMask.FailDrain;
+							} 
+							else if (col == Color.green)
+							{
+								collisionMap [fx + xx, fy + yy] |= LayerMask.Plug;
+							}
+							else if (col == Color.red)
+							{
+								collisionMap [fx + xx, fy + yy] |= LayerMask.EnemyIgnore;
+							}
+							else if (col == Color.blue)
+							{
+								collisionMap [fx + xx, fy + yy] |= LayerMask.PlayerIgnore;
 							}
 							else if (tilemap==mainTilemap)
 							{
@@ -152,7 +167,7 @@ public class BitmapCollision : MonoBehaviour
 		return collisionMap [cellPos.x, cellPos.y];
 	}
 
-	public void DeleteTile(Tilemap tm2, Vector3 wPos)
+	public void DeleteTile(Tilemap tm2, Vector3 wPos,LayerMask extra=LayerMask.None)
 	{
 		Vector3 lPos = mainTilemap.WorldToLocal (wPos);
 		Vector3Int cellPos = mainTilemap.LocalToCell (lPos);
@@ -164,7 +179,7 @@ public class BitmapCollision : MonoBehaviour
 		{
 			for (int y = cellPos.y; y < cellPos.y + sizeY; y++)
 			{
-				collisionMap [x, y] &= ~(LayerMask.Background|LayerMask.Player);
+				collisionMap [x, y] &= ~(LayerMask.Background|LayerMask.Player|extra);
 			}
 		}
 	}

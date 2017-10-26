@@ -21,25 +21,20 @@ public class PlayerController : MonoBehaviour
 		layerMaskForMovement = LayerMask.GetMask ("Background");
 	}
 
-	void HandleDynamics(Collider2D collider,Vector3 newPos)
+	bool HandleDynamics(BitmapCollision.LayerMask colMask,Vector3 newPos)
 	{
-		var go = collider.gameObject;
-		var tm = go.GetComponent<Tilemap> ();
-		Vector3 localPos = tm.WorldToLocal (newPos);
-		Vector3Int cellPos = tm.LocalToCell (localPos);
-		Sprite s = tm.GetSprite (cellPos);
-		if (s != null)
+		if ((colMask & BitmapCollision.LayerMask.Plug)==BitmapCollision.LayerMask.Plug)
 		{
-			if (s.name == "Plug_A" || s.name == "Plug_B")
-			{
-				bmpCol.DeleteTile (tm,newPos);
-			}
+			bmpCol.DeleteTile (bmpCol.mainTilemap,newPos,BitmapCollision.LayerMask.Plug);
+			return true;
 		}
+		return false;
 	}
 
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block | BitmapCollision.LayerMask.PlayerIgnore));
 		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
 		if (Input.GetKeyDown (KeyCode.Space) && position==transform.position)
 		{
@@ -57,44 +52,36 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Z) && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (180, Vector3.up);
-			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.left, 1.0f, layerMaskForMovement);
-			if (ray.collider == null)
+			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.left);
+			if (!bmpCol.IsBoxCollision (transform.position + Vector3.left, playerMask) || HandleDynamics (colMask, transform.position + Vector3.left))
 			{
 				position += Vector3.left;
 			} 
-			else
-				HandleDynamics (ray.collider,bc.bounds.center+Vector3.left);
         }
         if (Input.GetKey(KeyCode.X) && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (0, Vector3.up);
-			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.right, 1.0f, layerMaskForMovement);
-			if (ray.collider == null) 
+			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.right);
+			if (!bmpCol.IsBoxCollision (transform.position + Vector3.right, playerMask) || HandleDynamics (colMask, transform.position + Vector3.right))
 			{
 				position += Vector3.right;
 			}
-			else
-				HandleDynamics (ray.collider,bc.bounds.center+Vector3.right);
         }
         if (Input.GetKey(KeyCode.P) && position == transform.position)
         {
-			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.up, 1.0f, layerMaskForMovement);
-			if (ray.collider == null) 
+			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.up);
+			if (!bmpCol.IsBoxCollision (transform.position + Vector3.up, playerMask) || HandleDynamics (colMask, transform.position + Vector3.up))
 			{
 				position += Vector3.up;
 			}
-			else
-				HandleDynamics (ray.collider,bc.bounds.center+Vector3.up);
         }
         if (Input.GetKey(KeyCode.L) && position == transform.position)
         {
-			var ray = Physics2D.BoxCast(bc.bounds.center, bc.size, 0.0f, Vector2.down, 1.0f, layerMaskForMovement);
-			if (ray.collider == null)
+			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.down);
+			if (!bmpCol.IsBoxCollision (transform.position + Vector3.down, playerMask) || HandleDynamics (colMask, transform.position + Vector3.down))
 			{
 				position += Vector3.down;
 			}
-			else
-				HandleDynamics (ray.collider,bc.bounds.center+Vector3.down);
         }
 
         transform.position = Vector3.MoveTowards(transform.position, position, Time.deltaTime * speed);
