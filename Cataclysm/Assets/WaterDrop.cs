@@ -5,13 +5,14 @@ using UnityEngine;
 public class WaterDrop : MonoBehaviour {
 
 	public BitmapCollision bmpCol;
+	public HudBehaviour hud;
+	public WaterSource src;
 	SpriteRenderer sr;
 
 	Color fast;
 	Color medium;
 	Color normal;
 
-	// Use this for initialization
 	void Start () 
 	{
 		sr = GetComponent<SpriteRenderer> ();
@@ -21,13 +22,14 @@ public class WaterDrop : MonoBehaviour {
 		fast = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 	}
 
-	// Update is called once per frame
 	void FixedUpdate ()
 	{
 		BitmapCollision.LayerMask checkCollision = BitmapCollision.LayerMask.All;
 		BitmapCollision.LayerMask curLayer = bmpCol.GetCollisionMask (transform.position);
 		if ((curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block)) != BitmapCollision.LayerMask.None)
+		{
 			checkCollision &= ~(curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block));
+		}
 		bool col = bmpCol.IsCollision (transform.position + Vector3.down * (1 / 12.0f),checkCollision);
 		if (!col)
 		{
@@ -43,12 +45,15 @@ public class WaterDrop : MonoBehaviour {
 			{
 				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
 				DestroyObject (gameObject);
+				hud.AddWater ();
 				return;
 			}
 			if ((BitmapCollision.LayerMask.FailDrain & lm)==BitmapCollision.LayerMask.FailDrain)
 			{
 				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);
 				DestroyObject (gameObject);
+				hud.AddFail();
+				src.AddWater ();
 				return;
 			}
 			var direction = Vector3.right;
@@ -56,7 +61,7 @@ public class WaterDrop : MonoBehaviour {
 			{
 				direction = Vector3.left;
 			}
-			bool ccol = bmpCol.IsCollision (transform.position + direction * (1 / 3.0f),BitmapCollision.LayerMask.All);
+			bool ccol = bmpCol.IsCollision (transform.position + direction * (1 / 3.0f),checkCollision);
 			if (!ccol)
 			{
 				bmpCol.RemovePixel (transform.position,BitmapCollision.LayerMask.Water);

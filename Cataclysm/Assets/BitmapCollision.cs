@@ -136,7 +136,6 @@ public class BitmapCollision : MonoBehaviour
 	{
 		Vector3 localPos = mainTilemap.WorldToLocal (worldPos) - mainTilemap.origin;
 		Vector3Int cellPos = mainTilemap.LocalToCell (localPos);
-		Vector3 cellDiff = localPos - cellPos;
 		cellPos *= new Vector3Int(sizeX, sizeY, 1);
 		return cellPos;
 	}
@@ -186,7 +185,6 @@ public class BitmapCollision : MonoBehaviour
 
 	public void MoveTile1PixelDown(Tilemap tm2, Vector3 wPos)
 	{
-		Tile t = tm2.GetTile<Tile> (tm2.WorldToCell (wPos));
 		Matrix4x4 mat = tm2.GetTransformMatrix(tm2.WorldToCell(wPos));
 		Vector4 v1 = mat.GetRow (1);
 		v1.w = v1.w - 1 / 12.0f;
@@ -196,7 +194,6 @@ public class BitmapCollision : MonoBehaviour
 
 	public void MoveTile12PixelsUp(Tilemap tm2, Vector3 wPos)
 	{
-		Tile t = tm2.GetTile<Tile> (tm2.WorldToCell (wPos));
 		Matrix4x4 mat = tm2.GetTransformMatrix(tm2.WorldToCell(wPos));
 		Vector4 v1 = mat.GetRow (1);
 		v1.w = v1.w + 12 / 12.0f;
@@ -208,7 +205,6 @@ public class BitmapCollision : MonoBehaviour
 	{
 		Vector3 lPos = mainTilemap.WorldToLocal (wPos);
 		Vector3Int cellPos = mainTilemap.LocalToCell (lPos);
-		Vector3Int origPos = tm2.WorldToCell(wPos);
 
 		// Get Cell above this one
 		cellPos += new Vector3Int(0,1,0);
@@ -238,7 +234,6 @@ public class BitmapCollision : MonoBehaviour
 			Vector3 wPos = pd.position;
 			Vector3 lPos = mainTilemap.WorldToLocal (wPos);
 			Vector3Int cellPos = mainTilemap.LocalToCell (lPos);
-			Vector3Int origPos = tm2.WorldToCell (wPos);
 
 			// Get Cell above this one
 			cellPos -= mainTilemap.origin;

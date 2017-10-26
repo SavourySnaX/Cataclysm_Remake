@@ -7,18 +7,51 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float speed=1.0f;
+	public int totalBlocks=8;
 	public BitmapCollision bmpCol;
+	public HudBehaviour hud;
 	public GameObject boxPrefab;
     Vector3 position;
-    BoxCollider2D bc;
-	int layerMaskForMovement;
+	List<GameObject> blocksList;
 
 	// Use this for initialization
 	void Start ()
     {
+		blocksList = new List<GameObject> ();
         position = transform.position;
-        bc = GetComponent<BoxCollider2D>();
-		layerMaskForMovement = LayerMask.GetMask ("Background");
+	}
+
+	void AddBlock(Vector3 position)
+	{
+		if (totalBlocks != 0)
+		{
+			bmpCol.AddBox (transform.position, BitmapCollision.LayerMask.Block);
+			blocksList.Add (Instantiate (boxPrefab, transform.position, Quaternion.identity));
+			totalBlocks--;
+			hud.SetBlocks (totalBlocks);
+		}
+	}
+
+	void RemoveBlock(Vector3 position)
+	{
+		// Find GameObject in list
+		GameObject toRemove=null;
+		for (int a = 0; a < blocksList.Count; a++)
+		{
+			if (blocksList [a].transform.position == position)
+			{
+				toRemove = blocksList[a];
+				break;
+			}
+		}
+		if (toRemove != null)
+		{
+			bmpCol.DeleteBox (toRemove.transform.position, BitmapCollision.LayerMask.Block);
+			blocksList.Remove (toRemove);
+			DestroyObject (toRemove);
+			totalBlocks++;
+			hud.SetBlocks (totalBlocks);
+		}
 	}
 
 	bool HandleDynamics(BitmapCollision.LayerMask colMask,Vector3 newPos)
@@ -28,20 +61,24 @@ public class PlayerController : MonoBehaviour
 			bmpCol.DeleteTile (bmpCol.mainTilemap,newPos,BitmapCollision.LayerMask.Plug);
 			return true;
 		}
+		if ((colMask & BitmapCollision.LayerMask.Block) == BitmapCollision.LayerMask.Block)
+		{
+			RemoveBlock (newPos);
+			return true;
+		}
 		return false;
 	}
 
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block | BitmapCollision.LayerMask.PlayerIgnore));
+		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore));
 		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
-		if (Input.GetKeyDown (KeyCode.Space) && position==transform.position)
+		if (Input.GetKey(KeyCode.Space) && position==transform.position)
 		{
 			if (!bmpCol.IsBoxCollision (transform.position,BitmapCollision.LayerMask.Block|BitmapCollision.LayerMask.Background))
 			{
-				bmpCol.AddBox (transform.position, BitmapCollision.LayerMask.Block);
-				Instantiate (boxPrefab, transform.position, Quaternion.identity);
+				AddBlock (transform.position);
 			}
 		}	
 		if (Input.GetKeyDown (KeyCode.Escape))

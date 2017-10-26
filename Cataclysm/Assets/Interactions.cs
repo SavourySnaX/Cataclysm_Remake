@@ -16,6 +16,7 @@ public class Interactions : MonoBehaviour
 	public List<PressureData> pressureLocations;
 
 	public GameObject background;
+	public HudBehaviour hud;
 
 	Tilemap tm;
 	BitmapCollision bmpCol;
@@ -75,9 +76,18 @@ public class Interactions : MonoBehaviour
 
 	void CheckCollapse()
 	{
+		List<Vector3> toRemove = new List<Vector3> ();
 		foreach (var v in collapseLocations)
 		{
-			bmpCol.HandleCollapse (tm,v);
+			if (bmpCol.HandleCollapse (tm, v))
+			{
+				hud.ScoreDestroyBlock ();
+				toRemove.Add (v);
+			}
+		}
+		foreach (var v in toRemove)
+		{
+			collapseLocations.Remove (v);
 		}
 	}
 

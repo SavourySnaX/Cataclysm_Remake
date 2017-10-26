@@ -63,6 +63,11 @@ public class WaterSource : MonoBehaviour {
 
 	}
 
+	public void AddWater()
+	{
+		totalDrops++;
+	}
+
 	void SpoutWater()
 	{
 		nextSpawn += Time.deltaTime;
@@ -76,7 +81,10 @@ public class WaterSource : MonoBehaviour {
 				{
 					totalDrops--;
 
-					Instantiate (prefab, spawnLocations[curSpawnLoc], Quaternion.identity).GetComponent<WaterDrop> ().bmpCol = background.GetComponent<BitmapCollision> ();
+					GameObject t = Instantiate (prefab, spawnLocations[curSpawnLoc], Quaternion.identity);
+					t.GetComponent<WaterDrop> ().bmpCol = background.GetComponent<BitmapCollision> ();
+					t.GetComponent<WaterDrop> ().hud = background.GetComponent<HudBehaviour> ();
+					t.GetComponent<WaterDrop> ().src = this.GetComponent<WaterSource> ();
 				}
 			}
 
