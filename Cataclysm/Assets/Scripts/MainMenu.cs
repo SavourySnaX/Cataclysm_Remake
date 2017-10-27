@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour {
 
 	void Start () 
 	{
-		
+		Time.timeScale = 1.0f;
 	}
 
 	public void LoadLevel(int level)

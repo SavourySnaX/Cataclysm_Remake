@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+	public float keyResponse=0.0f;
     public float speed=1.0f;
 	public int totalBlocks=8;
 	public BitmapCollision bmpCol;
@@ -71,19 +72,27 @@ public class PlayerController : MonoBehaviour
     {
 		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore));
 		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
-		if (Input.GetKey(KeyCode.Space) && position==transform.position)
+		if (Input.GetButtonDown("PlaceBlock") && position==transform.position)
 		{
 			if (!bmpCol.IsBoxCollision (transform.position,BitmapCollision.LayerMask.Block|BitmapCollision.LayerMask.Background))
 			{
 				AddBlock (transform.position);
 			}
 		}	
-		if (Input.GetKeyDown (KeyCode.Escape))
+		if (Input.GetButtonDown("QuitLevel"))
 		{
-			SceneManager.LoadScene ("mainmenu");
+			hud.Quit ();
 			return;
 		}
-        if (Input.GetKey(KeyCode.Z) && position == transform.position)
+		if (Input.GetButtonDown("Pause"))
+		{
+			hud.Pause ();
+			return;
+		}
+		float hzMove = Input.GetAxis ("Horizontal");
+		float vtMove = Input.GetAxis ("Vertical");
+
+		if (hzMove<-keyResponse && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (180, Vector3.up);
 			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.left);
@@ -92,7 +101,7 @@ public class PlayerController : MonoBehaviour
 				position += Vector3.left;
 			} 
         }
-        if (Input.GetKey(KeyCode.X) && position == transform.position)
+		if (hzMove>keyResponse && position == transform.position)
         {
 			transform.localRotation = Quaternion.AngleAxis (0, Vector3.up);
 			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.right);
@@ -101,7 +110,7 @@ public class PlayerController : MonoBehaviour
 				position += Vector3.right;
 			}
         }
-        if (Input.GetKey(KeyCode.P) && position == transform.position)
+		if (vtMove>keyResponse && position == transform.position)
         {
 			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.up);
 			if (!bmpCol.IsBoxCollision (transform.position + Vector3.up, playerMask) || HandleDynamics (colMask, transform.position + Vector3.up))
@@ -109,7 +118,7 @@ public class PlayerController : MonoBehaviour
 				position += Vector3.up;
 			}
         }
-        if (Input.GetKey(KeyCode.L) && position == transform.position)
+		if (vtMove<-keyResponse && position == transform.position)
         {
 			BitmapCollision.LayerMask colMask = bmpCol.GetCollisionMask (transform.position + Vector3.down);
 			if (!bmpCol.IsBoxCollision (transform.position + Vector3.down, playerMask) || HandleDynamics (colMask, transform.position + Vector3.down))
