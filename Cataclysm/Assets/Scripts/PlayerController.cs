@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
 	public GameObject boxPrefab;
     Vector3 position;
 	List<GameObject> blocksList;
+	Animator anim;
 
 	void Start ()
     {
+		anim = GetComponent<Animator> ();
 		blocksList = new List<GameObject> ();
         position = transform.position;
 	}
@@ -126,6 +128,8 @@ public class PlayerController : MonoBehaviour
 				position += Vector3.down;
 			}
         }
+
+		anim.SetBool ("moving", transform.position != position);
 
         transform.position = Vector3.MoveTowards(transform.position, position, Time.deltaTime * speed);
 

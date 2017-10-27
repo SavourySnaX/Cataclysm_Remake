@@ -4351,6 +4351,7 @@ GameObject:
   - component: {fileID: 1686036450}
   - component: {fileID: 1686036453}
   - component: {fileID: 1686036452}
+  - component: {fileID: 1686036447}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -4358,6 +4359,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1686036447
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686036446}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4992bb768b772b45b0e866d53550b9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &1686036448
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4423,7 +4441,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686036446}
   m_BodyType: 1
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -4566,7 +4584,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -880878066
+  randomSeed: -601492326
   InitialModule:
     serializedVersion: 3
     enabled: 1
