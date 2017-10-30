@@ -18,8 +18,9 @@ public class BitmapCollision : MonoBehaviour
 		Plug=64,
 		EnemyIgnore=128,
 		PlayerIgnore=256,
+		Enemy=512,
 
-		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain|LayerMask.Plug|LayerMask.PlayerIgnore|LayerMask.EnemyIgnore
+		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain|LayerMask.Plug|LayerMask.PlayerIgnore|LayerMask.EnemyIgnore|LayerMask.Enemy
 	}
 
 	readonly int sizeX = 3;

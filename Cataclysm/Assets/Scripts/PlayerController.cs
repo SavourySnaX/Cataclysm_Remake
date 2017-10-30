@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
     {
-		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore));
+		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore | BitmapCollision.LayerMask.Enemy));
 		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
 		if (Input.GetButtonDown("PlaceBlock") && position==transform.position)
 		{
