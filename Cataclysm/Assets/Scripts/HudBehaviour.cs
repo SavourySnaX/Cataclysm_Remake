@@ -175,6 +175,11 @@ public class HudBehaviour : MonoBehaviour
 		ShowPopup ("GAME OVER", "You quit!!", "Main Menu", MainMenu);
 	}
 
+	public void Killed()
+	{
+		ShowPopup ("GAME OVER", "You were killed!!", "Main Menu", MainMenu);
+	}
+
 	public void Winner()
 	{
 		ShowPopup ("!CONGRATULATIONS!", string.Format("You scored : {0:0000}",Mathf.FloorToInt(score)), "Main Menu", MainMenu);

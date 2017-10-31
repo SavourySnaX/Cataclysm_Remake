@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenGoblinController : MonoBehaviour 
+public class GoblinController : MonoBehaviour 
 {
 	enum Action
 	{
@@ -23,8 +23,10 @@ public class GreenGoblinController : MonoBehaviour
 	public float idleTimeMin=0.5f;
 	public float idleIimeMax=0.5f;
 	public float chanceToRepeatAction=0.10f;
+	public bool lethal=false;
 	public BitmapCollision bmpCol;
 	public AnimationCurve AIWeighting;
+	public PlayerController player;
 	Vector3 position;
 	Animator anim;
 	Action currentAction;
@@ -113,9 +115,17 @@ public class GreenGoblinController : MonoBehaviour
 
 		nextDelay = Mathf.Clamp (nextDelay-Time.deltaTime, 0.0f, 100.0f);
 
+		if (lethal)
+		{
+			if (bmpCol.IsBoxCollision (transform.position, BitmapCollision.LayerMask.Player))
+			{
+				player.KillPlayer ();
+			}
+		}
+
 		if (position == transform.position && nextDelay==0.0f)
 		{
-			BitmapCollision.LayerMask colMask;
+			BitmapCollision.LayerMask colMask=BitmapCollision.LayerMask.None;
 			currentAction = GetAction ();
 
 			switch (currentAction)

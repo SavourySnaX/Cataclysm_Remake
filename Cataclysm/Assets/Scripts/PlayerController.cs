@@ -12,15 +12,19 @@ public class PlayerController : MonoBehaviour
 	public BitmapCollision bmpCol;
 	public HudBehaviour hud;
 	public GameObject boxPrefab;
-    Vector3 position;
+	public GameObject deathParticlePrefab;
+	Vector3 position;
 	List<GameObject> blocksList;
 	Animator anim;
+	bool dead;
+
 
 	void Start ()
     {
 		anim = GetComponent<Animator> ();
 		blocksList = new List<GameObject> ();
         position = transform.position;
+		dead = false;
 	}
 
 	void AddBlock(Vector3 position)
@@ -70,8 +74,30 @@ public class PlayerController : MonoBehaviour
 		return false;
 	}
 
+	IEnumerator DeathSequence(System.Action uiAction)
+	{
+		if (!dead)
+		{
+			dead = true;
+			gameObject.GetComponent<Renderer> ().enabled = false;
+			gameObject.GetComponent<ParticleSystem> ().Stop ();
+			Instantiate (deathParticlePrefab, transform.position, Quaternion.identity);
+			yield return new WaitForSecondsRealtime (1.5f);
+			uiAction ();
+		}
+	}
+
+	public void KillPlayer()
+	{
+		StartCoroutine (DeathSequence (hud.Killed));
+	}
+
 	void FixedUpdate ()
-    {
+	{
+		if (dead)
+		{
+			return;
+		}
 		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore | BitmapCollision.LayerMask.Enemy));
 		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
 		if (Input.GetButtonDown("PlaceBlock") && position==transform.position)
@@ -83,7 +109,7 @@ public class PlayerController : MonoBehaviour
 		}	
 		if (Input.GetButtonDown("QuitLevel"))
 		{
-			hud.Quit ();
+			StartCoroutine (DeathSequence (hud.Quit));
 			return;
 		}
 		if (Input.GetButtonDown("Pause"))
