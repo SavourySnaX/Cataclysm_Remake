@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 		float vertExtent = Camera.main.orthographicSize;
 		float horzExtent = (vertExtent * Screen.width) / Screen.height;
 		float leftBound = bc.mainTilemapBounds.min.x + horzExtent;
-		float rightBound = bc.mainTilemapBounds.max.x-1.0f - horzExtent;
+		float rightBound = bc.mainTilemapBounds.max.x - horzExtent;
 		var pos = new Vector3 (target.position.x, target.position.y, transform.position.z);
 
 		if (leftBound > rightBound)
