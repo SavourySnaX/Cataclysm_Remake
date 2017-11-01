@@ -1,66 +1,66 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1508831778
+timeCreated: 1509532474
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Tiles_0
-    21300002: Tiles_1
-    21300004: Tiles_2
-    21300006: Tiles_3
-    21300008: Tiles_4
-    21300010: Tiles_5
-    21300012: Tiles_6
-    21300014: Tiles_7
+    21300000: Tiles_00_BBBBBBBB
+    21300002: Tiles_20_BBBBB.E.
+    21300004: Tiles_01_BBBBBBBE
+    21300006: Tiles_21_BB.BEBB.
+    21300008: Tiles_02_BBEBBBBB
+    21300010: Tiles_22_.E.BBBBB
+    21300012: Tiles_03_EBBBBBBB
+    21300014: Tiles_30_.E.EB.BB
     21300016: Tiles_8
     21300018: Tiles_9
-    21300020: Tiles_10
-    21300022: Tiles_11
-    21300024: Tiles_12
-    21300026: Tiles_13
-    21300028: Tiles_14
-    21300030: Tiles_15
-    21300032: Tiles_16
-    21300034: Tiles_17
-    21300036: Tiles_18
-    21300038: Tiles_19
-    21300040: Tiles_20
-    21300042: Tiles_21
-    21300044: Tiles_22
-    21300046: Tiles_23
-    21300048: Tiles_24
-    21300050: Tiles_25
-    21300052: Tiles_26
+    21300020: Tiles_04_BBBBBEBB
+    21300022: Tiles_31_.BBEB.E.
+    21300024: Tiles_32_.E.BEBB.
+    21300026: Tiles_33_BB.BE.E.
+    21300028: Tiles_05_EBBBBBBE
+    21300030: Tiles_06_BBEBBEBB
+    21300032: Tiles_40_.E.EB.E.
+    21300034: Tiles_41_.E.EE.B.
+    21300036: Tiles_42_.B.EE.B.
+    21300038: Tiles_43_.B.EE.E.
+    21300040: Tiles_44_.E.BE.E.
+    21300042: Tiles_45_.E.EE.E.
+    21300044: Tiles_34_.BEEB.E.
+    21300046: Tiles_35_.E.EB.BE
+    21300048: Tiles_23_.E.BBEBE
+    21300050: Tiles_46_.E.BB.E.
+    21300052: Tiles_24_.BBEB.BB
     21300054: Tiles_27
-    21300056: Tiles_28
-    21300058: Tiles_29
-    21300060: Tiles_30
-    21300062: Tiles_31
-    21300064: Tiles_32
-    21300066: Tiles_33
-    21300068: Tiles_34
-    21300070: Tiles_35
-    21300072: Tiles_36
-    21300074: Tiles_37
-    21300076: Tiles_38
-    21300078: Tiles_39
-    21300080: Tiles_40
-    21300082: Tiles_41
-    21300084: Tiles_42
-    21300086: Tiles_43
-    21300088: Tiles_44
-    21300090: Tiles_45
-    21300092: Tiles_46
-    21300094: Tiles_47
-    21300096: Tiles_48
-    21300098: Tiles_49
+    21300056: Tiles_07_EBEBBBBB
+    21300058: Tiles_08_BBBBBEBE
+    21300060: Tiles_25_EBEBB.E.
+    21300062: Tiles_36_EB.BE.E.
+    21300064: Tiles_37_.E.BEEB.
+    21300066: Tiles_26_EBBBB.E.
+    21300068: Tiles_27_BBEBB.E.
+    21300070: Tiles_28_.E.BBEBB
+    21300072: Tiles_29_.E.BBBBE
+    21300074: Tiles_09_EBBBBEBB
+    21300076: Tiles_2a_.BEEB.BB
+    21300078: Tiles_2b_.BBEB.BE
+    21300080: Tiles_2c_EB.BEBB.
+    21300082: Tiles_2d_BB.BEEB.
+    21300084: Tiles_2e_EB.BEEB.
+    21300086: dupe
+    21300088: Tiles_0A_BBEBBBBE
+    21300090: Tiles_0B_EBEBBEBE
+    21300092: Tiles_0C_EBBBBEBE
+    21300094: Tiles_0D_EBEBBEBB
+    21300096: Tiles_0E_EBEBBBBE
+    21300098: Tiles_0F_BBEBBEBE
     21300100: Tiles_50
     21300102: Tiles_51
     21300104: Tiles_52
     21300106: Tiles_53
     21300108: Tiles_54
     21300110: Tiles_55
-    21300112: Tiles_56
+    21300112: Tiles_2f_.BEEB.BE
     21300114: Tiles_57
     21300116: Tiles_58
     21300118: Tiles_59
@@ -104,6 +104,12 @@ TextureImporter:
     21300194: Tiles_97
     21300196: Tiles_98
     21300198: Tiles_99
+    21300200: Tiles_0a_BBEBBBBE
+    21300202: Tiles_0b_EBEBBEBE
+    21300204: Tiles_0c_EBBBBEBE
+    21300206: Tiles_0d_EBEBBEBB
+    21300208: Tiles_0e_EBEBBBBE
+    21300210: Tiles_0f_BBEBBEBE
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -178,7 +184,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tiles_0
+      name: Tiles_00_BBBBBBBB
       rect:
         serializedVersion: 2
         x: 0
@@ -200,7 +206,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_1
+      name: Tiles_20_BBBBB.E.
       rect:
         serializedVersion: 2
         x: 24
@@ -222,7 +228,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_2
+      name: Tiles_01_BBBBBBBE
       rect:
         serializedVersion: 2
         x: 48
@@ -244,7 +250,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_3
+      name: Tiles_21_BB.BEBB.
       rect:
         serializedVersion: 2
         x: 72
@@ -266,7 +272,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_4
+      name: Tiles_02_BBEBBBBB
       rect:
         serializedVersion: 2
         x: 96
@@ -288,7 +294,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_5
+      name: Tiles_22_.E.BBBBB
       rect:
         serializedVersion: 2
         x: 120
@@ -310,7 +316,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_6
+      name: Tiles_03_EBBBBBBB
       rect:
         serializedVersion: 2
         x: 144
@@ -332,7 +338,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_7
+      name: Tiles_30_.E.EB.BB
       rect:
         serializedVersion: 2
         x: 168
@@ -398,7 +404,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_10
+      name: Tiles_04_BBBBBEBB
       rect:
         serializedVersion: 2
         x: 0
@@ -420,7 +426,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_11
+      name: Tiles_31_.BBEB.E.
       rect:
         serializedVersion: 2
         x: 24
@@ -442,7 +448,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_12
+      name: Tiles_32_.E.BEBB.
       rect:
         serializedVersion: 2
         x: 48
@@ -464,7 +470,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_13
+      name: Tiles_33_BB.BE.E.
       rect:
         serializedVersion: 2
         x: 72
@@ -486,7 +492,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_14
+      name: Tiles_05_EBBBBBBE
       rect:
         serializedVersion: 2
         x: 96
@@ -508,7 +514,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_15
+      name: Tiles_06_BBEBBEBB
       rect:
         serializedVersion: 2
         x: 120
@@ -530,7 +536,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_16
+      name: Tiles_40_.E.EB.E.
       rect:
         serializedVersion: 2
         x: 144
@@ -552,7 +558,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_17
+      name: Tiles_41_.E.EE.B.
       rect:
         serializedVersion: 2
         x: 168
@@ -574,7 +580,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_18
+      name: Tiles_42_.B.EE.B.
       rect:
         serializedVersion: 2
         x: 192
@@ -596,7 +602,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_19
+      name: Tiles_43_.B.EE.E.
       rect:
         serializedVersion: 2
         x: 216
@@ -618,7 +624,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_20
+      name: Tiles_44_.E.BE.E.
       rect:
         serializedVersion: 2
         x: 0
@@ -640,7 +646,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_21
+      name: Tiles_45_.E.EE.E.
       rect:
         serializedVersion: 2
         x: 24
@@ -662,7 +668,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_22
+      name: Tiles_34_.BEEB.E.
       rect:
         serializedVersion: 2
         x: 48
@@ -684,7 +690,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_23
+      name: Tiles_35_.E.EB.BE
       rect:
         serializedVersion: 2
         x: 72
@@ -706,7 +712,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_24
+      name: Tiles_23_.E.BBEBE
       rect:
         serializedVersion: 2
         x: 96
@@ -728,7 +734,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_25
+      name: Tiles_46_.E.BB.E.
       rect:
         serializedVersion: 2
         x: 120
@@ -750,7 +756,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_26
+      name: Tiles_24_.BBEB.BB
       rect:
         serializedVersion: 2
         x: 144
@@ -824,7 +830,7 @@ TextureImporter:
         - {x: -4, y: -6}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_28
+      name: Tiles_07_EBEBBBBB
       rect:
         serializedVersion: 2
         x: 192
@@ -846,7 +852,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_29
+      name: Tiles_08_BBBBBEBE
       rect:
         serializedVersion: 2
         x: 216
@@ -868,7 +874,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_30
+      name: Tiles_25_EBEBB.E.
       rect:
         serializedVersion: 2
         x: 0
@@ -890,7 +896,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_31
+      name: Tiles_36_EB.BE.E.
       rect:
         serializedVersion: 2
         x: 24
@@ -912,7 +918,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_32
+      name: Tiles_37_.E.BEEB.
       rect:
         serializedVersion: 2
         x: 48
@@ -934,7 +940,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_33
+      name: Tiles_26_EBBBB.E.
       rect:
         serializedVersion: 2
         x: 72
@@ -956,7 +962,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_34
+      name: Tiles_27_BBEBB.E.
       rect:
         serializedVersion: 2
         x: 96
@@ -978,7 +984,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_35
+      name: Tiles_28_.E.BBEBB
       rect:
         serializedVersion: 2
         x: 120
@@ -1000,7 +1006,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_36
+      name: Tiles_29_.E.BBBBE
       rect:
         serializedVersion: 2
         x: 144
@@ -1022,7 +1028,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_37
+      name: Tiles_09_EBBBBEBB
       rect:
         serializedVersion: 2
         x: 168
@@ -1044,7 +1050,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_38
+      name: Tiles_2a_.BEEB.BB
       rect:
         serializedVersion: 2
         x: 192
@@ -1066,7 +1072,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_39
+      name: Tiles_2b_.BBEB.BE
       rect:
         serializedVersion: 2
         x: 216
@@ -1088,7 +1094,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_40
+      name: Tiles_2c_EB.BEBB.
       rect:
         serializedVersion: 2
         x: 0
@@ -1110,7 +1116,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_41
+      name: Tiles_2d_BB.BEEB.
       rect:
         serializedVersion: 2
         x: 24
@@ -1132,7 +1138,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_42
+      name: Tiles_2e_EB.BEEB.
       rect:
         serializedVersion: 2
         x: 48
@@ -1154,7 +1160,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_43
+      name: dupe
       rect:
         serializedVersion: 2
         x: 72
@@ -1176,7 +1182,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_44
+      name: Tiles_0a_BBEBBBBE
       rect:
         serializedVersion: 2
         x: 96
@@ -1198,7 +1204,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_45
+      name: Tiles_0b_EBEBBEBE
       rect:
         serializedVersion: 2
         x: 120
@@ -1220,7 +1226,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_46
+      name: Tiles_0c_EBBBBEBE
       rect:
         serializedVersion: 2
         x: 144
@@ -1242,7 +1248,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_47
+      name: Tiles_0d_EBEBBEBB
       rect:
         serializedVersion: 2
         x: 168
@@ -1264,7 +1270,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_48
+      name: Tiles_0e_EBEBBBBE
       rect:
         serializedVersion: 2
         x: 192
@@ -1286,7 +1292,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_49
+      name: Tiles_0f_BBEBBEBE
       rect:
         serializedVersion: 2
         x: 216
@@ -1444,7 +1450,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_56
+      name: Tiles_2f_.BEEB.BE
       rect:
         serializedVersion: 2
         x: 144
