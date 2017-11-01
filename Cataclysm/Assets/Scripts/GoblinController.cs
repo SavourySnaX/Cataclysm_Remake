@@ -125,7 +125,6 @@ public class GoblinController : MonoBehaviour
 
 		if (position == transform.position && nextDelay==0.0f)
 		{
-			BitmapCollision.LayerMask colMask=BitmapCollision.LayerMask.None;
 			currentAction = GetAction ();
 
 			switch (currentAction)
@@ -143,7 +142,6 @@ public class GoblinController : MonoBehaviour
 				nextDelay = 0.0f;
 				LeftAnim ();
 				transform.localRotation = Quaternion.AngleAxis (0, Vector3.up);
-				colMask = bmpCol.GetCollisionMask (transform.position + Vector3.left);
 				if (!bmpCol.IsBoxCollision (transform.position + Vector3.left, enemyMask))
 				{
 					position += Vector3.left;
@@ -153,7 +151,6 @@ public class GoblinController : MonoBehaviour
 				nextDelay = 0.0f;
 				RightAnim ();
 				transform.localRotation = Quaternion.AngleAxis (180, Vector3.up);
-				colMask = bmpCol.GetCollisionMask (transform.position + Vector3.right);
 				if (!bmpCol.IsBoxCollision (transform.position + Vector3.right, enemyMask))
 				{
 					position += Vector3.right;
@@ -162,7 +159,6 @@ public class GoblinController : MonoBehaviour
 			case Action.Up:
 				nextDelay = 0.0f;
 				UpAnim ();
-				colMask = bmpCol.GetCollisionMask (transform.position + Vector3.up);
 				if (!bmpCol.IsBoxCollision (transform.position + Vector3.up, enemyMask))
 				{
 					position += Vector3.up;
@@ -171,7 +167,6 @@ public class GoblinController : MonoBehaviour
 			case Action.Down:
 				nextDelay = 0.0f;
 				DownAnim ();
-				colMask = bmpCol.GetCollisionMask (transform.position + Vector3.down);
 				if (!bmpCol.IsBoxCollision (transform.position + Vector3.down, enemyMask))
 				{
 					position += Vector3.down;

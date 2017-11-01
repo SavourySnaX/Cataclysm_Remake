@@ -19,8 +19,17 @@ public class BitmapCollision : MonoBehaviour
 		EnemyIgnore=128,
 		PlayerIgnore=256,
 		Enemy=512,
+		Trigger1=1024,
+		Trigger2=2048,
+		Trigger3=4096,
+		Trigger4=8192,
+		Trigger5=16384,
+		Trigger6=32768,
+		Trigger7=65536,
+		Trigger8=131072,
 
-		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain|LayerMask.Plug|LayerMask.PlayerIgnore|LayerMask.EnemyIgnore|LayerMask.Enemy
+		All=LayerMask.Background|LayerMask.Water|LayerMask.Drain|LayerMask.Player|LayerMask.Block|LayerMask.FailDrain|LayerMask.Plug|LayerMask.PlayerIgnore|LayerMask.EnemyIgnore|LayerMask.Enemy,
+		Triggers=LayerMask.Trigger1|LayerMask.Trigger2|LayerMask.Trigger3|LayerMask.Trigger4|LayerMask.Trigger5|LayerMask.Trigger6|LayerMask.Trigger7|LayerMask.Trigger8
 	}
 
 	readonly int sizeX = 3;
@@ -30,6 +39,8 @@ public class BitmapCollision : MonoBehaviour
 	LayerMask [,] collisionMap;
 	public Bounds mainTilemapBounds;
 	public Tilemap mainTilemap;
+
+	public GameObject[] triggerObjects;
 
 	// We currently assume mainTilemap is larger or equal to the others.. todo fix (easy to test)
 	void ComputeCollisionBitmap(Tilemap tilemap)
@@ -103,13 +114,141 @@ public class BitmapCollision : MonoBehaviour
 		}
 	}
 
+	public void TriggerAction(LayerMask triggers)
+	{
+		int idx = 0;
+		LayerMask check = LayerMask.Trigger1;
+		while ((check & LayerMask.Triggers) != LayerMask.None)
+		{
+			if ((triggers & check) == check)
+			{
+				triggerObjects [idx].GetComponent<TriggerBase>().Trigger ();
+			}
+			idx++;
+			check = (LayerMask)((int)check << 1);
+		}
+	}
+
+	void ProcessBaseTriggers(Tilemap tilemap)
+	{
+		// Currently assumes there are 8 triggers
+		triggerObjects=new GameObject[8];
+
+		// Base triggers just define the tile co-ord and type of controlling object
+		for (int x = tilemap.cellBounds.min.x; x < tilemap.cellBounds.max.x; x++)
+		{
+			for (int y = tilemap.cellBounds.min.y; y < tilemap.cellBounds.max.y; y++)
+			{
+				Vector3Int cellPos = new Vector3Int (x, y, 0);
+				Sprite s = tilemap.GetSprite (cellPos);
+				if (s != null)
+				{
+					string triggerName = s.name;
+					int triggerIdx = s.name [s.name.Length - 1] - '1';
+
+					//Find gameobject for this trigger
+					foreach (Transform child in transform)
+					{
+						if (child.name == triggerName)
+						{
+							triggerObjects [triggerIdx] = child.gameObject;
+						}
+					}
+
+					if (triggerObjects [triggerIdx] != null)
+					{
+						triggerObjects [triggerIdx].transform.position = tilemap.GetCellCenterWorld (cellPos);
+					}
+				}
+			}
+		}
+
+	}
+
+	void ProcessTriggerLayer(Tilemap tilemap)
+	{
+		int ofx=tilemap.origin.x-mainTilemap.origin.x;
+		int ofy=tilemap.origin.y-mainTilemap.origin.y;
+
+		for (int x = tilemap.cellBounds.min.x; x < tilemap.cellBounds.max.x; x++) 
+		{
+			for (int y = tilemap.cellBounds.min.y; y < tilemap.cellBounds.max.y; y++) 
+			{
+				Sprite s = tilemap.GetSprite (new Vector3Int (x, y, 0));
+				if (s != null)
+				{
+					// Fill the entire X/Y tile space with collision layer
+					LayerMask orIn = LayerMask.None;
+					switch (s.name)
+					{
+					case "Trigger_1":
+						orIn = LayerMask.Trigger1;
+						break;
+					case "Trigger_2":
+						orIn = LayerMask.Trigger2;
+						break;
+					case "Trigger_3":
+						orIn = LayerMask.Trigger3;
+						break;
+					case "Trigger_4":
+						orIn = LayerMask.Trigger4;
+						break;
+					case "Trigger_5":
+						orIn = LayerMask.Trigger5;
+						break;
+					case "Trigger_6":
+						orIn = LayerMask.Trigger6;
+						break;
+					case "Trigger_7":
+						orIn = LayerMask.Trigger7;
+						break;
+					case "Trigger_8":
+						orIn = LayerMask.Trigger8;
+						break;
+					}
+
+					for (int xx = 0; xx < sizeX; xx++)
+					{
+						for (int yy = 0; yy < sizeY; yy++)
+						{
+							int fx = (ofx + (x - tilemap.origin.x)) * sizeX;
+							int fy = (ofy + (y - tilemap.origin.y)) * sizeY;
+
+							collisionMap [fx + xx, fy + yy] |= orIn;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	void ProcessTrigger(Tilemap tilemap)
+	{
+		// Needs to be first in list, since it defines the trigger objects
+		if (tilemap.name == "Trigger_Base")
+		{
+			ProcessBaseTriggers (tilemap);
+		} 
+		else
+		{
+			ProcessTriggerLayer (tilemap);
+		}
+
+		tilemap.gameObject.SetActive (false);	// Switch off the layer
+	}
+
 	void ComputeCollisionBitmaps()
 	{
 		var components = transform.parent.gameObject.GetComponentsInChildren<Tilemap> ();
 
 		foreach (var tilemap in components)
 		{
-			ComputeCollisionBitmap (tilemap);
+			if (tilemap.name.StartsWith("Trigger_"))
+			{
+				ProcessTrigger(tilemap);
+			}
+			else
+				ComputeCollisionBitmap (tilemap);
 		}
 	}
 

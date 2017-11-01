@@ -92,6 +92,11 @@ public class PlayerController : MonoBehaviour
 		StartCoroutine (DeathSequence (hud.Killed));
 	}
 
+	void ProcessTriggers()
+	{
+		bmpCol.TriggerAction(bmpCol.GetCollisionMask (transform.position));
+	}
+
 	void FixedUpdate ()
 	{
 		if (dead)
@@ -100,19 +105,26 @@ public class PlayerController : MonoBehaviour
 		}
 		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore | BitmapCollision.LayerMask.Enemy));
 		bmpCol.DeleteBox(transform.position,BitmapCollision.LayerMask.Player);
-		if (Input.GetButtonDown("PlaceBlock") && position==transform.position)
+
+		// Check triggers
+		if (bmpCol.IsCollision (transform.position, BitmapCollision.LayerMask.Triggers))
+		{
+			ProcessTriggers ();
+		}
+
+		if (Input.GetButton("PlaceBlock") && position==transform.position)
 		{
 			if (!bmpCol.IsBoxCollision (transform.position,BitmapCollision.LayerMask.Block|BitmapCollision.LayerMask.Background))
 			{
 				AddBlock (transform.position);
 			}
 		}	
-		if (Input.GetButtonDown("QuitLevel"))
+		if (Input.GetButton("QuitLevel"))
 		{
 			StartCoroutine (DeathSequence (hud.Quit));
 			return;
 		}
-		if (Input.GetButtonDown("Pause"))
+		if (Input.GetButton("Pause"))
 		{
 			hud.Pause ();
 			return;
