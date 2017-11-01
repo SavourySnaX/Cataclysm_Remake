@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-public interface TriggerBase
+public interface ITriggerBase
 {
-	void Trigger ();
+	void Init(BitmapCollision bmpCol);
+	void Trigger();
 }

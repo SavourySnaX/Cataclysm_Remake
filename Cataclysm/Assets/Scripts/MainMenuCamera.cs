@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuCamera : MonoBehaviour 
+public class MainMenuCamera : MonoBehaviour
 {
 
 	public float speed;
@@ -16,16 +16,16 @@ public class MainMenuCamera : MonoBehaviour
 	float length;
 	float dir;
 
-	void Start () 
+	void Start()
 	{
 		length = 0.0f;
 		dir = 1;
 
-		Camera.main.orthographicSize = Mathf.Lerp (6, finalScale, length);
-		transform.position=new Vector3( Mathf.Lerp(leftExtent,rightExtent,length) , Mathf.Lerp(bottomExtent,topExtent,length), transform.position.z);
+		Camera.main.orthographicSize = Mathf.Lerp(6, finalScale, length);
+		transform.position = new Vector3(Mathf.Lerp(leftExtent, rightExtent, length), Mathf.Lerp(bottomExtent, topExtent, length), transform.position.z);
 	}
-	
-	void FixedUpdate () 
+
+	void FixedUpdate()
 	{
 		length += dir * speed * Time.deltaTime;
 		if (dir > 0.0f)
@@ -45,7 +45,7 @@ public class MainMenuCamera : MonoBehaviour
 			}
 		}
 
-		Camera.main.orthographicSize = Mathf.Lerp (6, finalScale, length);
-		transform.position=new Vector3( Mathf.Lerp(leftExtent,rightExtent,length) , Mathf.Lerp(bottomExtent,topExtent,length), transform.position.z);
+		Camera.main.orthographicSize = Mathf.Lerp(6, finalScale, length);
+		transform.position = new Vector3(Mathf.Lerp(leftExtent, rightExtent, length), Mathf.Lerp(bottomExtent, topExtent, length), transform.position.z);
 	}
 }

@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : MonoBehaviour
+{
 
-	void Start () 
+	void Start()
 	{
 		Time.timeScale = 1.0f;
 	}
 
 	public void LoadLevel(int level)
 	{
-		SceneManager.LoadScene ("level" + level);
+		SceneManager.LoadScene("level" + level);
 	}
 
 	public void Quit()
 	{
-		Application.Quit ();
+		Application.Quit();
 	}
 
-	void Update () 
+	void Update()
 	{
-		
+
 	}
 }

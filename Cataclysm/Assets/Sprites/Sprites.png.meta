@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 3506818aaaf5da444a002639e8835734
-timeCreated: 1509434188
+timeCreated: 1509556881
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Sprites_0
     21300002: Sprites_1
     21300004: Sprites_2
-    21300006: Sprites_3
+    21300006: WaterDrop
     21300008: Sprites_4
     21300010: Sprites_5
     21300012: Sprites_6
@@ -24,6 +24,10 @@ TextureImporter:
     21300034: Sprites_16
     21300036: Sprites_17
     21300038: Sprites_18
+    21300040: MortarShell
+    21300042: Laser
+    21300044: Spazer_1
+    21300046: Spazer_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -163,7 +167,7 @@ TextureImporter:
         - {x: 10, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprites_3
+      name: WaterDrop
       rect:
         serializedVersion: 2
         x: 0
@@ -305,7 +309,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -319,7 +323,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,7 +337,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -347,7 +351,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -361,7 +365,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -375,7 +379,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -388,6 +392,62 @@ TextureImporter:
         y: 16
         width: 24
         height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MortarShell
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 248
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Laser
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 240
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spazer_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 233
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spazer_2
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 233
+        width: 8
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

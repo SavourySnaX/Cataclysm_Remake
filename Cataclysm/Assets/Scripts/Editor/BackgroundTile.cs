@@ -4,15 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class BackgroundTile : Tile 
+public class BackgroundTile : Tile
 {
 	[SerializeField]
-	private string baseName="Tiles_";
+	private string baseName = "Tiles_";
 	[SerializeField]
 	private Sprite[] backgroundSprites;
-
-//	[SerializeField]
-//	private Sprite preview;
 
 	public override void RefreshTile(Vector3Int position, ITilemap Tilemap)
 	{
@@ -20,17 +17,17 @@ public class BackgroundTile : Tile
 		{
 			for (int x = -1; x <= 1; x++)
 			{
-				Vector3Int nPos = new Vector3Int (position.x + x, position.y + y, position.z);
+				Vector3Int nPos = new Vector3Int(position.x + x, position.y + y, position.z);
 
-				if (HasBackground (Tilemap, nPos))
+				if (HasBackground(Tilemap, nPos))
 				{
-					Tilemap.RefreshTile (nPos);
+					Tilemap.RefreshTile(nPos);
 				}
 			}
 		}
 	}
 
-	public override void GetTileData (Vector3Int position, ITilemap tilemap, ref TileData tileData)
+	public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
 	{
 		string composition = string.Empty;
 
@@ -40,29 +37,29 @@ public class BackgroundTile : Tile
 			{
 				if (!(x == 0 && y == 0))
 				{
-					composition += HasBackground (tilemap, new Vector3Int (position.x + x, position.y + y, position.z)) ? 'B' : 'E';
+					composition += HasBackground(tilemap, new Vector3Int(position.x + x, position.y + y, position.z)) ? 'B' : 'E';
 				}
 			}
 		}
 
-		tileData.sprite = GetCorrectSprite (composition);
+		tileData.sprite = GetCorrectSprite(composition);
 	}
 
 	private bool HasBackground(ITilemap tilemap, Vector3Int position)
 	{
-		var t = tilemap.GetTile (position);
-		var s = tilemap.GetSprite (position);
-		return (t == this) || (s!=null && s.name.StartsWith(baseName));
+		var t = tilemap.GetTile(position);
+		var s = tilemap.GetSprite(position);
+		return (t == this) || (s != null && s.name.StartsWith(baseName));
 	}
 
 	private bool WildCompare(string a, string b)
 	{
 		int baseLength = baseName.Length;
-		for(int c=0;c<b.Length;c++)
+		for (int c = 0; c < b.Length; c++)
 		{
-			if (a[c+baseLength]!='.')
+			if (a[c + baseLength] != '.')
 			{
-				if (a [c+baseLength] != b [c])
+				if (a[c + baseLength] != b[c])
 				{
 					return false;
 				}
@@ -75,24 +72,24 @@ public class BackgroundTile : Tile
 	{
 		foreach (var s in backgroundSprites)
 		{
-			if (WildCompare (s.name, composition))
+			if (WildCompare(s.name, composition))
 			{
 				return s;
 			}
 		}
-		return backgroundSprites [19];
+		return backgroundSprites[19];
 	}
 
 #if UNITY_EDITOR
 	[MenuItem("Assets/Create/Tiles/BackgroundTile")]
 	public static void CreateBackgroundTile()
 	{
-		string path = EditorUtility.SaveFilePanelInProject ("Save Background Tile", "NewBackgroundTile", "asset", "Save Background Tile", "Assets/Tilesets/AutoPalette");
+		string path = EditorUtility.SaveFilePanelInProject("Save Background Tile", "NewBackgroundTile", "asset", "Save Background Tile", "Assets/Tilesets/AutoPalette");
 		if (path == "")
 		{
 			return;
 		}
-		AssetDatabase.CreateAsset (ScriptableObject.CreateInstance<BackgroundTile> (), path);
+		AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<BackgroundTile>(), path);
 	}
 #endif
 }
