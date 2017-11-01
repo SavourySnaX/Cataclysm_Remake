@@ -37,7 +37,7 @@ public class WaterDrop : MonoBehaviour
 			bmpCol.RemovePixel(transform.position, BitmapCollision.LayerMask.Water);
 			transform.position += Vector3.down * (1 / 12.0f);
 			bmpCol.AddPixel(transform.position, BitmapCollision.LayerMask.Water);
-			sr.color = fast;
+			sr.color = Color.Lerp(medium,fast,Random.value);
 		}
 		else
 		{
@@ -68,7 +68,7 @@ public class WaterDrop : MonoBehaviour
 				bmpCol.RemovePixel(transform.position, BitmapCollision.LayerMask.Water);
 				transform.position += direction * (1 / 3.0f);
 				bmpCol.AddPixel(transform.position, BitmapCollision.LayerMask.Water);
-				sr.color = medium;
+				sr.color = Color.Lerp(normal,medium,Random.value);
 			}
 			else
 			{
