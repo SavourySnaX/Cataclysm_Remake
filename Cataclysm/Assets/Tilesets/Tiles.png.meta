@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1509532474
+timeCreated: 1509533041
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,7 +13,7 @@ TextureImporter:
     21300012: Tiles_03_EBBBBBBB
     21300014: Tiles_30_.E.EB.BB
     21300016: Tiles_8
-    21300018: Tiles_9
+    21300018: Tiles_XX_drain
     21300020: Tiles_04_BBBBBEBB
     21300022: Tiles_31_.BBEB.E.
     21300024: Tiles_32_.E.BEBB.
@@ -382,7 +382,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_9
+      name: Tiles_XX_drain
       rect:
         serializedVersion: 2
         x: 216

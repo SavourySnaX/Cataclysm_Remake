@@ -50,7 +50,9 @@ public class BackgroundTile : Tile
 
 	private bool HasBackground(ITilemap tilemap, Vector3Int position)
 	{
-		return tilemap.GetTile (position) == this;
+		var t = tilemap.GetTile (position);
+		var s = tilemap.GetSprite (position);
+		return (t == this) || (s!=null && s.name.StartsWith(baseName));
 	}
 
 	private bool WildCompare(string a, string b)
