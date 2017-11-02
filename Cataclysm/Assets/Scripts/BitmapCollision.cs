@@ -422,11 +422,8 @@ public class BitmapCollision : MonoBehaviour
 						MoveTile12PixelsUp(tm2, nPos);
 						nPos += new Vector3(0, -1, 0);
 					}
-					if (pd.totalSize == 0)
-					{
-						return true;
-					}
 				}
+				return true;
 			}
 		}
 		return false;

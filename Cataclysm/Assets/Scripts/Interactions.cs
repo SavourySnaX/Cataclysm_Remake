@@ -19,6 +19,8 @@ public class Interactions : MonoBehaviour
 	public GameObject background;
 	public HudBehaviour hud;
 
+	public GlobalAudioManager globalAudio;
+
 	public float failsafeDelay = 1.0f;
 
 	Tilemap tm;
@@ -75,6 +77,7 @@ public class Interactions : MonoBehaviour
 				}
 			}
 		}
+		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
 	}
 
 	void CheckCollapse()
@@ -90,6 +93,7 @@ public class Interactions : MonoBehaviour
 		}
 		foreach (var v in toRemove)
 		{
+			globalAudio.Collapse ();
 			collapseLocations.Remove(v);
 		}
 	}
@@ -99,7 +103,10 @@ public class Interactions : MonoBehaviour
 		for (int a = 0; a < pressureLocations.Count; a++)
 		{
 			var t = pressureLocations[a];
-			bmpCol.HandlePressure(tm, ref t, this);
+			if (bmpCol.HandlePressure (tm, ref t, this))
+			{
+				globalAudio.Pressure ();
+			}
 			pressureLocations[a] = t;
 		}
 	}

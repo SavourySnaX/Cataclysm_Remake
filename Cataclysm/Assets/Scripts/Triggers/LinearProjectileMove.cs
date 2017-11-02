@@ -12,7 +12,6 @@ public class LinearProjectileMove : MonoBehaviour
 
 	void Start()
 	{
-
 	}
 
 	void FixedUpdate()

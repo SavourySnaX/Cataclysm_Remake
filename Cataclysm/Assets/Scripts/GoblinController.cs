@@ -34,6 +34,8 @@ public class GoblinController : MonoBehaviour
 	Action currentAction;
 	bool dead;
 
+	GlobalAudioManager globalAudio;
+
 	float nextDelay;
 
 	void Start()
@@ -43,6 +45,7 @@ public class GoblinController : MonoBehaviour
 		position = transform.position;
 		currentAction = Action.Idle;
 		nextDelay = 0.0f;
+		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
 	}
 
 	Action GetAction()
@@ -116,6 +119,7 @@ public class GoblinController : MonoBehaviour
 	{
 		if (!dead)
 		{
+			globalAudio.PurpleDeath ();
 			dead = true;
 			DestroyObject (this.gameObject);
 			gameObject.GetComponent<Renderer>().enabled = false;

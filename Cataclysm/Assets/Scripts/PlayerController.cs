@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	Animator anim;
 	bool dead;
 
+	GlobalAudioManager globalAudio;
 
 	void Start()
 	{
@@ -25,12 +26,14 @@ public class PlayerController : MonoBehaviour
 		blocksList = new List<GameObject>();
 		position = transform.position;
 		dead = false;
+		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
 	}
 
 	void AddBlock(Vector3 position)
 	{
 		if (totalBlocks != 0)
 		{
+			globalAudio.DropBlock ();
 			bmpCol.AddBox(transform.position, BitmapCollision.LayerMask.Block);
 			blocksList.Add(Instantiate(boxPrefab, transform.position, Quaternion.identity));
 			totalBlocks--;
@@ -51,6 +54,7 @@ public class PlayerController : MonoBehaviour
 		}
 		if (toRemove != null)
 		{
+			globalAudio.CollectBlock ();
 			bmpCol.DeleteBox(toRemove.transform.position, BitmapCollision.LayerMask.Block);
 			blocksList.Remove(toRemove);
 			DestroyObject(toRemove);
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if ((colMask & BitmapCollision.LayerMask.Plug) == BitmapCollision.LayerMask.Plug)
 		{
+			globalAudio.Plug ();
 			bmpCol.DeleteTile(bmpCol.mainTilemap, newPos, BitmapCollision.LayerMask.Plug);
 			return true;
 		}
@@ -79,6 +84,7 @@ public class PlayerController : MonoBehaviour
 		if (!dead)
 		{
 			dead = true;
+			globalAudio.PlayerDeath ();
 			gameObject.GetComponent<Renderer>().enabled = false;
 			gameObject.GetComponent<ParticleSystem>().Stop();
 			Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
