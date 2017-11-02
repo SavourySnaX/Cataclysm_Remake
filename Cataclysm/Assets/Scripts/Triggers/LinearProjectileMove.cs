@@ -7,6 +7,7 @@ public class LinearProjectileMove : MonoBehaviour
 	public BitmapCollision bmpCol;
 	public PlayerController player;
 	public Vector3 direction;
+	public Vector3 drag;
 	public float speed;
 
 	void Start()
@@ -29,6 +30,7 @@ public class LinearProjectileMove : MonoBehaviour
 			return;
 		}
 
+		direction += drag * Time.deltaTime;
 		transform.position += direction * speed * Time.deltaTime;
 	}
 }

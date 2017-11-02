@@ -5,9 +5,11 @@ using UnityEngine;
 public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 {
 	public PlayerController player;
-	public Vector3 direction;
+	public Vector3 directionMin;
+	public Vector3 directionMax;
 	public Vector3 spawnOffset;
 	public float speed;
+	public Vector3 drag;
 	public GameObject bulletPrefab;
 	public float fireRateMin;
 	public float fireRateMax;
@@ -34,8 +36,9 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 			LinearProjectileMove moveScript = go.GetComponent<LinearProjectileMove>();
 			moveScript.bmpCol = bmpCol;
 			moveScript.speed = speed;
-			moveScript.direction = direction;
+			moveScript.direction = Vector3.Lerp(directionMin,directionMax,Random.value);
 			moveScript.player = player;
+			moveScript.drag = drag;
 		}
 	}
 

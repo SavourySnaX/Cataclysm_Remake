@@ -153,9 +153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: 0, y: -1, z: 0}
+  directionMin: {x: 0, y: -1, z: 0}
+  directionMax: {x: 0, y: -1, z: 0}
   spawnOffset: {x: 0, y: -0.55, z: 0}
   speed: 6
+  drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1380764200232962, guid: f514cacd72f12774d96da91355371a7b,
     type: 2}
   fireRateMin: 0.5
@@ -667,9 +669,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: 1, y: 0, z: 0}
+  directionMin: {x: 1, y: 0, z: 0}
+  directionMax: {x: 1, y: 0, z: 0}
   spawnOffset: {x: 0.5, y: 0.2, z: 0}
   speed: 10
+  drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
   fireRateMin: 0.5
@@ -6471,6 +6475,24 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -11, y: 22, z: 0}
+    second:
+      m_TileIndex: 5
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 10, y: 22, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -12, y: 26, z: 0}
     second:
       m_TileIndex: 2
@@ -6508,19 +6530,19 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4529e1ded53bc4b428b64f47c6cb877f, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a9879da96067b534b92a8780300ccd8a, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 6532a9cbb6c16a24baca3fb8feeaddb1, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 2faa3f791492833478aaf806ce1a1a93, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b8a776fe8a8aae9459fcd1efdf77d0cc, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 37964917c6bb50245907a49c1fb305e0, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300222, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300220, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300226, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
@@ -6534,7 +6556,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300212, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 6
+  - m_RefCount: 8
     m_Data:
       e00: 1
       e01: 0
@@ -6553,7 +6575,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 6
+  - m_RefCount: 8
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7239,9 +7261,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: 1, y: 0, z: 0}
+  directionMin: {x: 1, y: 0, z: 0}
+  directionMax: {x: 1, y: 0, z: 0}
   spawnOffset: {x: 0.5, y: 0.2, z: 0}
   speed: 10
+  drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
   fireRateMin: 0.5
@@ -7334,12 +7358,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: 0, y: 0, z: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
-  speed: 0
-  bulletPrefab: {fileID: 0}
-  fireRateMin: 0
-  fireRateMax: 0
+  directionMin: {x: -1, y: -0.5, z: 0}
+  directionMax: {x: -1, y: 0.5, z: 0}
+  spawnOffset: {x: -0.55, y: 0.3, z: 0}
+  speed: 8
+  drag: {x: 0, y: -1, z: 0}
+  bulletPrefab: {fileID: 1695871482656952, guid: c0617d1d33a6ed940b9360fef138bd75,
+    type: 2}
+  fireRateMin: 0.5
+  fireRateMax: 1
 --- !u!1 &1686036446
 GameObject:
   m_ObjectHideFlags: 0
@@ -10886,9 +10913,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: -1, y: 0, z: 0}
+  directionMin: {x: -1, y: 0, z: 0}
+  directionMax: {x: -1, y: 0, z: 0}
   spawnOffset: {x: -0.55, y: 0.2, z: 0}
   speed: 10
+  drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
   fireRateMin: 0.5
@@ -10934,9 +10963,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: -1, y: 0, z: 0}
+  directionMin: {x: -1, y: 0, z: 0}
+  directionMax: {x: -1, y: 0, z: 0}
   spawnOffset: {x: -0.55, y: 0.2, z: 0}
   speed: 10
+  drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
   fireRateMin: 0.5
@@ -11540,12 +11571,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: 0, y: 1, z: 0}
-  spawnOffset: {x: 0, y: 0.5, z: 0}
-  speed: 0
-  bulletPrefab: {fileID: 0}
-  fireRateMin: 0
-  fireRateMax: 0
+  directionMin: {x: 1, y: -0.5, z: 0}
+  directionMax: {x: 1, y: 0.5, z: 0}
+  spawnOffset: {x: 0.5, y: 0.3, z: 0}
+  speed: 8
+  drag: {x: 0, y: -1, z: 0}
+  bulletPrefab: {fileID: 1695871482656952, guid: c0617d1d33a6ed940b9360fef138bd75,
+    type: 2}
+  fireRateMin: 0.5
+  fireRateMax: 1
 --- !u!1 &2023843770
 GameObject:
   m_ObjectHideFlags: 0
@@ -14146,9 +14180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1686036451}
-  direction: {x: 0, y: 1, z: 0}
+  directionMin: {x: 0, y: 1, z: 0}
+  directionMax: {x: 0, y: 1, z: 0}
   spawnOffset: {x: 0, y: 0.7, z: 0}
   speed: 10
+  drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1163153935020192, guid: eb8c9e4b9516867438a80bf3da7aa975,
     type: 2}
   fireRateMin: 0.1
