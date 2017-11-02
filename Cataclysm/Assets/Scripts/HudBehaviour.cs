@@ -13,6 +13,8 @@ public class HudBehaviour : MonoBehaviour
 	int blocksCount;
 	float score;
 	bool pause = false;
+	public float enemyScore = 2.0f;
+	public float plugScore = 2.0f;
 	public float scoreDestroyBlock = 3.0f;
 	public float scoreWater = 0.10f;
 	public float waterIncrement = 1.0f;
@@ -98,6 +100,16 @@ public class HudBehaviour : MonoBehaviour
 	public void ScoreDestroyBlock()
 	{
 		score += scoreDestroyBlock;
+	}
+
+	public void ScorePlug()
+	{
+		score += plugScore;
+	}
+
+	public void ScoreEnemy()
+	{
+		score += enemyScore;
 	}
 
 	void UpdateWaterMeter()

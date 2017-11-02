@@ -119,6 +119,7 @@ public class GoblinController : MonoBehaviour
 	{
 		if (!dead)
 		{
+			player.KilledEnemy ();
 			globalAudio.PurpleDeath ();
 			dead = true;
 			DestroyObject (this.gameObject);

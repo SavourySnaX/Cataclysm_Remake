@@ -26,18 +26,20 @@ public class Options : MonoBehaviour
 			OnFxChanged ();
 		});
 
-		musSlider.value = globalMusic.volume;
-		fxSlider.value = globalAudio.volume;
+		musSlider.value = PlayerPrefs.GetFloat("MusicVolume",globalMusic.volume);
+		fxSlider.value = PlayerPrefs.GetFloat("FXVolume",globalAudio.volume);
 	}
 
 	public void OnMusicChanged()
 	{
 		globalMusic.volume = musSlider.value;
+		PlayerPrefs.SetFloat ("MusicVolume", musSlider.value);
 	}
 
 	public void OnFxChanged()
 	{
 		globalAudio.volume = fxSlider.value;
+		PlayerPrefs.SetFloat ("FXVolume", fxSlider.value);
 		globalAudio.GetComponent<GlobalAudioManager> ().Pressure ();
 	}
 }

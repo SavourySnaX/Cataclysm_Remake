@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if ((colMask & BitmapCollision.LayerMask.Plug) == BitmapCollision.LayerMask.Plug)
 		{
+			hud.ScorePlug ();
 			globalAudio.Plug ();
 			bmpCol.DeleteTile(bmpCol.mainTilemap, newPos, BitmapCollision.LayerMask.Plug);
 			return true;
@@ -91,6 +92,11 @@ public class PlayerController : MonoBehaviour
 			yield return new WaitForSecondsRealtime(1.5f);
 			uiAction();
 		}
+	}
+
+	public void KilledEnemy()
+	{
+		hud.ScoreEnemy ();
 	}
 
 	public void KillPlayer()
