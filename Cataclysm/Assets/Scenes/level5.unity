@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: 0, y: -1, z: 0}
   spawnOffset: {x: 0, y: -0.55, z: 0}
   speed: 6
@@ -665,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: 1, y: 0, z: 0}
   spawnOffset: {x: 0.5, y: 0.2, z: 0}
   speed: 10
@@ -7236,6 +7238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: 1, y: 0, z: 0}
   spawnOffset: {x: 0.5, y: 0.2, z: 0}
   speed: 10
@@ -7330,6 +7333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
   speed: 0
@@ -10881,6 +10885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: -1, y: 0, z: 0}
   spawnOffset: {x: -0.55, y: 0.2, z: 0}
   speed: 10
@@ -10928,6 +10933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: -1, y: 0, z: 0}
   spawnOffset: {x: -0.55, y: 0.2, z: 0}
   speed: 10
@@ -11533,6 +11539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: 0, y: 1, z: 0}
   spawnOffset: {x: 0, y: 0.5, z: 0}
   speed: 0
@@ -14138,6 +14145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1686036451}
   direction: {x: 0, y: 1, z: 0}
   spawnOffset: {x: 0, y: 0.7, z: 0}
   speed: 10

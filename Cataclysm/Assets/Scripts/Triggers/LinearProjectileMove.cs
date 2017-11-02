@@ -5,6 +5,7 @@ using UnityEngine;
 public class LinearProjectileMove : MonoBehaviour
 {
 	public BitmapCollision bmpCol;
+	public PlayerController player;
 	public Vector3 direction;
 	public float speed;
 
@@ -19,7 +20,11 @@ public class LinearProjectileMove : MonoBehaviour
 
 		if (bmpCol.IsCollision(transform.position, colMask))
 		{
-			// Just delete for now
+			BitmapCollision.LayerMask mask = bmpCol.GetCollisionMask (transform.position);
+			if ((mask & BitmapCollision.LayerMask.Player) == BitmapCollision.LayerMask.Player)
+			{
+				player.KillPlayer ();
+			}
 			DestroyObject(this.gameObject);
 			return;
 		}

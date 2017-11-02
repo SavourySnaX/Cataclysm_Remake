@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 {
+	public PlayerController player;
 	public Vector3 direction;
 	public Vector3 spawnOffset;
 	public float speed;
@@ -34,6 +35,7 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 			moveScript.bmpCol = bmpCol;
 			moveScript.speed = speed;
 			moveScript.direction = direction;
+			moveScript.player = player;
 		}
 	}
 
