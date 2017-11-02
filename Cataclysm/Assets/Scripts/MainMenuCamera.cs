@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainMenuCamera : MonoBehaviour
 {
-
 	public float speed;
 
 	public float leftExtent;
