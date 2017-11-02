@@ -8,14 +8,15 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 	public Vector3 spawnOffset;
 	public float speed;
 	public GameObject bulletPrefab;
-	public float fireRate;
+	public float fireRateMin;
+	public float fireRateMax;
 
 	float fireTime;
 	BitmapCollision bmpCol;
 
 	void Start()
 	{
-		fireTime = fireRate;
+		fireTime = 0.0f;
 	}
 
 	public void Init(BitmapCollision col)
@@ -27,13 +28,12 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 	{
 		if (fireTime == 0.0f)
 		{
-			fireTime = fireRate;
-			GameObject go = Instantiate(bulletPrefab, transform.position + spawnOffset, Quaternion.identity);
+			fireTime = Mathf.Lerp (fireRateMin, fireRateMax, Random.value);
+			GameObject go = Instantiate(bulletPrefab, transform.position + spawnOffset, transform.rotation);
 			LinearProjectileMove moveScript = go.GetComponent<LinearProjectileMove>();
 			moveScript.bmpCol = bmpCol;
 			moveScript.speed = speed;
 			moveScript.direction = direction;
-
 		}
 	}
 

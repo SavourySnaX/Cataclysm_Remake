@@ -152,11 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
-  speed: 0
-  bulletPrefab: {fileID: 0}
-  fireRate: 0
+  direction: {x: 0, y: -1, z: 0}
+  spawnOffset: {x: 0, y: -0.55, z: 0}
+  speed: 6
+  bulletPrefab: {fileID: 1380764200232962, guid: f514cacd72f12774d96da91355371a7b,
+    type: 2}
+  fireRateMin: 0.5
+  fireRateMax: 1.25
 --- !u!1 &383099257
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +670,8 @@ MonoBehaviour:
   speed: 10
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
-  fireRate: 0.5
+  fireRateMin: 0.5
+  fireRateMax: 0.5
 --- !u!1 &731985897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,6 +6460,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -1, y: 21, z: 0}
+    second:
+      m_TileIndex: 7
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -12, y: 26, z: 0}
     second:
       m_TileIndex: 2
@@ -6470,6 +6482,15 @@ Tilemap:
     second:
       m_TileIndex: 3
       m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 0, y: 28, z: 0}
+    second:
+      m_TileIndex: 6
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -6489,19 +6510,19 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: b8a776fe8a8aae9459fcd1efdf77d0cc, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 37964917c6bb50245907a49c1fb305e0, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300226, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300224, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300218, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
@@ -6511,7 +6532,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300212, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 4
+  - m_RefCount: 6
     m_Data:
       e00: 1
       e01: 0
@@ -6530,7 +6551,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 4
+  - m_RefCount: 6
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7220,7 +7241,8 @@ MonoBehaviour:
   speed: 10
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
-  fireRate: 0.5
+  fireRateMin: 0.5
+  fireRateMax: 0.5
 --- !u!1 &1607612156
 GameObject:
   m_ObjectHideFlags: 0
@@ -7312,7 +7334,8 @@ MonoBehaviour:
   spawnOffset: {x: 0, y: 0, z: 0}
   speed: 0
   bulletPrefab: {fileID: 0}
-  fireRate: 0
+  fireRateMin: 0
+  fireRateMax: 0
 --- !u!1 &1686036446
 GameObject:
   m_ObjectHideFlags: 0
@@ -7561,7 +7584,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -276471516
+  randomSeed: -2099584555
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10863,7 +10886,8 @@ MonoBehaviour:
   speed: 10
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
-  fireRate: 0.5
+  fireRateMin: 0.5
+  fireRateMax: 0.5
 --- !u!1 &1832653862
 GameObject:
   m_ObjectHideFlags: 0
@@ -10909,7 +10933,8 @@ MonoBehaviour:
   speed: 10
   bulletPrefab: {fileID: 1253247432785090, guid: 16c3c02c87091d2478c91e7ccfde161d,
     type: 2}
-  fireRate: 0.5
+  fireRateMin: 0.5
+  fireRateMax: 0.5
 --- !u!1 &1902375465
 GameObject:
   m_ObjectHideFlags: 0
@@ -11508,11 +11533,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
+  spawnOffset: {x: 0, y: 0.5, z: 0}
   speed: 0
   bulletPrefab: {fileID: 0}
-  fireRate: 0
+  fireRateMin: 0
+  fireRateMax: 0
 --- !u!1 &2023843770
 GameObject:
   m_ObjectHideFlags: 0
@@ -14094,13 +14120,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2079944937}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 749371208}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &2079944939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14112,8 +14138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
-  speed: 0
-  bulletPrefab: {fileID: 0}
-  fireRate: 0
+  direction: {x: 0, y: 1, z: 0}
+  spawnOffset: {x: 0, y: 0.7, z: 0}
+  speed: 10
+  bulletPrefab: {fileID: 1163153935020192, guid: eb8c9e4b9516867438a80bf3da7aa975,
+    type: 2}
+  fireRateMin: 0.1
+  fireRateMax: 0.5

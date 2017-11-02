@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 	void Start()
 	{
 		Time.timeScale = 1.0f;
+		Cursor.visible = true;
 	}
 
 	public void LoadLevel(int level)

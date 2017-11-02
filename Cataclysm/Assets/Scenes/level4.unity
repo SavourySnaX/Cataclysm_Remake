@@ -5212,6 +5212,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   mainTilemap: {fileID: 0}
+  triggerObjects: []
 --- !u!1 &830844509
 GameObject:
   m_ObjectHideFlags: 0
@@ -5343,6 +5344,7 @@ MonoBehaviour:
   idleIimeMax: 0.5
   chanceToRepeatAction: 0.1
   lethal: 1
+  diesToWater: 1
   bmpCol: {fileID: 749371214}
   AIWeighting:
     serializedVersion: 2
@@ -5375,6 +5377,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   player: {fileID: 1686036451}
+  deathParticlePrefab: {fileID: 1698075276800866, guid: b8b0d8a72ab490b4cbf9ccb8b865f08a,
+    type: 2}
 --- !u!95 &1193732495
 Animator:
   serializedVersion: 3
@@ -5506,6 +5510,7 @@ MonoBehaviour:
   idleIimeMax: 0.5
   chanceToRepeatAction: 0.1
   lethal: 1
+  diesToWater: 1
   bmpCol: {fileID: 749371214}
   AIWeighting:
     serializedVersion: 2
@@ -5538,6 +5543,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   player: {fileID: 1686036451}
+  deathParticlePrefab: {fileID: 1698075276800866, guid: b8b0d8a72ab490b4cbf9ccb8b865f08a,
+    type: 2}
 --- !u!95 &1200042583
 Animator:
   serializedVersion: 3
@@ -10027,6 +10034,7 @@ MonoBehaviour:
   idleIimeMax: 0.5
   chanceToRepeatAction: 0.1
   lethal: 1
+  diesToWater: 1
   bmpCol: {fileID: 749371214}
   AIWeighting:
     serializedVersion: 2
@@ -10059,6 +10067,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   player: {fileID: 1686036451}
+  deathParticlePrefab: {fileID: 1698075276800866, guid: b8b0d8a72ab490b4cbf9ccb8b865f08a,
+    type: 2}
 --- !u!95 &1807137715
 Animator:
   serializedVersion: 3

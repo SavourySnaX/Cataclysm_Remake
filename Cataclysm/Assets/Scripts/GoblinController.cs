@@ -24,17 +24,21 @@ public class GoblinController : MonoBehaviour
 	public float idleIimeMax = 0.5f;
 	public float chanceToRepeatAction = 0.10f;
 	public bool lethal = false;
+	public bool diesToWater=false;
 	public BitmapCollision bmpCol;
 	public AnimationCurve AIWeighting;
 	public PlayerController player;
+	public GameObject deathParticlePrefab;
 	Vector3 position;
 	Animator anim;
 	Action currentAction;
+	bool dead;
 
 	float nextDelay;
 
 	void Start()
 	{
+		dead = false;
 		anim = GetComponent<Animator>();
 		position = transform.position;
 		currentAction = Action.Idle;
@@ -108,8 +112,27 @@ public class GoblinController : MonoBehaviour
 		anim.SetBool("sleep", false);
 	}
 
+	IEnumerator DeathSequence()
+	{
+		if (!dead)
+		{
+			dead = true;
+			DestroyObject (this.gameObject);
+			gameObject.GetComponent<Renderer>().enabled = false;
+			Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+			yield return new WaitForSecondsRealtime(1.5f);
+		}
+	}
+
+	public void Die()
+	{
+		StartCoroutine(DeathSequence());
+	}
+
 	void FixedUpdate()
 	{
+		if (dead)
+			return;
 		BitmapCollision.LayerMask enemyMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Enemy | BitmapCollision.LayerMask.EnemyIgnore | BitmapCollision.LayerMask.Player));
 		bmpCol.DeleteBox(transform.position, BitmapCollision.LayerMask.Enemy);
 
@@ -120,6 +143,14 @@ public class GoblinController : MonoBehaviour
 			if (bmpCol.IsBoxCollision(transform.position, BitmapCollision.LayerMask.Player))
 			{
 				player.KillPlayer();
+			}
+		}
+		if (diesToWater)
+		{
+			if (bmpCol.IsBoxCollision (transform.position, BitmapCollision.LayerMask.Water))
+			{
+				Die ();
+				return;
 			}
 		}
 

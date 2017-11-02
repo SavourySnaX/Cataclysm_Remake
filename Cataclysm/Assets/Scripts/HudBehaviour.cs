@@ -39,6 +39,7 @@ public class HudBehaviour : MonoBehaviour
 		blocksCount = 8;
 		water = 0;
 		pause = false;
+		Cursor.visible = false;
 
 		GameObject t = Instantiate(prefabUI);
 		t.GetComponent<Canvas>().worldCamera = Camera.main;
@@ -114,6 +115,7 @@ public class HudBehaviour : MonoBehaviour
 	public void ShowPopup(string title, string message, string buttonText, System.Action method)
 	{
 		pause = true;
+		Cursor.visible = true;
 		if (currentPopup == null)
 		{
 			currentPopup = Instantiate(prefabPopup);
@@ -163,6 +165,7 @@ public class HudBehaviour : MonoBehaviour
 			currentPopup = null;
 		}
 		pause = false;
+		Cursor.visible = false;
 	}
 
 	public void GameOver()
