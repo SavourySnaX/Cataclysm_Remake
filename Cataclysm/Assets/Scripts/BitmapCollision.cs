@@ -78,10 +78,6 @@ public class BitmapCollision : MonoBehaviour
 							if (col == Color.black)
 							{
 								collisionMap[fx + xx, fy + yy] = LayerMask.Background;
-								if (tilemap == mainTilemap)
-								{
-									collisionMap[fx + xx, fy + yy] |= LayerMask.Player;
-								}
 							}
 							else if (col == Color.magenta)
 							{
