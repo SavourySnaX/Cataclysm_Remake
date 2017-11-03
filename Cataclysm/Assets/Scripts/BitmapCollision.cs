@@ -99,6 +99,10 @@ public class BitmapCollision : MonoBehaviour
 							{
 								collisionMap[fx + xx, fy + yy] |= LayerMask.PlayerIgnore;
 							}
+							else if (col == new Color(1,1,0))
+							{
+								collisionMap[fx + xx, fy + yy] |= LayerMask.Block;
+							}
 							else if (tilemap == mainTilemap)
 							{
 								collisionMap[fx + xx, fy + yy] = LayerMask.None;
@@ -323,6 +327,11 @@ public class BitmapCollision : MonoBehaviour
 				collisionMap[x, y] &= ~(LayerMask.Background | LayerMask.Player | extra);
 			}
 		}
+	}
+
+	public void DeleteTile(Vector3 wPos, LayerMask extra = LayerMask.None)
+	{
+		DeleteTile(mainTilemap, wPos, extra);
 	}
 
 	public void MoveTile1PixelDown(Tilemap tm2, Vector3 wPos)

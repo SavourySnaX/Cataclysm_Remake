@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	List<GameObject> blocksList;
 	Animator anim;
 	bool dead;
+	readonly bool invincible=false;
 
 	GlobalAudioManager globalAudio;
 
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 		position = transform.position;
 		dead = false;
 		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
+		hud.SetBlocks (totalBlocks);
 	}
 
 	void AddBlock(Vector3 position)
@@ -55,11 +57,19 @@ public class PlayerController : MonoBehaviour
 		if (toRemove != null)
 		{
 			globalAudio.CollectBlock ();
-			bmpCol.DeleteBox(toRemove.transform.position, BitmapCollision.LayerMask.Block);
-			blocksList.Remove(toRemove);
-			DestroyObject(toRemove);
+			bmpCol.DeleteBox (toRemove.transform.position, BitmapCollision.LayerMask.Block);
+			blocksList.Remove (toRemove);
+			DestroyObject (toRemove);
 			totalBlocks++;
-			hud.SetBlocks(totalBlocks);
+			hud.SetBlocks (totalBlocks);
+		} 
+		else
+		{
+			// Picking up a placed in level block
+			globalAudio.CollectBlock();
+			bmpCol.DeleteTile(position, BitmapCollision.LayerMask.Block);
+			totalBlocks++;
+			hud.SetBlocks (totalBlocks);
 		}
 	}
 
@@ -69,7 +79,7 @@ public class PlayerController : MonoBehaviour
 		{
 			hud.ScorePlug ();
 			globalAudio.Plug ();
-			bmpCol.DeleteTile(bmpCol.mainTilemap, newPos, BitmapCollision.LayerMask.Plug);
+			bmpCol.DeleteTile(newPos, BitmapCollision.LayerMask.Plug);
 			return true;
 		}
 		if ((colMask & BitmapCollision.LayerMask.Block) == BitmapCollision.LayerMask.Block)
@@ -101,7 +111,10 @@ public class PlayerController : MonoBehaviour
 
 	public void KillPlayer()
 	{
-		StartCoroutine(DeathSequence(hud.Killed));
+		if (!invincible)
+		{
+			StartCoroutine (DeathSequence (hud.Killed));
+		}
 	}
 
 	void ProcessTriggers()

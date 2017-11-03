@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1509537923
+timeCreated: 1509694671
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,7 +12,7 @@ TextureImporter:
     21300010: Tiles_22_.E.BBBBB
     21300012: Tiles_03_EBBBBBBB
     21300014: Tiles_30_.E.EB.BB
-    21300016: Tiles_8
+    21300016: Pickup_ExtraBlock
     21300018: Tiles_XX_drain
     21300020: Tiles_04_BBBBBEBB
     21300022: Tiles_31_.BBEB.E.
@@ -70,7 +70,7 @@ TextureImporter:
     21300126: Tiles_63
     21300128: Tiles_64
     21300130: Tiles_65
-    21300132: Tiles_66
+    21300132: Tiles_switched_blocker
     21300134: Tiles_67
     21300136: Tiles_68
     21300138: Tiles_69
@@ -118,6 +118,11 @@ TextureImporter:
     21300222: Trigger_6
     21300224: Trigger_7
     21300226: Trigger_8
+    21300228: Tiles_XX_switch_open_l
+    21300230: Tiles_XX_switch_closed_l
+    21300232: Tiles_XX_switch_closed_r
+    21300234: Tiles_XX_switch_open_r
+    21300236: Tiles_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -368,7 +373,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_8
+      name: Pickup_ExtraBlock
       rect:
         serializedVersion: 2
         x: 192
@@ -1690,7 +1695,7 @@ TextureImporter:
         - {x: -4, y: -10}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_66
+      name: Tiles_switched_blocker
       rect:
         serializedVersion: 2
         x: 144
@@ -2474,7 +2479,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2488,7 +2493,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2502,7 +2507,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2516,7 +2521,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2530,7 +2535,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2544,7 +2549,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2558,7 +2563,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2570,6 +2575,76 @@ TextureImporter:
         x: 240
         y: 64
         width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_XX_switch_open_l
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_XX_switch_closed_l
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_XX_switch_closed_r
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_XX_switch_open_r
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 24
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
