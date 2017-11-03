@@ -5355,7 +5355,7 @@ MonoBehaviour:
   waterIncrement: 1
   failIncrement: 0.2
   timerStart: 360
-  waterAmount: 800
+  waterAmount: 1350
   prefabUI: {fileID: 1003684285223146, guid: 7c4dcc0ad8c65cd4a808f4ee4508503e, type: 2}
   prefabPopup: {fileID: 1942536001488154, guid: 1a784f433ba534f47b840721aea393bd,
     type: 2}
@@ -6331,7 +6331,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 426313420
+  randomSeed: -1735691188
   InitialModule:
     serializedVersion: 3
     enabled: 1

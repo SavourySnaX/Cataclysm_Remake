@@ -8,6 +8,7 @@ public class Interactions : MonoBehaviour
 	public struct PressureData
 	{
 		public Vector3 position;
+		public int numBlocksCheck;
 		public int totalSize;
 		public int deltaCollapse;
 		public float failsafeCollapse;
@@ -21,7 +22,7 @@ public class Interactions : MonoBehaviour
 
 	public GlobalAudioManager globalAudio;
 
-	public float failsafeDelay = 1.0f;
+	public float failsafeDelay = 0.2f;
 
 	Tilemap tm;
 	BitmapCollision bmpCol;
@@ -44,36 +45,37 @@ public class Interactions : MonoBehaviour
 
 				switch (s.name)
 				{
-					case "Collapse":
-						collapseLocations.Add(tm.CellToWorld(new Vector3Int(x, y, 0)));
-						continue;
-					case "Pressure_T":
-						PressureData data;
-						data.position = tm.CellToWorld(new Vector3Int(x, y, 0));
-						data.deltaCollapse = 12;
-						data.failsafeCollapse = failsafeDelay;
+				case "Collapse":
+					collapseLocations.Add(tm.CellToWorld(new Vector3Int(x, y, 0)));
+					continue;
+				case "Pressure_T":
+					PressureData data;
+					data.position = tm.CellToWorld (new Vector3Int (x, y, 0));
+					data.deltaCollapse = 12;
+					data.failsafeCollapse = failsafeDelay;
 						// Compute size of pressure tile
-						data.totalSize = 1;
-						var nextTile = new Vector3Int(x, y - 1, 0);
-						while (true)
+					data.totalSize = 1;
+					data.numBlocksCheck = 1;
+					var nextTile = new Vector3Int(x, y - 1, 0);
+					while (true)
+					{
+						Sprite ns = tm.GetSprite(nextTile);
+						if (ns == null)
+							break;
+						if (ns.name == "Pressure_B")
 						{
-							Sprite ns = tm.GetSprite(nextTile);
-							if (ns == null)
-								break;
-							if (ns.name == "Pressure_B")
-							{
-								data.totalSize++;
-								nextTile += new Vector3Int(0, -1, 0);
-							}
-							else
-							{
-								break;
-							}
+							data.totalSize++;
+							nextTile += new Vector3Int(0, -1, 0);
 						}
-						pressureLocations.Add(data);
-						continue;
-					default:
-						continue;
+						else
+						{
+							break;
+						}
+					}
+					pressureLocations.Add(data);
+					continue;
+				default:
+					continue;
 				}
 			}
 		}

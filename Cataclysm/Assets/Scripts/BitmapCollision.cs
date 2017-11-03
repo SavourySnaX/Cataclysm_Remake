@@ -43,6 +43,8 @@ public class BitmapCollision : MonoBehaviour
 
 	public GameObject[] triggerObjects;
 
+	float pressureAccumulationFactor = 0.8f;
+
 	// We currently assume mainTilemap is larger or equal to the others.. todo fix (easy to test)
 	void ComputeCollisionBitmap(Tilemap tilemap)
 	{
@@ -397,7 +399,7 @@ public class BitmapCollision : MonoBehaviour
 			int cnt = 0;
 			for (int x = cellPos.x; x < cellPos.x + sizeX; x++)
 			{
-				for (int y = cellPos.y; y < cellPos.y + sizeY; y++)
+				for (int y = cellPos.y; y < cellPos.y + sizeY*pd.numBlocksCheck; y++)
 				{
 					if ((collisionMap[x, y] & LayerMask.Water) == LayerMask.Water)
 					{
@@ -406,7 +408,7 @@ public class BitmapCollision : MonoBehaviour
 				}
 			}
 			pd.failsafeCollapse -= Time.deltaTime;
-			if (cnt == sizeX * sizeY || (pd.deltaCollapse != 12 && pd.failsafeCollapse <= 0.0f))
+			if ((cnt >= sizeX * Mathf.FloorToInt(sizeY*pd.numBlocksCheck*pressureAccumulationFactor)) || (pd.deltaCollapse != 12 && pd.failsafeCollapse <= 0.0f))
 			{
 				pd.failsafeCollapse = interacts.failsafeDelay;
 				Vector3 nPos = wPos;
@@ -427,6 +429,7 @@ public class BitmapCollision : MonoBehaviour
 					tm2.SetTile(tm2.WorldToCell(pd.position), null);
 					pd.deltaCollapse = 12;
 					pd.totalSize--;
+					pd.numBlocksCheck++;
 					pd.position += new Vector3(0, -1, 0);
 					tm2.SetTile(tm2.WorldToCell(pd.position), origTile);
 					nPos = pd.position;

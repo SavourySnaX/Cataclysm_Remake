@@ -665,7 +665,7 @@ MonoBehaviour:
   background: {fileID: 749371207}
   hud: {fileID: 749371211}
   globalAudio: {fileID: 0}
-  failsafeDelay: 1
+  failsafeDelay: 0.2
 --- !u!1 &586758053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,12 +6326,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd8936ad80dd094a83a1e85a3d4b890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyScore: 2
+  plugScore: 2
   scoreDestroyBlock: 3
   scoreWater: 0.1
   waterIncrement: 1
   failIncrement: 0.2
   timerStart: 240
-  waterAmount: 800
+  waterAmount: 1350
   prefabUI: {fileID: 1003684285223146, guid: 7c4dcc0ad8c65cd4a808f4ee4508503e, type: 2}
   prefabPopup: {fileID: 1942536001488154, guid: 1a784f433ba534f47b840721aea393bd,
     type: 2}

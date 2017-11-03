@@ -488,7 +488,7 @@ MonoBehaviour:
   background: {fileID: 749371207}
   hud: {fileID: 749371211}
   globalAudio: {fileID: 0}
-  failsafeDelay: 1
+  failsafeDelay: 0.2
 --- !u!1 &463772718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1197,7 @@ Tilemap:
   - first: {x: -1, y: -5, z: 0}
     second:
       m_TileIndex: 38
-      m_TileSpriteIndex: 38
+      m_TileSpriteIndex: 41
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2646,7 +2646,7 @@ Tilemap:
   - first: {x: 12, y: 12, z: 0}
     second:
       m_TileIndex: 56
-      m_TileSpriteIndex: 28
+      m_TileSpriteIndex: 38
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -5831,8 +5831,8 @@ Tilemap:
     m_Data: {fileID: 21300054, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300056, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300060, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: 21300068, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 4
@@ -5852,13 +5852,13 @@ Tilemap:
   - m_RefCount: 6
     m_Data: {fileID: 21300144, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300150, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+    m_Data: {fileID: 21300060, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300152, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300154, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300150, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300134, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
@@ -6068,12 +6068,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd8936ad80dd094a83a1e85a3d4b890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyScore: 2
+  plugScore: 2
   scoreDestroyBlock: 3
   scoreWater: 0.1
   waterIncrement: 1
   failIncrement: 0.2
   timerStart: 360
-  waterAmount: 800
+  waterAmount: 1350
   prefabUI: {fileID: 1003684285223146, guid: 7c4dcc0ad8c65cd4a808f4ee4508503e, type: 2}
   prefabPopup: {fileID: 1942536001488154, guid: 1a784f433ba534f47b840721aea393bd,
     type: 2}
