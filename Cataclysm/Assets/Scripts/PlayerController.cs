@@ -75,6 +75,11 @@ public class PlayerController : MonoBehaviour
 
 	bool HandleDynamics(BitmapCollision.LayerMask colMask, Vector3 newPos)
 	{
+		// Check triggers
+		if ((colMask & BitmapCollision.LayerMask.Triggers) != BitmapCollision.LayerMask.None)
+		{
+			ProcessTriggers(newPos);
+		}
 		if ((colMask & BitmapCollision.LayerMask.Plug) == BitmapCollision.LayerMask.Plug)
 		{
 			hud.ScorePlug ();
@@ -117,9 +122,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void ProcessTriggers()
+	void ProcessTriggers(Vector3 pos)
 	{
-		bmpCol.TriggerAction(bmpCol.GetCollisionMask(transform.position));
+		bmpCol.TriggerAction(bmpCol.GetCollisionMask(pos));
 	}
 
 	void FixedUpdate()
@@ -131,10 +136,9 @@ public class PlayerController : MonoBehaviour
 		BitmapCollision.LayerMask playerMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.PlayerIgnore | BitmapCollision.LayerMask.Enemy));
 		bmpCol.DeleteBox(transform.position, BitmapCollision.LayerMask.Player);
 
-		// Check triggers
 		if (bmpCol.IsCollision(transform.position, BitmapCollision.LayerMask.Triggers))
 		{
-			ProcessTriggers();
+			ProcessTriggers(transform.position);
 		}
 
 		if (Input.GetButton("PlaceBlock") && position == transform.position)

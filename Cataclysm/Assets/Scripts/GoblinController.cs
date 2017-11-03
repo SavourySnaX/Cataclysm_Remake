@@ -29,6 +29,7 @@ public class GoblinController : MonoBehaviour
 	public AnimationCurve AIWeighting;
 	public PlayerController player;
 	public GameObject deathParticlePrefab;
+	public EnemySpawner spawner;
 	Vector3 position;
 	Animator anim;
 	Action currentAction;
@@ -122,10 +123,12 @@ public class GoblinController : MonoBehaviour
 			player.KilledEnemy ();
 			globalAudio.PurpleDeath ();
 			dead = true;
+			gameObject.GetComponent<Renderer> ().enabled = false;
+			GameObject go = Instantiate (deathParticlePrefab, transform.position, Quaternion.identity);
+			yield return new WaitForSecondsRealtime (1.5f);
+			spawner.Died ();
+			DestroyObject (go);
 			DestroyObject (this.gameObject);
-			gameObject.GetComponent<Renderer>().enabled = false;
-			Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
-			yield return new WaitForSecondsRealtime(1.5f);
 		}
 	}
 

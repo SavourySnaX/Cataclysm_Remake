@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 {
@@ -31,6 +32,14 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 	public void Init(BitmapCollision col)
 	{
 		bmpCol = col;
+	}
+
+	public void SetupBase(Vector3 wpos)
+	{
+	}
+
+	public void SetupTrigger(Vector3 wpos)
+	{
 	}
 
 	public void Trigger()

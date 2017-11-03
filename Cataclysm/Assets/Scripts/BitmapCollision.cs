@@ -27,13 +27,14 @@ public class BitmapCollision : MonoBehaviour
 		Trigger6 = 32768,
 		Trigger7 = 65536,
 		Trigger8 = 131072,
+		DynamicBlock = 262144,
 
-		All = LayerMask.Background | LayerMask.Water | LayerMask.Drain | LayerMask.Player | LayerMask.Block | LayerMask.FailDrain | LayerMask.Plug | LayerMask.PlayerIgnore | LayerMask.EnemyIgnore | LayerMask.Enemy,
+		All = LayerMask.Background | LayerMask.Water | LayerMask.Drain | LayerMask.Player | LayerMask.Block | LayerMask.FailDrain | LayerMask.Plug | LayerMask.PlayerIgnore | LayerMask.EnemyIgnore | LayerMask.Enemy | LayerMask.DynamicBlock,
 		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8
 	}
 
-	readonly int sizeX = 3;
-	readonly int sizeY = 12;
+	public readonly int sizeX = 3;
+	public readonly int sizeY = 12;
 
 	public Texture2D collision;
 	LayerMask[,] collisionMap;
@@ -159,6 +160,7 @@ public class BitmapCollision : MonoBehaviour
 					{
 						triggerObjects[triggerIdx].transform.position = tilemap.GetCellCenterWorld(cellPos);
 						triggerObjects[triggerIdx].GetComponent<ITriggerBase>().Init(this);
+						triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().SetupBase (tilemap.GetCellCenterWorld(cellPos));
 					}
 				}
 			}
@@ -175,7 +177,8 @@ public class BitmapCollision : MonoBehaviour
 		{
 			for (int y = tilemap.cellBounds.min.y; y < tilemap.cellBounds.max.y; y++)
 			{
-				Sprite s = tilemap.GetSprite(new Vector3Int(x, y, 0));
+				Vector3Int cellPos = new Vector3Int (x, y, 0);
+				Sprite s = tilemap.GetSprite(cellPos);
 				if (s != null)
 				{
 					// Fill the entire X/Y tile space with collision layer
@@ -212,6 +215,7 @@ public class BitmapCollision : MonoBehaviour
 
 					if (triggerObjects[triggerIdx] != null)
 					{
+						triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().SetupTrigger (tilemap.GetCellCenterWorld(cellPos));
 						for (int xx = 0; xx < sizeX; xx++)
 						{
 							for (int yy = 0; yy < sizeY; yy++)
@@ -451,26 +455,26 @@ public class BitmapCollision : MonoBehaviour
 		collisionMap[cellPos.x, cellPos.y] |= setMask;
 	}
 
-	public void AddBox(Vector3 worldPos, LayerMask setMask)
+	public void AddBox(Vector3 worldPos, LayerMask setMask,Vector2Int offs=default(Vector2Int))
 	{
 		Vector3Int cellPos = GetCellCoord(worldPos);
 		for (int x = 0; x < sizeX; x++)
 		{
 			for (int y = 0; y < sizeY; y++)
 			{
-				collisionMap[cellPos.x + x, cellPos.y + y] |= setMask;
+				collisionMap [cellPos.x + x + offs.x, cellPos.y + y + offs.y] |= setMask;
 			}
 		}
 	}
 
-	public void DeleteBox(Vector3 worldPos, LayerMask removeMask)
+	public void DeleteBox(Vector3 worldPos, LayerMask removeMask,Vector2Int offs=default(Vector2Int))
 	{
 		Vector3Int cellPos = GetCellCoord(worldPos);
 		for (int x = 0; x < sizeX; x++)
 		{
 			for (int y = 0; y < sizeY; y++)
 			{
-				collisionMap[cellPos.x + x, cellPos.y + y] &= ~removeMask;
+				collisionMap [cellPos.x + x + offs.x, cellPos.y + y + offs.y] &= ~removeMask;
 			}
 		}
 	}
