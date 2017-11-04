@@ -7319,7 +7319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyResponse: 0
   speed: 10
-  totalBlocks: 2
+  totalBlocks: 1
   bmpCol: {fileID: 749371214}
   hud: {fileID: 749371211}
   boxPrefab: {fileID: 1475906738122714, guid: d0b05bf8b2d56814c83109faf42a7c9e, type: 2}
@@ -7439,7 +7439,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 863634090
+  randomSeed: -2112412387
   InitialModule:
     serializedVersion: 3
     enabled: 1
