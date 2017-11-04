@@ -9,28 +9,31 @@ public class BitmapCollision : MonoBehaviour
 	public enum LayerMask
 	{
 		None = 0,
-		Background = 1,
-		Water = 2,
-		Drain = 4,
-		Player = 8,
-		Block = 16,
-		FailDrain = 32,
-		Plug = 64,
-		EnemyIgnore = 128,
-		PlayerIgnore = 256,
-		Enemy = 512,
-		Trigger1 = 1024,
-		Trigger2 = 2048,
-		Trigger3 = 4096,
-		Trigger4 = 8192,
-		Trigger5 = 16384,
-		Trigger6 = 32768,
-		Trigger7 = 65536,
-		Trigger8 = 131072,
-		DynamicBlock = 262144,
+		Background = 1<<0,
+		Water = 1<<1,
+		Drain = 1<<2,
+		Player = 1<<3,
+		Block = 1<<4,
+		FailDrain = 1<<5,
+		Plug = 1<<6,
+		EnemyIgnore = 1<<7,
+		PlayerIgnore = 1<<8,
+		Enemy = 1<<9,
+		DynamicBlock = 1<<10,
+		Trigger1 = 1<<11,
+		Trigger2 = 1<<12,
+		Trigger3 = 1<<13,
+		Trigger4 = 1<<14,
+		Trigger5 = 1<<15,
+		Trigger6 = 1<<16,
+		Trigger7 = 1<<17,
+		Trigger8 = 1<<18,
+		Trigger9 = 1<<19,
+		TriggerA = 1<<20,
+		TriggerB = 1<<21,
 
 		All = LayerMask.Background | LayerMask.Water | LayerMask.Drain | LayerMask.Player | LayerMask.Block | LayerMask.FailDrain | LayerMask.Plug | LayerMask.PlayerIgnore | LayerMask.EnemyIgnore | LayerMask.Enemy | LayerMask.DynamicBlock,
-		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8
+		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8 | LayerMask.Trigger9 | LayerMask.TriggerA | LayerMask.TriggerB
 	}
 
 	public readonly int sizeX = 3;
@@ -138,10 +141,23 @@ public class BitmapCollision : MonoBehaviour
 		}
 	}
 
+	int GetTriggerIdx(char l)
+	{
+		string idxS = "123456789AB";
+		for (int a=0;a<idxS.Length;a++)
+		{
+			if (l==idxS[a])
+			{
+				return a;
+			}
+		}
+		return 0;
+	}
+
 	void ProcessBaseTriggers(Tilemap tilemap)
 	{
-		// Currently assumes there are 8 triggers
-		triggerObjects = new GameObject[8];
+		// Currently assumes there are 11 triggers
+		triggerObjects = new GameObject[11];
 
 		// Base triggers just define the tile co-ord and type of controlling object
 		for (int x = tilemap.cellBounds.min.x; x < tilemap.cellBounds.max.x; x++)
@@ -153,7 +169,7 @@ public class BitmapCollision : MonoBehaviour
 				if (s != null)
 				{
 					string triggerName = s.name;
-					int triggerIdx = s.name[s.name.Length - 1] - '1';
+					int triggerIdx = GetTriggerIdx(s.name[s.name.Length - 1]);
 
 					//Find gameobject for this trigger
 					foreach (Transform child in transform)
@@ -217,9 +233,18 @@ public class BitmapCollision : MonoBehaviour
 						case "Trigger_8":
 							orIn = LayerMask.Trigger8;
 							break;
+						case "Trigger_9":
+							orIn = LayerMask.Trigger9;
+							break;
+						case "Trigger_A":
+							orIn = LayerMask.TriggerA;
+							break;
+						case "Trigger_B":
+							orIn = LayerMask.TriggerB;
+							break;
 					}
 					string triggerName = s.name;
-					int triggerIdx = s.name[s.name.Length - 1] - '1';
+					int triggerIdx = GetTriggerIdx(s.name[s.name.Length - 1]);
 
 					if (triggerObjects[triggerIdx] != null)
 					{

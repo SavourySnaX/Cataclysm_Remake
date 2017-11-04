@@ -10,17 +10,13 @@ public class WaterDrop : MonoBehaviour
 	public WaterSource src;
 	SpriteRenderer sr;
 
-	Color fast;
-	Color medium;
-	Color normal;
+	public Color fast;
+	public Color medium;
+	public Color normal;
 
 	void Start()
 	{
 		sr = GetComponent<SpriteRenderer>();
-
-		normal = new Color(51 / 255.0f, 119 / 255.0f, 119 / 255.0f, 0.75f);
-		medium = new Color(81 / 255.0f, 190 / 255.0f, 190 / 255.0f, 0.825f);
-		fast = new Color(109 / 255.0f, 1.0f, 1.0f, 1.0f);
 	}
 
 	void FixedUpdate()
@@ -30,6 +26,10 @@ public class WaterDrop : MonoBehaviour
 		if ((curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block | BitmapCollision.LayerMask.DynamicBlock)) != BitmapCollision.LayerMask.None)
 		{
 			checkCollision &= ~(curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block | BitmapCollision.LayerMask.DynamicBlock));
+			if (src.waterIsLethal && ((curLayer & BitmapCollision.LayerMask.Player)==BitmapCollision.LayerMask.Player))
+			{
+				src.player.KillPlayer();
+			}
 		}
 		bool col = bmpCol.IsCollision(transform.position + Vector3.down * (1 / 12.0f), checkCollision);
 		if (!col)
