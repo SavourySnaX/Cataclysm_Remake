@@ -866,7 +866,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 89647de83bc20834ea78db5540fa9f19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5216,6 +5216,10 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   mainTilemap: {fileID: 0}
   triggerObjects: []
+  backgroundMinColour: {r: 0.3766609, g: 0.43382353, b: 0.02551903, a: 1}
+  backgroundMaxColour: {r: 0.7077393, g: 0.8161765, b: 0.030006468, a: 1}
+  goalMinColour: {r: 0.16862746, g: 0.92941177, b: 0.9647059, a: 1}
+  goalMaxColour: {r: 0.22352941, g: 0.2509804, b: 0.79607844, a: 1}
 --- !u!1 &792117735
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,6 +43,12 @@ public class BitmapCollision : MonoBehaviour
 
 	public GameObject[] triggerObjects;
 
+	// TODO - move these and the material setters to a different script
+	public Color backgroundMinColour;
+	public Color backgroundMaxColour;
+	public Color goalMinColour = new Color(43 / 255.0f, 237 / 255.0f, 246 / 255.0f);
+	public Color goalMaxColour = new Color(57 / 255.0f, 64 / 255.0f, 203 / 255.0f);
+
 	float pressureAccumulationFactor = 0.8f;
 
 	// We currently assume mainTilemap is larger or equal to the others.. todo fix (easy to test)
@@ -269,6 +275,14 @@ public class BitmapCollision : MonoBehaviour
 	{
 		mainTilemap = GetComponent<Tilemap>();
 		mainTilemapBounds = mainTilemap.localBounds;
+
+		// todo move these to a seperate script
+		GetComponent<TilemapRenderer>().material.SetVector("_WorldBounds", new Vector4( -3.0f, mainTilemapBounds.min.y, 3.0f, mainTilemapBounds.max.y) );
+		GetComponent<TilemapRenderer>().material.SetColor("_RepBGMin",backgroundMinColour);
+		GetComponent<TilemapRenderer>().material.SetColor("_RepBGMax",backgroundMaxColour);
+		GetComponent<TilemapRenderer>().material.SetColor("_RepGoalMin",goalMinColour);
+		GetComponent<TilemapRenderer>().material.SetColor("_RepGoalMax", goalMaxColour);
+
 		collisionMap = new LayerMask[mainTilemap.cellBounds.size.x * sizeX, mainTilemap.cellBounds.size.y * sizeY];
 
 		ComputeCollisionBitmaps();
