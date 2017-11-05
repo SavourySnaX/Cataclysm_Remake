@@ -17,6 +17,8 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 	public float fireRateMin;
 	public float fireRateMax;
 	public AnimationCurve fireRateWeighting;
+	public BitmapCollision.LayerMask colMask = BitmapCollision.LayerMask.All;
+	public BitmapCollision.LayerMask colType = BitmapCollision.LayerMask.None;
 
 	float fireTime;
 	BitmapCollision bmpCol;
@@ -55,6 +57,8 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 			moveScript.direction = Vector3.Lerp(directionMin,directionMax,directionWeighting.Evaluate(Random.value));
 			moveScript.player = player;
 			moveScript.drag = drag;
+			moveScript.colMask = colMask;
+			moveScript.colType = colType;
 		}
 	}
 

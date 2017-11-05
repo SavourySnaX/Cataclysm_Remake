@@ -13,10 +13,15 @@ public class PlayerController : MonoBehaviour
 	public HudBehaviour hud;
 	public GameObject boxPrefab;
 	public GameObject deathParticlePrefab;
+	public GameObject weaponPrefab;
+
 	Vector3 position;
 	List<GameObject> blocksList;
 	Animator anim;
 	bool dead;
+	bool hasWeapon;
+
+	ProjectileTrigger weapon;
 	readonly bool invincible=false;
 
 	GlobalAudioManager globalAudio;
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour
 		blocksList = new List<GameObject>();
 		position = transform.position;
 		dead = false;
+		hasWeapon = false;
 		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
 		hud.SetBlocks (totalBlocks);
 	}
@@ -43,12 +49,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void RemoveBlock(Vector3 position)
+	void RemoveBlock(Vector3 nPos)
 	{
 		GameObject toRemove = null;
 		for (int a = 0; a < blocksList.Count; a++)
 		{
-			if (blocksList[a].transform.position == position)
+			if (blocksList[a].transform.position == nPos)
 			{
 				toRemove = blocksList[a];
 				break;
@@ -65,11 +71,25 @@ public class PlayerController : MonoBehaviour
 		} 
 		else
 		{
-			// Picking up a placed in level block
+			// Picking up a pick placed in level block
+			switch (bmpCol.GetTileName(nPos))
+			{
+				case "Pickup_ExtraBlock":
+					totalBlocks++;
+					hud.SetBlocks (totalBlocks);
+					break;
+				case "Pickup_Laser":
+					weapon = Instantiate(weaponPrefab, transform).GetComponent<ProjectileTrigger>();
+					weapon.Init(bmpCol);
+					weapon.colMask = BitmapCollision.LayerMask.All & ~(BitmapCollision.LayerMask.Player|BitmapCollision.LayerMask.Water|BitmapCollision.LayerMask.Enemy);
+					weapon.colType = BitmapCollision.LayerMask.Water;
+					hasWeapon = true;
+					break;
+				default:
+					break;
+			}
 			globalAudio.CollectBlock();
-			bmpCol.DeleteTile(position, BitmapCollision.LayerMask.Block);
-			totalBlocks++;
-			hud.SetBlocks (totalBlocks);
+			bmpCol.DeleteTile(nPos, BitmapCollision.LayerMask.Block);
 		}
 	}
 
@@ -147,6 +167,12 @@ public class PlayerController : MonoBehaviour
 			{
 				AddBlock(transform.position);
 			}
+		}
+		if (Input.GetButton("Shoot") && hasWeapon)
+		{
+			weapon.spawnOffset = transform.localRotation * Vector3.right/2;
+			weapon.directionMax = transform.localRotation * Vector3.right;
+			GetComponentInChildren<ProjectileTrigger>().Trigger();
 		}
 		if (Input.GetButton("QuitLevel"))
 		{

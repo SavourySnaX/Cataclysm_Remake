@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1509823961
+timeCreated: 1509887273
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -61,7 +61,7 @@ TextureImporter:
     21300108: Tiles_54
     21300110: Tiles_55
     21300112: Tiles_2f_.BEEB.BE
-    21300114: Tiles_57
+    21300114: Pickup_Laser
     21300116: Tiles_58
     21300118: Tiles_59
     21300120: Tiles_60
@@ -1500,7 +1500,7 @@ TextureImporter:
         - {x: 12, y: 12}
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tiles_57
+      name: Pickup_Laser
       rect:
         serializedVersion: 2
         x: 168
@@ -2718,7 +2718,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2732,7 +2732,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2746,7 +2746,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

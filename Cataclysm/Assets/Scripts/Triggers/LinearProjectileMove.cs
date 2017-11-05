@@ -9,6 +9,8 @@ public class LinearProjectileMove : MonoBehaviour
 	public Vector3 direction;
 	public Vector3 drag;
 	public float speed;
+	public BitmapCollision.LayerMask colMask = BitmapCollision.LayerMask.All;
+	public BitmapCollision.LayerMask colType = BitmapCollision.LayerMask.None;
 
 	void Start()
 	{
@@ -16,7 +18,7 @@ public class LinearProjectileMove : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		BitmapCollision.LayerMask colMask = BitmapCollision.LayerMask.All;
+		bmpCol.RemovePixel(transform.position, colType);
 
 		if (bmpCol.IsCollision(transform.position, colMask))
 		{
@@ -31,5 +33,7 @@ public class LinearProjectileMove : MonoBehaviour
 
 		direction += drag * Time.deltaTime;
 		transform.position += direction * speed * Time.deltaTime;
+
+		bmpCol.AddPixel(transform.position, colType);
 	}
 }

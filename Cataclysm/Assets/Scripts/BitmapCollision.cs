@@ -509,6 +509,11 @@ public class BitmapCollision : MonoBehaviour
 		}
 	}
 
+	public string GetTileName(Vector3 worldPos)
+	{
+		return mainTilemap.GetSprite(mainTilemap.WorldToCell(worldPos)).name;
+	}
+
 	public void DeleteBox(Vector3 worldPos, LayerMask removeMask,Vector2Int offs=default(Vector2Int))
 	{
 		Vector3Int cellPos = GetCellCoord(worldPos);
