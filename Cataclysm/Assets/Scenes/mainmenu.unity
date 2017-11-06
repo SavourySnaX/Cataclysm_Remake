@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 12594271}
   - component: {fileID: 12594270}
   - component: {fileID: 12594269}
+  - component: {fileID: 12594272}
   m_Layer: 5
   m_Name: BonusLevel1
   m_TagString: Untagged
@@ -234,6 +235,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 12594267}
+--- !u!114 &12594272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12594267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: -1
 --- !u!1 &79407660
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +525,7 @@ GameObject:
   - component: {fileID: 107074674}
   - component: {fileID: 107074673}
   - component: {fileID: 107074672}
+  - component: {fileID: 107074675}
   m_Layer: 5
   m_Name: Level 1
   m_TagString: Untagged
@@ -620,6 +637,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 107074670}
+--- !u!114 &107074675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107074670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 1
 --- !u!1 &189164948
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +737,7 @@ GameObject:
   - component: {fileID: 191651788}
   - component: {fileID: 191651787}
   - component: {fileID: 191651786}
+  - component: {fileID: 191651789}
   m_Layer: 5
   m_Name: Level 4
   m_TagString: Untagged
@@ -816,6 +849,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 191651784}
+--- !u!114 &191651789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 191651784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 4
 --- !u!1 &235412595
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,6 +3111,7 @@ GameObject:
   - component: {fileID: 449226350}
   - component: {fileID: 449226349}
   - component: {fileID: 449226348}
+  - component: {fileID: 449226351}
   m_Layer: 5
   m_Name: Level 2
   m_TagString: Untagged
@@ -3174,6 +3223,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 449226346}
+--- !u!114 &449226351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 449226346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 2
 --- !u!1 &547789246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,7 +3285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15686275, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3455,7 +3519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15862082, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3493,6 +3557,7 @@ GameObject:
   - component: {fileID: 582798493}
   - component: {fileID: 582798492}
   - component: {fileID: 582798491}
+  - component: {fileID: 582798494}
   m_Layer: 5
   m_Name: BonusLevel2
   m_TagString: Untagged
@@ -3604,6 +3669,110 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 582798489}
+--- !u!114 &582798494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 582798489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: -2
+--- !u!1 &594799598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 594799600}
+  - component: {fileID: 594799599}
+  m_Layer: 0
+  m_Name: GlobalScores
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &594799599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 594799598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb5cb0388844544ba0a5eeaa4e061bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  times:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  scores: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  newHighScore: 0
+  newFastTime: 0
+--- !u!4 &594799600
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 594799598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8437797, y: 10.237752, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596459166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,6 +4058,7 @@ GameObject:
   - component: {fileID: 811004122}
   - component: {fileID: 811004121}
   - component: {fileID: 811004120}
+  - component: {fileID: 811004123}
   m_Layer: 5
   m_Name: Level 6
   m_TagString: Untagged
@@ -4000,6 +4170,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 811004118}
+--- !u!114 &811004123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 811004118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 6
 --- !u!1 &937543040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4778,7 @@ GameObject:
   - component: {fileID: 1196860551}
   - component: {fileID: 1196860550}
   - component: {fileID: 1196860549}
+  - component: {fileID: 1196860552}
   m_Layer: 5
   m_Name: Level 5
   m_TagString: Untagged
@@ -4704,6 +4890,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196860547}
+--- !u!114 &1196860552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1196860547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 5
 --- !u!1 &1204474530
 GameObject:
   m_ObjectHideFlags: 0
@@ -12375,6 +12576,7 @@ GameObject:
   - component: {fileID: 1240012250}
   - component: {fileID: 1240012249}
   - component: {fileID: 1240012248}
+  - component: {fileID: 1240012251}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -12486,6 +12688,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1240012246}
+--- !u!114 &1240012251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1240012246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 0
 --- !u!1 &1250501941
 GameObject:
   m_ObjectHideFlags: 0
@@ -12941,6 +13158,7 @@ GameObject:
   - component: {fileID: 1353562461}
   - component: {fileID: 1353562460}
   - component: {fileID: 1353562459}
+  - component: {fileID: 1353562462}
   m_Layer: 5
   m_Name: BonusLevel3
   m_TagString: Untagged
@@ -13052,6 +13270,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353562457}
+--- !u!114 &1353562462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353562457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: -3
 --- !u!1 &1375518955
 GameObject:
   m_ObjectHideFlags: 0
@@ -13117,7 +13350,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1410065134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 591.309, y: 0, z: 0}
+  m_LocalPosition: {x: 591.3915, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1928516644}
@@ -13162,7 +13395,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 2ecbb5909b96ea54a8d300f2f42daa0b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13255,6 +13488,7 @@ GameObject:
   - component: {fileID: 1648090046}
   - component: {fileID: 1648090045}
   - component: {fileID: 1648090044}
+  - component: {fileID: 1648090047}
   m_Layer: 5
   m_Name: Level 7
   m_TagString: Untagged
@@ -13366,6 +13600,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1648090042}
+--- !u!114 &1648090047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648090042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 7
 --- !u!1 &1658505628
 GameObject:
   m_ObjectHideFlags: 0
@@ -13413,7 +13662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09558821, g: 0.089262515, b: 0.089262515, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13452,6 +13701,7 @@ GameObject:
   - component: {fileID: 1769200944}
   - component: {fileID: 1769200943}
   - component: {fileID: 1769200942}
+  - component: {fileID: 1769200945}
   m_Layer: 5
   m_Name: Level 3
   m_TagString: Untagged
@@ -13563,6 +13813,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1769200940}
+--- !u!114 &1769200945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769200940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21073585f9fd6c4f88ec02de483e95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trophyPrefab: {fileID: 1988359920091884, guid: fa37439d86ac31c458006639e137b76b,
+    type: 2}
+  timePrefab: {fileID: 1128058388683314, guid: 6ac389b5b9da2404db9a7f0386ed9ed5, type: 2}
+  lvl: 3
 --- !u!1 &1835879337
 GameObject:
   m_ObjectHideFlags: 0
@@ -13587,7 +13852,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1835879337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -591.309, y: -332.61133, z: 0}
+  m_LocalPosition: {x: -591.3915, y: -332.6577, z: 0}
   m_LocalScale: {x: 1.0000073, y: 1.0000073, z: 1.0000073}
   m_Children:
   - {fileID: 2001147605}
@@ -13618,7 +13883,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 2ecbb5909b96ea54a8d300f2f42daa0b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13913,7 +14178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09558821, g: 0.089262515, b: 0.089262515, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13972,7 +14237,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027920889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 591.309, y: -332.61133, z: 0}
+  m_LocalPosition: {x: 591.3915, y: -332.6577, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1658505629}
@@ -14003,7 +14268,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 2ecbb5909b96ea54a8d300f2f42daa0b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14174,7 +14439,7 @@ RectTransform:
   m_GameObject: {fileID: 2101783174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.69, y: -12.76, z: 90}
-  m_LocalScale: {x: 0.108234435, y: 0.108234435, z: 0.108234435}
+  m_LocalScale: {x: 0.10821934, y: 0.10821934, z: 0.10821934}
   m_Children:
   - {fileID: 1240012247}
   - {fileID: 12594268}

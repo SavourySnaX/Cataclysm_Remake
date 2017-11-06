@@ -26,6 +26,7 @@ public class HudBehaviour : MonoBehaviour
 	public GameObject prefabPopup;
 
 	GameObject currentPopup = null;
+	ScoreBoard globalScores;
 
 	Text scoreObject;
 	Text blockObject;
@@ -78,7 +79,15 @@ public class HudBehaviour : MonoBehaviour
 				blockShadowObject = l;
 			}
 		}
-
+		GameObject go = GameObject.Find ("GlobalScores");
+		if (go!=null)
+		{
+			globalScores = go.GetComponent<ScoreBoard> ();
+		}
+		else
+		{
+			globalScores=null;
+		}
 	}
 
 	public void AddWater()
@@ -197,7 +206,45 @@ public class HudBehaviour : MonoBehaviour
 
 	public void Winner()
 	{
-		ShowPopup("!CONGRATULATIONS!", string.Format("You scored : {0:0000}", Mathf.FloorToInt(score)), "Main Menu", MainMenu);
+		if (currentPopup == null)
+		{
+			string globalInfo = "";
+			string minutes = Mathf.Floor (timer / 60).ToString ("0");
+			string seconds = Mathf.Floor (timer % 60).ToString ("0");
+			string minS = Mathf.Floor (timer / 60) != 1 ? "s" : "";
+			string secS = Mathf.Floor (timer % 60) != 1 ? "s" : "";
+			if (globalScores)
+			{
+				globalScores.LevelComplete (timer, Mathf.FloorToInt (score));
+				globalInfo += "\n\n";
+				if (globalScores.IsHighScore ())
+				{
+					globalInfo += "!!New Highest Score!!\n";
+				} else
+				{
+					globalInfo += string.Format ("Highest Score : {0:0000}\n", globalScores.GetScore ());
+				}
+				if (globalScores.IsFastest ())
+				{
+					globalInfo += "!!New Fastest Time!!\n";
+				} else
+				{
+					string fminutes = Mathf.Floor (globalScores.GetTime () / 60).ToString ("0");
+					string fseconds = Mathf.Floor (globalScores.GetTime () % 60).ToString ("0");
+					string fminS = Mathf.Floor (timer / 60) != 1 ? "s" : "";
+					string fsecS = Mathf.Floor (timer % 60) != 1 ? "s" : "";
+					globalInfo += string.Format ("Fastest Time : {0} minute" + fminS + " and {1} second" + fsecS, fminutes, fseconds);
+				}
+			}
+
+			if (globalScores.LevelAvailable (globalScores.NextLevel ()))
+			{
+				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Next Level", NextLevel);
+			} else
+			{
+				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Main Menu", MainMenu);
+			}
+		}
 	}
 
 	public void Pause()
@@ -214,6 +261,14 @@ public class HudBehaviour : MonoBehaviour
 	{
 		ClosePopup();
 		SceneManager.LoadScene("mainmenu");
+	}
+
+	public void NextLevel()
+	{
+		ClosePopup();
+		int nxt = globalScores.NextLevel ();
+		globalScores.SetCurrentLevel(nxt);
+		SceneManager.LoadScene("level"+nxt);
 	}
 
 	void UpdateFailMeter()
