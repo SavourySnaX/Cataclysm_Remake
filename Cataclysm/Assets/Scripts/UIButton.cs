@@ -16,11 +16,11 @@ public class UIButton : MonoBehaviour
 		globalScores = GameObject.Find ("GlobalScores").GetComponent<ScoreBoard>();
 
 		GetComponent<Button> ().interactable = (Application.isEditor || globalScores.IsUnlocked (lvl));
-		if (globalScores.GetTime (lvl) < 90f)
+		if (Application.isEditor || globalScores.GetTime (lvl) < 90f)
 		{
 			Instantiate (timePrefab, transform);
 		}
-		if (globalScores.GetScore (lvl) > 100)
+		if (Application.isEditor || globalScores.GetScore (lvl) > 100)
 		{
 			Instantiate (trophyPrefab, transform);
 		}
