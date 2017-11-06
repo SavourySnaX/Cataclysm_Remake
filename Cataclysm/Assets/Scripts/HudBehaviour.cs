@@ -231,9 +231,9 @@ public class HudBehaviour : MonoBehaviour
 				{
 					string fminutes = Mathf.Floor (globalScores.GetTime () / 60).ToString ("0");
 					string fseconds = Mathf.Floor (globalScores.GetTime () % 60).ToString ("0");
-					string fminS = Mathf.Floor (timer / 60) != 1 ? "s" : "";
-					string fsecS = Mathf.Floor (timer % 60) != 1 ? "s" : "";
-					globalInfo += string.Format ("Fastest Time : {0} minute" + fminS + " and {1} second" + fsecS, fminutes, fseconds);
+					string fminS = Mathf.Floor (globalScores.GetTime() / 60) != 1 ? "s" : "";
+					string fsecS = Mathf.Floor (globalScores.GetTime() % 60) != 1 ? "s" : "";
+					globalInfo += string.Format ("Fastest : {0} minute" + fminS + " and {1} second" + fsecS, fminutes, fseconds);
 				}
 			}
 
@@ -265,7 +265,6 @@ public class HudBehaviour : MonoBehaviour
 
 	public void NextLevel()
 	{
-		ClosePopup();
 		int nxt = globalScores.NextLevel ();
 		globalScores.SetCurrentLevel(nxt);
 		SceneManager.LoadScene("level"+nxt);
