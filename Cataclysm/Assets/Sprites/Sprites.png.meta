@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3506818aaaf5da444a002639e8835734
-timeCreated: 1509890474
+timeCreated: 1509975385
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,11 @@ TextureImporter:
     21300044: Spazer_1
     21300046: Spazer_2
     21300048: Sprites_Gun
+    21300050: Sprites_3
+    21300052: Sprites_19
+    21300054: Sprites_20
+    21300056: Sprites_21
+    21300058: Sprites_22
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -461,6 +466,76 @@ TextureImporter:
         serializedVersion: 2
         x: 96
         y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 112
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 112
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sprites_22
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
         width: 24
         height: 24
       alignment: 0

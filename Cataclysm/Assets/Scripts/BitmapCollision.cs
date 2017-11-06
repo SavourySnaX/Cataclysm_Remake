@@ -31,9 +31,14 @@ public class BitmapCollision : MonoBehaviour
 		Trigger9 = 1<<19,
 		TriggerA = 1<<20,
 		TriggerB = 1<<21,
+		TriggerC = 1<<22,
+		TriggerD = 1<<23,
+		TriggerE = 1<<24,
+		TriggerF = 1<<25,
+		TriggerG = 1<<26,
 
 		All = LayerMask.Background | LayerMask.Water | LayerMask.Drain | LayerMask.Player | LayerMask.Block | LayerMask.FailDrain | LayerMask.Plug | LayerMask.PlayerIgnore | LayerMask.EnemyIgnore | LayerMask.Enemy | LayerMask.DynamicBlock,
-		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8 | LayerMask.Trigger9 | LayerMask.TriggerA | LayerMask.TriggerB
+		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8 | LayerMask.Trigger9 | LayerMask.TriggerA | LayerMask.TriggerB | LayerMask.TriggerC | LayerMask.TriggerD | LayerMask.TriggerE | LayerMask.TriggerF | LayerMask.TriggerG
 	}
 
 	public readonly int sizeX = 3;
@@ -143,7 +148,7 @@ public class BitmapCollision : MonoBehaviour
 
 	int GetTriggerIdx(char l)
 	{
-		string idxS = "123456789AB";
+		string idxS = "123456789ABCDEFG";
 		for (int a=0;a<idxS.Length;a++)
 		{
 			if (l==idxS[a])
@@ -156,8 +161,8 @@ public class BitmapCollision : MonoBehaviour
 
 	void ProcessBaseTriggers(Tilemap tilemap)
 	{
-		// Currently assumes there are 11 triggers
-		triggerObjects = new GameObject[11];
+		// Currently assumes there are 16 triggers
+		triggerObjects = new GameObject[16];
 
 		// Base triggers just define the tile co-ord and type of controlling object
 		for (int x = tilemap.cellBounds.min.x; x < tilemap.cellBounds.max.x; x++)
@@ -209,39 +214,54 @@ public class BitmapCollision : MonoBehaviour
 					LayerMask orIn = LayerMask.None;
 					switch (s.name)
 					{
-						case "Trigger_1":
-							orIn = LayerMask.Trigger1;
-							break;
-						case "Trigger_2":
-							orIn = LayerMask.Trigger2;
-							break;
-						case "Trigger_3":
-							orIn = LayerMask.Trigger3;
-							break;
-						case "Trigger_4":
-							orIn = LayerMask.Trigger4;
-							break;
-						case "Trigger_5":
-							orIn = LayerMask.Trigger5;
-							break;
-						case "Trigger_6":
-							orIn = LayerMask.Trigger6;
-							break;
-						case "Trigger_7":
-							orIn = LayerMask.Trigger7;
-							break;
-						case "Trigger_8":
-							orIn = LayerMask.Trigger8;
-							break;
-						case "Trigger_9":
-							orIn = LayerMask.Trigger9;
-							break;
-						case "Trigger_A":
-							orIn = LayerMask.TriggerA;
-							break;
-						case "Trigger_B":
-							orIn = LayerMask.TriggerB;
-							break;
+					case "Trigger_1":
+						orIn = LayerMask.Trigger1;
+						break;
+					case "Trigger_2":
+						orIn = LayerMask.Trigger2;
+						break;
+					case "Trigger_3":
+						orIn = LayerMask.Trigger3;
+						break;
+					case "Trigger_4":
+						orIn = LayerMask.Trigger4;
+						break;
+					case "Trigger_5":
+						orIn = LayerMask.Trigger5;
+						break;
+					case "Trigger_6":
+						orIn = LayerMask.Trigger6;
+						break;
+					case "Trigger_7":
+						orIn = LayerMask.Trigger7;
+						break;
+					case "Trigger_8":
+						orIn = LayerMask.Trigger8;
+						break;
+					case "Trigger_9":
+						orIn = LayerMask.Trigger9;
+						break;
+					case "Trigger_A":
+						orIn = LayerMask.TriggerA;
+						break;
+					case "Trigger_B":
+						orIn = LayerMask.TriggerB;
+						break;
+					case "Trigger_C":
+						orIn = LayerMask.TriggerC;
+						break;
+					case "Trigger_D":
+						orIn = LayerMask.TriggerD;
+						break;
+					case "Trigger_E":
+						orIn = LayerMask.TriggerE;
+						break;
+					case "Trigger_F":
+						orIn = LayerMask.TriggerF;
+						break;
+					case "Trigger_G":
+						orIn = LayerMask.TriggerG;
+						break;
 					}
 					string triggerName = s.name;
 					int triggerIdx = GetTriggerIdx(s.name[s.name.Length - 1]);

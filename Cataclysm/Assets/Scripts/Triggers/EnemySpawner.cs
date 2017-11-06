@@ -57,10 +57,7 @@ public class EnemySpawner : MonoBehaviour, ITriggerBase
 			numEnemies++;
 
 			GameObject go = Instantiate (enemyPrefab, transform.position, Quaternion.identity);
-			// Todo, might want different enemy controllers at some point
-			go.GetComponent<GoblinController>().bmpCol=bmpCol;
-			go.GetComponent<GoblinController>().player = player;
-			go.GetComponent<GoblinController>().spawner = this;
+			go.GetComponent<IEnemyBase> ().Init (bmpCol, player, this);
 		}
 	}
 }

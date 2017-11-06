@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinController : MonoBehaviour , IEnemyBase
+public class HeliController : MonoBehaviour, IEnemyBase
 {
 	enum Action
 	{
-		Idle = 0,
-		Sleep,
 		Left,
 		Right,
 		Up,
 		Down,
 
-		Min = Idle,
+		Min = Left,
 		Max = Down
 	}
 
 	public float speed = 5.0f;
-	public float sleepTimeMin = 3.0f;
-	public float sleepTimeMax = 5.0f;
-	public float idleTimeMin = 0.5f;
-	public float idleIimeMax = 0.5f;
 	public float chanceToRepeatAction = 0.10f;
 	public bool lethal = false;
 	public bool diesToWater=false;
@@ -31,7 +25,6 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 	public GameObject deathParticlePrefab;
 	public EnemySpawner spawner;
 	Vector3 position;
-	Animator anim;
 	Action currentAction;
 	bool dead;
 
@@ -49,9 +42,8 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 	void Start()
 	{
 		dead = false;
-		anim = GetComponent<Animator>();
 		position = transform.position;
-		currentAction = Action.Idle;
+		currentAction = Action.Left;
 		nextDelay = 0.0f;
 		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
 	}
@@ -67,60 +59,6 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 		int numItems = (Action.Max + 1) - Action.Min;
 		int selection = (int)Action.Min + (int)(numItems * AIWeighting.Evaluate(Random.value));
 		return (Action)selection;
-	}
-
-	void IdleAnim()
-	{
-		anim.SetBool("left", false);
-		anim.SetBool("right", false);
-		anim.SetBool("up", false);
-		anim.SetBool("down", false);
-		anim.SetBool("sleep", false);
-	}
-
-	void SleepAnim()
-	{
-		anim.SetBool("left", false);
-		anim.SetBool("right", false);
-		anim.SetBool("up", false);
-		anim.SetBool("down", false);
-		anim.SetBool("sleep", true);
-	}
-
-	void LeftAnim()
-	{
-		anim.SetBool("left", true);
-		anim.SetBool("right", false);
-		anim.SetBool("up", false);
-		anim.SetBool("down", false);
-		anim.SetBool("sleep", false);
-	}
-
-	void RightAnim()
-	{
-		anim.SetBool("left", false);
-		anim.SetBool("right", true);
-		anim.SetBool("up", false);
-		anim.SetBool("down", false);
-		anim.SetBool("sleep", false);
-	}
-
-	void DownAnim()
-	{
-		anim.SetBool("left", false);
-		anim.SetBool("right", false);
-		anim.SetBool("up", false);
-		anim.SetBool("down", true);
-		anim.SetBool("sleep", false);
-	}
-
-	void UpAnim()
-	{
-		anim.SetBool("left", false);
-		anim.SetBool("right", false);
-		anim.SetBool("up", true);
-		anim.SetBool("down", false);
-		anim.SetBool("sleep", false);
 	}
 
 	IEnumerator DeathSequence()
@@ -176,17 +114,8 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 			switch (currentAction)
 			{
 				default:
-				case Action.Idle:
-					nextDelay = Random.Range(idleTimeMin, idleIimeMax);
-					IdleAnim();
-					break;
-				case Action.Sleep:
-					nextDelay = Random.Range(sleepTimeMin, sleepTimeMax);
-					SleepAnim();
-					break;
 				case Action.Left:
 					nextDelay = 0.0f;
-					LeftAnim();
 					transform.localRotation = Quaternion.AngleAxis(0, Vector3.up);
 					if (!bmpCol.IsBoxCollision(transform.position + Vector3.left, enemyMask))
 					{
@@ -195,7 +124,6 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 					break;
 				case Action.Right:
 					nextDelay = 0.0f;
-					RightAnim();
 					transform.localRotation = Quaternion.AngleAxis(180, Vector3.up);
 					if (!bmpCol.IsBoxCollision(transform.position + Vector3.right, enemyMask))
 					{
@@ -204,7 +132,6 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 					break;
 				case Action.Up:
 					nextDelay = 0.0f;
-					UpAnim();
 					if (!bmpCol.IsBoxCollision(transform.position + Vector3.up, enemyMask))
 					{
 						position += Vector3.up;
@@ -212,7 +139,6 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 					break;
 				case Action.Down:
 					nextDelay = 0.0f;
-					DownAnim();
 					if (!bmpCol.IsBoxCollision(transform.position + Vector3.down, enemyMask))
 					{
 						position += Vector3.down;
