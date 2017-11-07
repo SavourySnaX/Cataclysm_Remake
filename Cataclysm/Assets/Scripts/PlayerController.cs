@@ -81,8 +81,8 @@ public class PlayerController : MonoBehaviour
 				case "Pickup_Laser":
 					weapon = Instantiate(weaponPrefab, transform).GetComponent<ProjectileTrigger>();
 					weapon.Init(bmpCol);
-					weapon.colMask = BitmapCollision.LayerMask.All & ~(BitmapCollision.LayerMask.Player|BitmapCollision.LayerMask.Water|BitmapCollision.LayerMask.Enemy);
-					weapon.colType = BitmapCollision.LayerMask.Water;
+					weapon.colMask = BitmapCollision.LayerMask.All & ~(BitmapCollision.LayerMask.Player|BitmapCollision.LayerMask.Water);
+					weapon.colType = BitmapCollision.LayerMask.Bullet;
 					hasWeapon = true;
 					break;
 				default:

@@ -18,7 +18,7 @@ public class BitmapCollision : MonoBehaviour
 		Plug = 1<<6,
 		EnemyIgnore = 1<<7,
 		PlayerIgnore = 1<<8,
-		Enemy = 1<<9,
+		Bullet = 1<<9,
 		DynamicBlock = 1<<10,
 		Trigger1 = 1<<11,
 		Trigger2 = 1<<12,
@@ -36,7 +36,12 @@ public class BitmapCollision : MonoBehaviour
 		TriggerE = 1<<24,
 		TriggerF = 1<<25,
 		TriggerG = 1<<26,
+		Enemy1 = 1<<27,
+		Enemy2 = 1<<28,
+		Enemy3 = 1<<29,
+		Enemy4 = 1<<30,
 
+		Enemy = LayerMask.Enemy1 | LayerMask.Enemy2 | LayerMask.Enemy3 | LayerMask.Enemy4,
 		All = LayerMask.Background | LayerMask.Water | LayerMask.Drain | LayerMask.Player | LayerMask.Block | LayerMask.FailDrain | LayerMask.Plug | LayerMask.PlayerIgnore | LayerMask.EnemyIgnore | LayerMask.Enemy | LayerMask.DynamicBlock,
 		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8 | LayerMask.Trigger9 | LayerMask.TriggerA | LayerMask.TriggerB | LayerMask.TriggerC | LayerMask.TriggerD | LayerMask.TriggerE | LayerMask.TriggerF | LayerMask.TriggerG
 	}
@@ -377,6 +382,12 @@ public class BitmapCollision : MonoBehaviour
 		return collisionMap[cellPos.x, cellPos.y];
 	}
 
+	public LayerMask GetCollisionMask(Vector3 worldPos, LayerMask compareMask)
+	{
+		Vector3Int cellPos = GetPixelCoord(worldPos);
+		return collisionMap[cellPos.x, cellPos.y] & compareMask;
+	}
+
 	public void DeleteTile(Tilemap tm2, Vector3 wPos, LayerMask extra = LayerMask.None)
 	{
 		Vector3 lPos = mainTilemap.WorldToLocal(wPos);
@@ -515,6 +526,57 @@ public class BitmapCollision : MonoBehaviour
 	{
 		Vector3Int cellPos = GetPixelCoord(worldPos);
 		collisionMap[cellPos.x, cellPos.y] |= setMask;
+	}
+
+	public void RemoveSweep(Vector3 worldPos, Vector3 nPos, LayerMask removeMask)
+	{
+		Vector3Int ocellPos = GetPixelCoord(worldPos);
+		Vector3Int ncellPos = GetPixelCoord (nPos);
+		Vector3 fcell = ncellPos - ocellPos;
+		Vector3 ocell = ocellPos;
+		fcell.Normalize ();
+
+		do
+		{
+			ocell+=fcell;
+			ocellPos=Vector3Int.RoundToInt(ocell);
+			collisionMap[ocellPos.x,ocellPos.y] &= ~removeMask;
+		} while (ocellPos != ncellPos);
+	}
+
+	public void AddSweep(Vector3 worldPos, Vector3 nPos, LayerMask setMask)
+	{
+		Vector3Int ocellPos = GetPixelCoord(worldPos);
+		Vector3Int ncellPos = GetPixelCoord (nPos);
+		Vector3 fcell = ncellPos - ocellPos;
+		Vector3 ocell = ocellPos;
+		fcell.Normalize ();
+
+		do
+		{
+			ocell+=fcell;
+			ocellPos=Vector3Int.RoundToInt(ocell);
+			collisionMap[ocellPos.x,ocellPos.y] |= setMask;
+		} while (ocellPos != ncellPos);
+	}
+
+	public LayerMask SweepCollisionMask(Vector3 worldPos,Vector3 nPos, LayerMask compareMask)
+	{
+		Vector3Int ocellPos = GetPixelCoord(worldPos);
+		Vector3Int ncellPos = GetPixelCoord (nPos);
+		LayerMask col = LayerMask.None;
+		Vector3 fcell = ncellPos - ocellPos;
+		Vector3 ocell = ocellPos;
+		fcell.Normalize ();
+
+		do
+		{
+			ocell+=fcell;
+			ocellPos=Vector3Int.RoundToInt(ocell);
+			col|=(collisionMap[ocellPos.x,ocellPos.y] & compareMask);
+		} while (ocellPos != ncellPos);
+
+		return col;
 	}
 
 	public void AddBox(Vector3 worldPos, LayerMask setMask,Vector2Int offs=default(Vector2Int))

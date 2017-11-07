@@ -34,16 +34,18 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 	Animator anim;
 	Action currentAction;
 	bool dead;
+	BitmapCollision.LayerMask colType=BitmapCollision.LayerMask.Enemy;
 
 	GlobalAudioManager globalAudio;
 
 	float nextDelay;
 
-	public void Init (BitmapCollision _bmpCol, PlayerController _player, EnemySpawner _spawn)
+	public void Init (BitmapCollision _bmpCol, PlayerController _player, EnemySpawner _spawn,BitmapCollision.LayerMask _colType)
 	{
 		bmpCol = _bmpCol;
 		player = _player;
 		spawner = _spawn;
+		colType = _colType;
 	}
 
 	void Start()
@@ -127,9 +129,9 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 	{
 		if (!dead)
 		{
+			dead = true;
 			player.KilledEnemy ();
 			globalAudio.PurpleDeath ();
-			dead = true;
 			gameObject.GetComponent<Renderer> ().enabled = false;
 			GameObject go = Instantiate (deathParticlePrefab, transform.position, Quaternion.identity);
 			yield return new WaitForSecondsRealtime (1.5f);
@@ -146,11 +148,12 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 
 	void FixedUpdate()
 	{
+		BitmapCollision.LayerMask enemyMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Enemy | BitmapCollision.LayerMask.EnemyIgnore | BitmapCollision.LayerMask.Player));
+		bmpCol.DeleteBox(transform.position, colType);
+
 		if (dead)
 			return;
-		BitmapCollision.LayerMask enemyMask = BitmapCollision.LayerMask.All & (~(BitmapCollision.LayerMask.Water | BitmapCollision.LayerMask.Enemy | BitmapCollision.LayerMask.EnemyIgnore | BitmapCollision.LayerMask.Player));
-		bmpCol.DeleteBox(transform.position, BitmapCollision.LayerMask.Enemy);
-
+		
 		nextDelay = Mathf.Clamp(nextDelay - Time.deltaTime, 0.0f, 100.0f);
 
 		if (lethal)
@@ -224,6 +227,6 @@ public class GoblinController : MonoBehaviour , IEnemyBase
 
 		transform.position = Vector3.MoveTowards(transform.position, position, Time.deltaTime * speed);
 
-		bmpCol.AddBox(transform.position, BitmapCollision.LayerMask.Enemy);
+		bmpCol.AddBox(transform.position, colType);
 	}
 }

@@ -12,28 +12,42 @@ public class LinearProjectileMove : MonoBehaviour
 	public BitmapCollision.LayerMask colMask = BitmapCollision.LayerMask.All;
 	public BitmapCollision.LayerMask colType = BitmapCollision.LayerMask.None;
 
+	Vector3 lastPosition;
+	EnemySpawner spawner;
 	void Start()
 	{
+		lastPosition = transform.position;
+		spawner = bmpCol.GetComponentInChildren<EnemySpawner> ();
 	}
 
 	void FixedUpdate()
 	{
-		bmpCol.RemovePixel(transform.position, colType);
+		BitmapCollision.LayerMask mask = BitmapCollision.LayerMask.None;
 
-		if (bmpCol.IsCollision(transform.position, colMask))
+		//bmpCol.RemoveSweep(lastPosition, transform.position, colType);
+		//bmpCol.RemovePixel(lastPosition, colType);
+
+		lastPosition = transform.position;
+		direction += drag * Time.deltaTime;
+		transform.position += direction * speed * Time.deltaTime;
+
+		//mask = bmpCol.GetCollisionMask (transform.position, colMask);
+		mask = bmpCol.SweepCollisionMask (lastPosition, transform.position, colMask);
+		if (mask!=BitmapCollision.LayerMask.None)
 		{
-			BitmapCollision.LayerMask mask = bmpCol.GetCollisionMask (transform.position);
 			if ((mask & BitmapCollision.LayerMask.Player) == BitmapCollision.LayerMask.Player)
 			{
 				player.KillPlayer ();
+			}
+			if ((mask & BitmapCollision.LayerMask.Enemy) != BitmapCollision.LayerMask.None)
+			{
+				spawner.KillMob (mask & BitmapCollision.LayerMask.Enemy);
 			}
 			DestroyObject(this.gameObject);
 			return;
 		}
 
-		direction += drag * Time.deltaTime;
-		transform.position += direction * speed * Time.deltaTime;
-
-		bmpCol.AddPixel(transform.position, colType);
+		//bmpCol.AddSweep(lastPosition, transform.position, colType);
+		//bmpCol.AddPixel(transform.position,colType);
 	}
 }

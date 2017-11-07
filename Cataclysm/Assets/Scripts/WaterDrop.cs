@@ -31,17 +31,17 @@ public class WaterDrop : MonoBehaviour
 				src.player.KillPlayer();
 			}
 		}
-		bool col = bmpCol.IsCollision(transform.position + Vector3.down * (1 / 12.0f), checkCollision);
+		bool col = bmpCol.IsCollision(transform.position + Vector3.down * (1f / bmpCol.sizeY), checkCollision);
 		if (!col)
 		{
 			bmpCol.RemovePixel(transform.position, BitmapCollision.LayerMask.Water);
-			transform.position += Vector3.down * (1 / 12.0f);
+			transform.position += Vector3.down * (1f / bmpCol.sizeY);
 			bmpCol.AddPixel(transform.position, BitmapCollision.LayerMask.Water);
 			sr.color = Color.Lerp(medium,fast,Random.value);
 		}
 		else
 		{
-			BitmapCollision.LayerMask lm = bmpCol.GetCollisionMask(transform.position + Vector3.down * (1 / 12.0f));
+			BitmapCollision.LayerMask lm = bmpCol.GetCollisionMask(transform.position + Vector3.down * (1f / bmpCol.sizeY));
 			if ((BitmapCollision.LayerMask.Drain & lm) == BitmapCollision.LayerMask.Drain)
 			{
 				bmpCol.RemovePixel(transform.position, BitmapCollision.LayerMask.Water);
@@ -62,11 +62,11 @@ public class WaterDrop : MonoBehaviour
 			{
 				direction = Vector3.left;
 			}
-			bool ccol = bmpCol.IsCollision(transform.position + direction * (1 / 3.0f), checkCollision);
+			bool ccol = bmpCol.IsCollision(transform.position + direction * (1f / bmpCol.sizeX), checkCollision);
 			if (!ccol)
 			{
 				bmpCol.RemovePixel(transform.position, BitmapCollision.LayerMask.Water);
-				transform.position += direction * (1 / 3.0f);
+				transform.position += direction * (1f / bmpCol.sizeX);
 				bmpCol.AddPixel(transform.position, BitmapCollision.LayerMask.Water);
 				sr.color = Color.Lerp(normal,medium,Random.value);
 			}

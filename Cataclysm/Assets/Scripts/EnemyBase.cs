@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IEnemyBase 
 {
 
-	void Init (BitmapCollision _bmpCol, PlayerController _player, EnemySpawner _spawn);
-
+	void Init (BitmapCollision _bmpCol, PlayerController _player, EnemySpawner _spawn,BitmapCollision.LayerMask layerNum);
+	void Die();
 }
