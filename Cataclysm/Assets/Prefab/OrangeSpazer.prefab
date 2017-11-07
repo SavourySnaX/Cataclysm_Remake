@@ -35,7 +35,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163153935020192}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -71,8 +71,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bmpCol: {fileID: 0}
+  player: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  drag: {x: 0, y: 0, z: 0}
   speed: 0
+  colMask: 2047
+  colType: 0
 --- !u!212 &212960045097676266
 SpriteRenderer:
   m_ObjectHideFlags: 1
