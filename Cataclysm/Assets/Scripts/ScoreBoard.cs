@@ -41,6 +41,11 @@ public class ScoreBoard : MonoBehaviour
 		newFastTime = false;
 	}
 
+	public int GetCurrentLevel()
+	{
+		return currentLevel;
+	}
+
 	public bool IsUnlocked(int lvl)
 	{
 		return PlayerPrefs.GetInt("unlock"+(lvl + lvlAdjust),lvl>=-1 && lvl<=1?1:0)==1?true:false;
