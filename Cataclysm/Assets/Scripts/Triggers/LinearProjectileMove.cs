@@ -39,7 +39,7 @@ public class LinearProjectileMove : MonoBehaviour
 			{
 				player.KillPlayer ();
 			}
-			if ((mask & BitmapCollision.LayerMask.Enemy) != BitmapCollision.LayerMask.None)
+			if (((colType & BitmapCollision.LayerMask.Bullet) != BitmapCollision.LayerMask.None) && ((mask & BitmapCollision.LayerMask.Enemy) != BitmapCollision.LayerMask.None))
 			{
 				spawner.KillMob (mask & BitmapCollision.LayerMask.Enemy);
 			}

@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour, ITriggerBase
 
 	public PlayerController player;
 
+	List<Vector3> spawnPositions=new List<Vector3>();
+
 	BitmapCollision bmpCol;
 	float spawnTime;
 	int numEnemies;
@@ -37,6 +39,7 @@ public class EnemySpawner : MonoBehaviour, ITriggerBase
 	
 	public void SetupBase(Vector3 wPos)
 	{
+		spawnPositions.Add (wPos);
 	}
 
 	public void SetupTrigger(Vector3 wPos)
@@ -88,7 +91,8 @@ public class EnemySpawner : MonoBehaviour, ITriggerBase
 			spawnTime = spawnDelay;
 			numEnemies++;
 
-			GameObject go = Instantiate (enemyPrefab, transform.position, Quaternion.identity);
+			int pickaspawn = Random.Range (0, spawnPositions.Count - 1);
+			GameObject go = Instantiate (enemyPrefab, spawnPositions[pickaspawn], Quaternion.identity);
 			go.GetComponent<IEnemyBase> ().Init (bmpCol, player, this,layerNum[numEnemies-1]);
 			enemy [numEnemies - 1] = go;
 		}

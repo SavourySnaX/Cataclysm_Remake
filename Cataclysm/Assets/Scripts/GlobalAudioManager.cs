@@ -45,50 +45,74 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void CollectBlock()
 	{
-		audioSrc.PlayOneShot(collectBlock);
+		if (!Application.isEditor)
+		{
+			audioSrc.PlayOneShot (collectBlock);
+		}
 	}
 
 	public void DropBlock()
 	{
-		audioSrc.PlayOneShot (dropBlock);
+		if (!Application.isEditor)
+		{
+			audioSrc.PlayOneShot (dropBlock);
+		}
 	}
 
 	public void Collapse()
 	{
-		if (collapseDelay == 0.0f)
+		if (!Application.isEditor)
 		{
-			audioSrc.PlayOneShot (collapse);
-			collapseDelay = collapse.length;
+			if (collapseDelay == 0.0f)
+			{
+				audioSrc.PlayOneShot (collapse);
+				collapseDelay = collapse.length;
+			}
 		}
 	}
 
 	public void Pressure()
 	{
-		if (pressureDelay == 0.0f)
+		if (!Application.isEditor)
 		{
-			audioSrc.PlayOneShot (pressure);
-			pressureDelay = pressure.length;
+			if (pressureDelay == 0.0f)
+			{
+				audioSrc.PlayOneShot (pressure);
+				pressureDelay = pressure.length;
+			}
 		}
 	}
 
 	public void PlayerDeath()
 	{
-		audioSrc.PlayOneShot (playerDeath);
+		if (!Application.isEditor)
+		{
+			audioSrc.PlayOneShot (playerDeath);
+		}
 	}
 
 	public void Plug()
 	{
-		audioSrc.PlayOneShot (plug);
+		if (!Application.isEditor)
+		{
+			audioSrc.PlayOneShot (plug);
+		}
 	}
 
 	public void PlayClip(AudioClip clip)
 	{
-		audioSrc.PlayOneShot (clip);
+		if (!Application.isEditor)
+		{
+			audioSrc.PlayOneShot (clip);
+		}
 	}
 
 	public void PurpleDeath()
 	{
-		audioSrc.PlayOneShot (purpleDeath);
+		if (!Application.isEditor)
+		{
+			audioSrc.PlayOneShot (purpleDeath);
+		}
 	}
 
 	void FixedUpdate () 

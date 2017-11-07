@@ -771,6 +771,24 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -1, y: -4, z: 0}
+    second:
+      m_TileIndex: 14
+      m_TileSpriteIndex: 18
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 0, y: -4, z: 0}
+    second:
+      m_TileIndex: 13
+      m_TileSpriteIndex: 17
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: 1, y: -4, z: 0}
     second:
       m_TileIndex: 43
@@ -952,10 +970,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 574cb1aeae0d50a47a18cb19b6270aa6, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 3c2fae70720bcb24d90792de81ff5856, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: feba1eb94d15be4498cd4376b25fff15, type: 2}
   - m_RefCount: 1
@@ -1163,10 +1181,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300268, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300266, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300264, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
@@ -1330,7 +1348,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300198, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 87
+  - m_RefCount: 89
     m_Data:
       e00: 1
       e01: 0
@@ -1349,7 +1367,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 87
+  - m_RefCount: 89
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
