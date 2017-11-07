@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1509973005
+timeCreated: 1510046479
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -135,6 +135,8 @@ TextureImporter:
     21300256: Trigger_E
     21300258: Trigger_D
     21300260: Trigger_G
+    21300262: Tiles_3
+    21300264: Tiles_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -2833,6 +2835,34 @@ TextureImporter:
         serializedVersion: 2
         x: 288
         y: 112
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 232
         width: 24
         height: 24
       alignment: 0
