@@ -237,7 +237,7 @@ public class HudBehaviour : MonoBehaviour
 				}
 			}
 
-			if (globalScores.LevelAvailable (globalScores.NextLevel ()))
+			if (globalScores!=null && globalScores.LevelAvailable (globalScores.NextLevel ()))
 			{
 				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Next Level", NextLevel);
 			} else
