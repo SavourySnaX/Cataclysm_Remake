@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   chanceToRepeatAction: 0.1
+  chanceToGetBored: 0.15
   lethal: 1
   diesToWater: 0
   bmpCol: {fileID: 0}

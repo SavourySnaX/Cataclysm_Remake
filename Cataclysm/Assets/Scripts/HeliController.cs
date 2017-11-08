@@ -17,6 +17,8 @@ public class HeliController : MonoBehaviour, IEnemyBase
 
 	public float speed = 5.0f;
 	public float chanceToRepeatAction = 0.10f;
+	public float chanceToGetBored=0.10f;
+	public float detectionRange=6f;
 	public bool lethal = false;
 	public bool diesToWater=false;
 	public BitmapCollision bmpCol;
@@ -52,6 +54,39 @@ public class HeliController : MonoBehaviour, IEnemyBase
 
 	Action GetAction()
 	{
+		// Heli seems to chase the player if he gets too close - although also seems to give in occasionaly
+
+		if (Vector3.Distance (player.transform.position, transform.position) < 4.0f)
+		{
+			Vector3 chaseDir = Vector3.Normalize (player.transform.position - transform.position);
+			if (Random.value <= chanceToGetBored)
+			{
+				chaseDir *= -1;
+			}
+			if (Mathf.Abs(chaseDir.x) < Mathf.Abs(chaseDir.y))
+			{
+				if (chaseDir.x < 0)
+					return Action.Left;
+				if (chaseDir.x > 0)
+					return Action.Right;
+				if (chaseDir.y < 0)
+					return Action.Down;
+				if (chaseDir.y > 0)
+					return Action.Up;
+			}
+			else
+			{
+				if (chaseDir.y < 0)
+					return Action.Down;
+				if (chaseDir.y > 0)
+					return Action.Up;
+				if (chaseDir.x < 0)
+					return Action.Left;
+				if (chaseDir.x > 0)
+					return Action.Right;
+			}
+		}
+
 		if (currentAction >= Action.Left)
 		{
 			if (Random.value >= chanceToRepeatAction)
