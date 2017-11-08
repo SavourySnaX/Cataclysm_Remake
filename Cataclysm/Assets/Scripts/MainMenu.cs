@@ -8,11 +8,10 @@ using UnityEngine.EventSystems;
 public class MainMenu : MonoBehaviour
 {
 	ScoreBoard globalScores;
-
+	float delayHide=0f;
 	void Start()
 	{
 		Time.timeScale = 1.0f;
-		Cursor.visible = true;
 		globalScores = GameObject.Find("GlobalScores").GetComponent<ScoreBoard> ();
 		if (globalScores.GetCurrentLevel () != 99)
 		{
@@ -38,6 +37,15 @@ public class MainMenu : MonoBehaviour
 
 	void Update()
 	{
-
+		delayHide = Mathf.Max (0f, delayHide - Time.deltaTime);
+		if (Cursor.visible && delayHide == 0f)
+		{
+			Cursor.visible=false;
+		}
+		if (Input.GetAxis ("Mouse X") != 0f || Input.GetAxis ("Mouse Y") != 0f)
+		{
+			Cursor.visible = true;
+			delayHide = 1f;
+		}
 	}
 }
