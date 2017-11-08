@@ -12,7 +12,9 @@ public class MainMenu : MonoBehaviour
 	void Start()
 	{
 		Time.timeScale = 1.0f;
+		Cursor.visible = true;
 		globalScores = GameObject.Find("GlobalScores").GetComponent<ScoreBoard> ();
+		delayHide = 1f;
 		if (globalScores.GetCurrentLevel () != 99)
 		{
 			// Set default button
@@ -35,12 +37,35 @@ public class MainMenu : MonoBehaviour
 		Application.Quit();
 	}
 
+	void ClearCursorSelections()
+	{
+		PointerEventData pointer = new PointerEventData(EventSystem.current);
+		pointer.position = Input.mousePosition;
+
+		List<RaycastResult> raycastResults = new List<RaycastResult>();
+		EventSystem.current.RaycastAll(pointer, raycastResults);
+
+		if (raycastResults.Count > 0) 
+		{
+			foreach (RaycastResult raycastResult in raycastResults) 
+			{
+				GameObject hoveredObj = raycastResult.gameObject;
+
+				if (hoveredObj.GetComponent<Button>())
+				{
+					hoveredObj.GetComponent<Button>().OnPointerExit(pointer);
+				} 
+			}
+		}
+	}
+
 	void Update()
 	{
 		delayHide = Mathf.Max (0f, delayHide - Time.deltaTime);
 		if (Cursor.visible && delayHide == 0f)
 		{
 			Cursor.visible=false;
+			ClearCursorSelections ();
 		}
 		if (Input.GetAxis ("Mouse X") != 0f || Input.GetAxis ("Mouse Y") != 0f)
 		{

@@ -17,6 +17,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	AudioSource audioSrc;
 
+	bool mute;
 	float collapseDelay;
 	float pressureDelay;
 
@@ -41,11 +42,12 @@ public class GlobalAudioManager : MonoBehaviour
 		audioSrc = GetComponent<AudioSource> ();
 		collapseDelay = 0.0f;
 		pressureDelay = 0.0f;
+		mute = Application.isEditor;
 	}
 
 	public void CollectBlock()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			audioSrc.PlayOneShot (collectBlock);
 		}
@@ -53,7 +55,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void DropBlock()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			audioSrc.PlayOneShot (dropBlock);
 		}
@@ -61,7 +63,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void Collapse()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			if (collapseDelay == 0.0f)
 			{
@@ -73,7 +75,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void Pressure()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			if (pressureDelay == 0.0f)
 			{
@@ -85,7 +87,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void PlayerDeath()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			audioSrc.PlayOneShot (playerDeath);
 		}
@@ -93,7 +95,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void Plug()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			audioSrc.PlayOneShot (plug);
 		}
@@ -101,7 +103,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void PlayClip(AudioClip clip)
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			audioSrc.PlayOneShot (clip);
 		}
@@ -109,7 +111,7 @@ public class GlobalAudioManager : MonoBehaviour
 
 	public void PurpleDeath()
 	{
-		if (!Application.isEditor)
+		if (!mute)
 		{
 			audioSrc.PlayOneShot (purpleDeath);
 		}

@@ -192,9 +192,12 @@ public class BitmapCollision : MonoBehaviour
 
 					if (triggerObjects[triggerIdx] != null)
 					{
-						triggerObjects[triggerIdx].transform.position = tilemap.GetCellCenterWorld(cellPos);
-						triggerObjects[triggerIdx].GetComponent<ITriggerBase>().Init(this);
-						triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().SetupBase (tilemap.GetCellCenterWorld(cellPos));
+						if (triggerObjects [triggerIdx].GetComponent<ITriggerBase> () != null)
+						{
+							triggerObjects [triggerIdx].transform.position = tilemap.GetCellCenterWorld (cellPos);
+							triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().Init (this);
+							triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().SetupBase (tilemap.GetCellCenterWorld (cellPos));
+						}
 					}
 				}
 			}
@@ -273,15 +276,18 @@ public class BitmapCollision : MonoBehaviour
 
 					if (triggerObjects[triggerIdx] != null)
 					{
-						triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().SetupTrigger (tilemap.GetCellCenterWorld(cellPos));
-						for (int xx = 0; xx < sizeX; xx++)
+						if (triggerObjects[triggerIdx].GetComponent<ITriggerBase>()!=null)
 						{
-							for (int yy = 0; yy < sizeY; yy++)
+							triggerObjects [triggerIdx].GetComponent<ITriggerBase> ().SetupTrigger (tilemap.GetCellCenterWorld(cellPos));
+							for (int xx = 0; xx < sizeX; xx++)
 							{
-								int fx = (ofx + (x - tilemap.origin.x)) * sizeX;
-								int fy = (ofy + (y - tilemap.origin.y)) * sizeY;
+								for (int yy = 0; yy < sizeY; yy++)
+								{
+									int fx = (ofx + (x - tilemap.origin.x)) * sizeX;
+									int fy = (ofy + (y - tilemap.origin.y)) * sizeY;
 
-								collisionMap[fx + xx, fy + yy] |= orIn;
+									collisionMap [fx + xx, fy + yy] |= orIn;
+								}
 							}
 						}
 					}
