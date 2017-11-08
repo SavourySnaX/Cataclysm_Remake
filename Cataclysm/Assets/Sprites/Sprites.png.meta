@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3506818aaaf5da444a002639e8835734
-timeCreated: 1510043945
+timeCreated: 1510156901
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -34,6 +34,7 @@ TextureImporter:
     21300054: Sprites_20
     21300056: Sprites_21
     21300058: Sprites_22
+    21300060: Sparkly
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -538,6 +539,20 @@ TextureImporter:
         y: 16
         width: 24
         height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Sparkly
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 248
+        width: 4
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

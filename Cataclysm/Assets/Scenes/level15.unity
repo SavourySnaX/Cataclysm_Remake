@@ -182,6 +182,8 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 1443794791523202, guid: ecadb1e740f76954b9f32080c9857d4b, type: 2}
   - {fileID: 1401053978184242, guid: 0b068699a0f00ec409379be792bcacd2, type: 2}
+  - {fileID: 1958675356411292, guid: d35f134c41493bd43a422ec262f3d5ba, type: 2}
+  - {fileID: 1075706199656704, guid: 3008686a54658d94db385fd23299c38b, type: 2}
   fireRateMin: 1
   fireRateMax: 2
   multiMin: 3
@@ -13048,6 +13050,8 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 1443794791523202, guid: ecadb1e740f76954b9f32080c9857d4b, type: 2}
   - {fileID: 1401053978184242, guid: 0b068699a0f00ec409379be792bcacd2, type: 2}
+  - {fileID: 1958675356411292, guid: d35f134c41493bd43a422ec262f3d5ba, type: 2}
+  - {fileID: 1075706199656704, guid: 3008686a54658d94db385fd23299c38b, type: 2}
   fireRateMin: 1
   fireRateMax: 2
   multiMin: 3
@@ -13568,6 +13572,8 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 1443794791523202, guid: ecadb1e740f76954b9f32080c9857d4b, type: 2}
   - {fileID: 1401053978184242, guid: 0b068699a0f00ec409379be792bcacd2, type: 2}
+  - {fileID: 1958675356411292, guid: d35f134c41493bd43a422ec262f3d5ba, type: 2}
+  - {fileID: 1075706199656704, guid: 3008686a54658d94db385fd23299c38b, type: 2}
   fireRateMin: 1
   fireRateMax: 2
   multiMin: 3
