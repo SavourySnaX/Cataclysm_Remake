@@ -29,6 +29,8 @@ public class WaterSource : MonoBehaviour
 	BitmapCollision bmpCol;
 	List<int> spawnCols;
 
+	public BitmapCollision.LayerMask WaterIgnore=BitmapCollision.LayerMask.None;
+
 	void Start()
 	{
 		curSpawnLoc = 0;
@@ -115,6 +117,7 @@ public class WaterSource : MonoBehaviour
 					t.GetComponent<WaterDrop>().bmpCol = background.GetComponent<BitmapCollision>();
 					t.GetComponent<WaterDrop>().hud = background.GetComponent<HudBehaviour>();
 					t.GetComponent<WaterDrop>().src = this.GetComponent<WaterSource>();
+					t.GetComponent<WaterDrop> ().ignore = WaterIgnore;
 					if (spawnCols [curSpawnLoc] == 0)
 					{
 						t.GetComponent<WaterDrop> ().normal = normal;

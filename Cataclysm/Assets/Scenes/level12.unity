@@ -6284,6 +6284,7 @@ MonoBehaviour:
   prefabUI: {fileID: 1003684285223146, guid: 7c4dcc0ad8c65cd4a808f4ee4508503e, type: 2}
   prefabPopup: {fileID: 1942536001488154, guid: 1a784f433ba534f47b840721aea393bd,
     type: 2}
+  expectedMask: 2
 --- !u!114 &749371214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9314,7 +9315,14 @@ MonoBehaviour:
   medium: {r: 0.31764707, g: 0.74509805, b: 0.74509805, a: 0.825}
   fast: {r: 0.42745098, g: 1, b: 1, a: 1}
   waterIsLethal: 0
+  normal2: {r: 0.2, g: 0.46666667, b: 0.46666667, a: 0.75}
+  medium2: {r: 0.31764707, g: 0.74509805, b: 0.74509805, a: 0.825}
+  fast2: {r: 0.42745098, g: 1, b: 1, a: 1}
+  normalcombined: {r: 0.2, g: 0.46666667, b: 0.46666667, a: 0.75}
+  mediumcombined: {r: 0.31764707, g: 0.74509805, b: 0.74509805, a: 0.825}
+  fastcombined: {r: 0.42745098, g: 1, b: 1, a: 1}
   player: {fileID: 0}
+  WaterIgnore: 2013265920
 --- !u!1 &1445028741
 GameObject:
   m_ObjectHideFlags: 0
@@ -9499,11 +9507,15 @@ MonoBehaviour:
     m_RotationOrder: 0
   spawnOffset: {x: 0, y: 0.5, z: 0}
   speed: 10
+  speedAdjust: 0
   drag: {x: 0, y: -1, z: 0}
   bulletPrefab: {fileID: 1443794791523202, guid: ecadb1e740f76954b9f32080c9857d4b,
     type: 2}
+  bulletPrefabs: []
   fireRateMin: 0.1
   fireRateMax: 0.3
+  multiMin: 1
+  multiMax: 1
   fireRateWeighting:
     serializedVersion: 2
     m_Curve:
@@ -13123,11 +13135,15 @@ MonoBehaviour:
     m_RotationOrder: 0
   spawnOffset: {x: 0, y: 0.5, z: 0}
   speed: 10
+  speedAdjust: 0
   drag: {x: 0, y: -1, z: 0}
   bulletPrefab: {fileID: 1443794791523202, guid: ecadb1e740f76954b9f32080c9857d4b,
     type: 2}
+  bulletPrefabs: []
   fireRateMin: 0.1
   fireRateMax: 0.3
+  multiMin: 1
+  multiMax: 1
   fireRateWeighting:
     serializedVersion: 2
     m_Curve:
@@ -15044,11 +15060,15 @@ MonoBehaviour:
     m_RotationOrder: 0
   spawnOffset: {x: 0, y: 0.5, z: 0}
   speed: 10
+  speedAdjust: 0
   drag: {x: 0, y: -1, z: 0}
   bulletPrefab: {fileID: 1443794791523202, guid: ecadb1e740f76954b9f32080c9857d4b,
     type: 2}
+  bulletPrefabs: []
   fireRateMin: 0.1
   fireRateMax: 0.3
+  multiMin: 1
+  multiMax: 1
   fireRateWeighting:
     serializedVersion: 2
     m_Curve:

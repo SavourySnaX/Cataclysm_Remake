@@ -27,6 +27,9 @@ public class WaterDrop : MonoBehaviour
 	bool colourMix;
 
 	public BitmapCollision.LayerMask waterLayer=BitmapCollision.LayerMask.Water1;
+	public BitmapCollision.LayerMask ignore=BitmapCollision.LayerMask.None;
+
+	public BitmapCollision.LayerMask checkCollision;
 
 	void Start()
 	{
@@ -37,6 +40,7 @@ public class WaterDrop : MonoBehaviour
 		medium_src = medium;
 		fast_src = fast;
 		changeRate = Random.Range(0.3f,0.7f);
+		checkCollision = BitmapCollision.LayerMask.All & (~ignore);
 	}
 
 	void TransformColours()
@@ -63,7 +67,6 @@ public class WaterDrop : MonoBehaviour
 				bmpCol.AddPixel (transform.position, waterLayer);
 			}
 		}
-		BitmapCollision.LayerMask checkCollision = BitmapCollision.LayerMask.All;
 		BitmapCollision.LayerMask curLayer = bmpCol.GetCollisionMask(transform.position);
 		if ((curLayer & (BitmapCollision.LayerMask.Player | BitmapCollision.LayerMask.Block | BitmapCollision.LayerMask.DynamicBlock)) != BitmapCollision.LayerMask.None)
 		{
