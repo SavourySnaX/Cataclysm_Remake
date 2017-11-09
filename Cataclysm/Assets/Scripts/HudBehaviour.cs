@@ -24,6 +24,7 @@ public class HudBehaviour : MonoBehaviour
 
 	public GameObject prefabUI;
 	public GameObject prefabPopup;
+	public BitmapCollision.LayerMask expectedMask = BitmapCollision.LayerMask.Water1;
 
 	GameObject currentPopup = null;
 	ScoreBoard globalScores;
@@ -90,10 +91,16 @@ public class HudBehaviour : MonoBehaviour
 		}
 	}
 
-	public void AddWater()
+	public bool AddWater(BitmapCollision.LayerMask expected)
 	{
+		if (expected != expectedMask)
+		{
+			AddFail ();
+			return false;
+		}
 		water += waterIncrement;
 		score += scoreWater;
+		return true;
 	}
 
 	public void AddFail()

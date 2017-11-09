@@ -10,7 +10,7 @@ public class BitmapCollision : MonoBehaviour
 	{
 		None = 0,
 		Background = 1<<0,
-		Water = 1<<1,
+		Water1 = 1<<1,
 		Drain = 1<<2,
 		Player = 1<<3,
 		Block = 1<<4,
@@ -40,7 +40,9 @@ public class BitmapCollision : MonoBehaviour
 		Enemy2 = 1<<28,
 		Enemy3 = 1<<29,
 		Enemy4 = 1<<30,
+		Water2 = 1<<31,
 
+		Water = LayerMask.Water1 | LayerMask.Water2,
 		Enemy = LayerMask.Enemy1 | LayerMask.Enemy2 | LayerMask.Enemy3 | LayerMask.Enemy4,
 		All = LayerMask.Background | LayerMask.Water | LayerMask.Drain | LayerMask.Player | LayerMask.Block | LayerMask.FailDrain | LayerMask.Plug | LayerMask.PlayerIgnore | LayerMask.EnemyIgnore | LayerMask.Enemy | LayerMask.DynamicBlock,
 		Triggers = LayerMask.Trigger1 | LayerMask.Trigger2 | LayerMask.Trigger3 | LayerMask.Trigger4 | LayerMask.Trigger5 | LayerMask.Trigger6 | LayerMask.Trigger7 | LayerMask.Trigger8 | LayerMask.Trigger9 | LayerMask.TriggerA | LayerMask.TriggerB | LayerMask.TriggerC | LayerMask.TriggerD | LayerMask.TriggerE | LayerMask.TriggerF | LayerMask.TriggerG
@@ -368,6 +370,18 @@ public class BitmapCollision : MonoBehaviour
 		return (collisionMap[cellPos.x, cellPos.y] & compareMask) != LayerMask.None;
 	}
 
+	public BitmapCollision.LayerMask GetCrossCollisionMask(Vector3 worldPos, LayerMask compareMask)
+	{
+		BitmapCollision.LayerMask col = BitmapCollision.LayerMask.None;
+		Vector3Int cellPos = GetPixelCoord(worldPos);
+		col |= collisionMap [cellPos.x - 1, cellPos.y] & compareMask;
+		col |= collisionMap [cellPos.x + 1, cellPos.y] & compareMask;
+		col |= collisionMap [cellPos.x, cellPos.y - 1] & compareMask;
+		col |= collisionMap [cellPos.x, cellPos.y + 1] & compareMask;
+		return col;
+	}
+
+
 	public bool IsBoxCollision(Vector3 worldPos, LayerMask compareMask)
 	{
 		Vector3Int cellPos = GetCellCoord(worldPos);
@@ -446,7 +460,7 @@ public class BitmapCollision : MonoBehaviour
 		int cnt = 0;
 		for (int x = cellPos.x; x < cellPos.x + sizeX; x++)
 		{
-			if ((collisionMap[x, cellPos.y] & LayerMask.Water) == LayerMask.Water)
+			if ((collisionMap[x, cellPos.y] & LayerMask.Water) != LayerMask.None)
 			{
 				cnt++;
 			}
@@ -477,7 +491,7 @@ public class BitmapCollision : MonoBehaviour
 			{
 				for (int y = cellPos.y; y < cellPos.y + sizeY*pd.numBlocksCheck; y++)
 				{
-					if ((collisionMap[x, y] & LayerMask.Water) == LayerMask.Water)
+					if ((collisionMap[x, y] & LayerMask.Water) != LayerMask.None)
 					{
 						cnt++;
 					}
