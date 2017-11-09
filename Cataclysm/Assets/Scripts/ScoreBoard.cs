@@ -11,6 +11,10 @@ public class ScoreBoard : MonoBehaviour
 	public bool newHighScore;
 	public bool newFastTime;
 
+	float[] fastestTimes=new float[numLevels]{210f,190f,70f,50f,80f,80f,110f,170f,130f,120f,110f,210f,100f,120f,210f,210f,140f,140f,200f,80f,240f,200f,140f,100,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	int[] highestScores=new int[numLevels]{130,130,150,160,130,150,160,150,140,140,130,150,140,140,130,160,160,170,145,135,145,130,130,140,
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	private static ScoreBoard instance = null;
 
 	void Awake()
@@ -39,6 +43,16 @@ public class ScoreBoard : MonoBehaviour
 		currentLevel = lvl;
 		newHighScore = false;
 		newFastTime = false;
+	}
+
+	public int GetRecordScore(int lvl)
+	{
+		return highestScores [lvl+lvlAdjust];
+	}
+
+	public float GetRecordTime(int lvl)
+	{
+		return fastestTimes [lvl+lvlAdjust];
 	}
 
 	public int GetCurrentLevel()

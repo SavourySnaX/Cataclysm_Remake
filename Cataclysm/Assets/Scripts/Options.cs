@@ -11,9 +11,12 @@ public class Options : MonoBehaviour
 	AudioSource globalAudio;
 	AudioSource globalMusic;
 
+	bool firstFrame=true;
+
 	// Use this for initialization
 	void Start () 
 	{
+		firstFrame = true;
 		globalAudio = GameObject.Find("GlobalAudio").GetComponent<AudioSource> ();
 		globalMusic = GameObject.Find("Music").GetComponent<AudioSource> ();
 
@@ -40,6 +43,14 @@ public class Options : MonoBehaviour
 	{
 		globalAudio.volume = fxSlider.value;
 		PlayerPrefs.SetFloat ("FXVolume", fxSlider.value);
-		globalAudio.GetComponent<GlobalAudioManager> ().Pressure ();
+		if (!firstFrame)
+		{
+			globalAudio.GetComponent<GlobalAudioManager> ().Pressure ();
+		}
+	}
+
+	public void Update()
+	{
+		firstFrame = false;
 	}
 }

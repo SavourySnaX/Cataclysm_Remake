@@ -6391,7 +6391,7 @@ Tilemap:
   - first: {x: 3, y: -7, z: 0}
     second:
       m_TileIndex: 19
-      m_TileSpriteIndex: 43
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -6400,7 +6400,7 @@ Tilemap:
   - first: {x: 4, y: -7, z: 0}
     second:
       m_TileIndex: 19
-      m_TileSpriteIndex: 54
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -6625,7 +6625,7 @@ Tilemap:
   - first: {x: 3, y: -6, z: 0}
     second:
       m_TileIndex: 19
-      m_TileSpriteIndex: 42
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -6760,7 +6760,7 @@ Tilemap:
   - first: {x: 1, y: -5, z: 0}
     second:
       m_TileIndex: 4
-      m_TileSpriteIndex: 36
+      m_TileSpriteIndex: 43
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -9510,7 +9510,7 @@ Tilemap:
   - m_RefCount: 17
     m_Data: {fileID: 11400000, guid: f52daa44d741d4a43bc1869d25e7fa31, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 30
+  - m_RefCount: 31
     m_Data: {fileID: 21300006, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 17
     m_Data: {fileID: 21300018, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
@@ -9538,7 +9538,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 46
+  - m_RefCount: 48
     m_Data: {fileID: 21300052, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 104
     m_Data: {fileID: 21300050, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
@@ -9582,8 +9582,8 @@ Tilemap:
     m_Data: {fileID: 21300024, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 21300040, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300154, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 9
     m_Data: {fileID: 21300264, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 9
@@ -9594,10 +9594,10 @@ Tilemap:
     m_Data: {fileID: 21300016, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: 21300042, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
-  - m_RefCount: 9
+  - m_RefCount: 8
     m_Data: {fileID: 21300026, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300078, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
+    m_Data: {fileID: 21300154, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300146, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 1
@@ -9618,7 +9618,7 @@ Tilemap:
     m_Data: {fileID: 21300116, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 21300022, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
-  - m_RefCount: 12
+  - m_RefCount: 11
     m_Data: {fileID: 21300036, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: 21300034, guid: 86f12186aedb9b942815b4f4b3d0b08b, type: 3}
@@ -9844,6 +9844,7 @@ MonoBehaviour:
   prefabUI: {fileID: 1003684285223146, guid: 7c4dcc0ad8c65cd4a808f4ee4508503e, type: 2}
   prefabPopup: {fileID: 1942536001488154, guid: 1a784f433ba534f47b840721aea393bd,
     type: 2}
+  expectedMask: 2
 --- !u!114 &749371214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22243,7 +22244,14 @@ MonoBehaviour:
   medium: {r: 0.31764707, g: 0.74509805, b: 0.74509805, a: 0.825}
   fast: {r: 0.42745098, g: 1, b: 1, a: 1}
   waterIsLethal: 0
+  normal2: {r: 0.2, g: 0.46666667, b: 0.46666667, a: 0.75}
+  medium2: {r: 0.31764707, g: 0.74509805, b: 0.74509805, a: 0.825}
+  fast2: {r: 0.42745098, g: 1, b: 1, a: 1}
+  normalcombined: {r: 0.2, g: 0.46666667, b: 0.46666667, a: 0.75}
+  mediumcombined: {r: 0.31764707, g: 0.74509805, b: 0.74509805, a: 0.825}
+  fastcombined: {r: 0.42745098, g: 1, b: 1, a: 1}
   player: {fileID: 0}
+  WaterIgnore: 0
 --- !u!1 &1445028741
 GameObject:
   m_ObjectHideFlags: 0
