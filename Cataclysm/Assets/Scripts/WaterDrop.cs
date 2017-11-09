@@ -41,6 +41,10 @@ public class WaterDrop : MonoBehaviour
 		fast_src = fast;
 		changeRate = Random.Range(0.3f,0.7f);
 		checkCollision = BitmapCollision.LayerMask.All & (~ignore);
+		if (src.waterIsLethal)
+		{
+			checkCollision &= ~BitmapCollision.LayerMask.Player;
+		}
 	}
 
 	void TransformColours()

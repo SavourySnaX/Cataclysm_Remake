@@ -140,7 +140,7 @@ public class HudBehaviour : MonoBehaviour
 		waterObject.localScale = lScale;
 	}
 
-	public void ShowPopup(string title, string message, string buttonText, System.Action method)
+	public void ShowPopup(string title, string message, string buttonText, System.Action method, string otherButtonText, System.Action otherMethod,bool defaultButtonMain)
 	{
 		pause = true;
 		Cursor.visible = true;
@@ -156,7 +156,23 @@ public class HudBehaviour : MonoBehaviour
 				if (l.name == "MainMenuButton")
 				{
 					l.onClick.AddListener(new UnityAction(method));
-					firstSelected = l;
+					if (defaultButtonMain)
+					{
+						firstSelected = l;
+					}
+				}
+				if (l.name == "RetryButton")
+				{
+					if (otherMethod==null)
+					{
+						l.transform.gameObject.SetActive(false);
+						continue;
+					}
+					l.onClick.AddListener(new UnityAction(otherMethod));
+					if (!defaultButtonMain)
+					{
+						firstSelected = l;
+					}
 				}
 			}
 
@@ -181,6 +197,10 @@ public class HudBehaviour : MonoBehaviour
 				{
 					l.text = buttonText;
 				}
+				if (l.name == "OtherButton")
+				{
+					l.text = otherButtonText;
+				}
 			}
 		}
 	}
@@ -198,17 +218,17 @@ public class HudBehaviour : MonoBehaviour
 
 	public void GameOver()
 	{
-		ShowPopup("GAME OVER", "You ran out of time!!", "Main Menu", MainMenu);
+		ShowPopup("GAME OVER", "You ran out of time!!", "Main Menu", MainMenu,"Retry",CurrentLevel,false);
 	}
 
 	public void Quit()
 	{
-		ShowPopup("GAME OVER", "You quit!!", "Main Menu", MainMenu);
+		ShowPopup("GAME OVER", "You quit!!", "Main Menu", MainMenu,"Retry",CurrentLevel,false);
 	}
 
 	public void Killed()
 	{
-		ShowPopup("GAME OVER", "You were killed!!", "Main Menu", MainMenu);
+		ShowPopup("GAME OVER", "You were killed!!", "Main Menu", MainMenu,"Retry",CurrentLevel,false);
 	}
 
 	public void Winner()
@@ -246,17 +266,17 @@ public class HudBehaviour : MonoBehaviour
 
 			if (globalScores!=null && globalScores.LevelAvailable (globalScores.NextLevel ()))
 			{
-				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Next Level", NextLevel);
+				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Next Level", NextLevel,"Main Menu",MainMenu,true);
 			} else
 			{
-				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Main Menu", MainMenu);
+				ShowPopup ("!CONGRATULATIONS!", string.Format ("You scored : {0:0000}\nYou took : {1} minute" + minS + " and {2} second" + secS + globalInfo, Mathf.FloorToInt (score), minutes, seconds), "Main Menu", MainMenu,"",null,true);
 			}
 		}
 	}
 
 	public void Pause()
 	{
-		ShowPopup("PAUSED", "", "Resume", Resume);
+		ShowPopup("PAUSED", "", "Resume", Resume, "Main Menu", MainMenu, true);
 	}
 
 	public void Resume()
@@ -268,6 +288,12 @@ public class HudBehaviour : MonoBehaviour
 	{
 		ClosePopup();
 		SceneManager.LoadScene("mainmenu");
+	}
+
+	public void CurrentLevel()
+	{
+		ClosePopup();
+		SceneManager.LoadScene("level" + globalScores.GetCurrentLevel());
 	}
 
 	public void NextLevel()
