@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1510212185
+timeCreated: 1510252273
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -152,6 +152,7 @@ TextureImporter:
     21300290: Tiles_PipeYU
     21300292: Tiles_YR
     21300294: Water_D2
+    21300296: Warning_Sign
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -3063,7 +3064,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3077,7 +3078,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3090,6 +3091,20 @@ TextureImporter:
         y: 16
         width: 24
         height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Warning_Sign
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 40
+        width: 60
+        height: 72
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

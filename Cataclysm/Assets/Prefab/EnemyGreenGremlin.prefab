@@ -131,7 +131,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   player: {fileID: 0}
-  deathParticlePrefab: {fileID: 0}
+  deathParticlePrefab: {fileID: 1698075276800866, guid: b8b0d8a72ab490b4cbf9ccb8b865f08a,
+    type: 2}
   spawner: {fileID: 0}
 --- !u!212 &212370964000868088
 SpriteRenderer:
@@ -166,7 +167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300010, guid: 3506818aaaf5da444a002639e8835734, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
