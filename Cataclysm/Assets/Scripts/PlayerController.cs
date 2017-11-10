@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-	public float keyResponse = 0.0f;
 	public float speed = 1.0f;
 	public int totalBlocks = 8;
 	public BitmapCollision bmpCol;
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
 	bool hasWeapon;
 
 	ProjectileTrigger weapon;
+	float keyResponse = 0.0f;
 	readonly bool invincible=false;
 
 	GlobalAudioManager globalAudio;
@@ -186,6 +186,8 @@ public class PlayerController : MonoBehaviour
 		}
 		float hzMove = Input.GetAxis("Horizontal");
 		float vtMove = Input.GetAxis("Vertical");
+
+		Debug.Log (hzMove + "  " + vtMove + "  "+keyResponse);
 
 		if (hzMove < -keyResponse && position == transform.position)
 		{

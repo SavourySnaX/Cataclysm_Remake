@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f38d26b4fa0e459208e56ad0cdaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 1cb1ef413bdf9704d91fb705fdb737c8, type: 3}
   player: {fileID: 0}
   directionMin: {x: 0, y: 0, z: 0}
   directionMax: {x: 0, y: 0, z: 0}
@@ -76,11 +76,15 @@ MonoBehaviour:
     m_RotationOrder: 0
   spawnOffset: {x: 0, y: 0, z: 0}
   speed: 12
+  speedAdjust: 0
   drag: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1924576499102960, guid: 75ce6066e1de2bd4aadb536b99f37181,
     type: 2}
+  bulletPrefabs: []
   fireRateMin: 0.5
   fireRateMax: 0.5
+  multiMin: 1
+  multiMax: 1
   fireRateWeighting:
     serializedVersion: 2
     m_Curve:
@@ -100,6 +104,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   colMask: 2047
+  colType: 0
 --- !u!212 &212040015569474362
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,15 +7,16 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(ScrollRect))]
 public class ButtonAutoScroll : MonoBehaviour,ISelectHandler
 {
-    [SerializeField]
-    private ScrollRect          scrollRect;
-    private Button[]            buttons;
+	[SerializeField]
+	private ScrollRect	scrollRect;
 
-    public void Start()
-    {
-        scrollRect        = GetComponent<ScrollRect>();
-        buttons           = GetComponentsInChildren<Button>();
-    }
+	private Button[]	buttons;
+
+	public void Start()
+	{
+		scrollRect	= GetComponent<ScrollRect>();
+		buttons	= GetComponentsInChildren<Button>();
+	}
 
 	public void OnSelect(BaseEventData eventData)
 	{
@@ -27,5 +28,4 @@ public class ButtonAutoScroll : MonoBehaviour,ISelectHandler
 			}
 		}
 	}
-
 }
