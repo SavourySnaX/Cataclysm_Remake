@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1510755682
+timeCreated: 1510761743
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -156,6 +156,7 @@ TextureImporter:
     21300298: Tiles_TuningForkA
     21300300: Tiles_TuningForkB
     21300302: Pickup_Scatter
+    21300304: Pickup_Scatter2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -3148,6 +3149,20 @@ TextureImporter:
         serializedVersion: 2
         x: 360
         y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Pickup_Scatter2
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 208
         width: 24
         height: 24
       alignment: 0
