@@ -116,7 +116,7 @@ public class ScoreBoard : MonoBehaviour
 
 	public bool LevelAvailable(int lvl)
 	{
-		if (lvl >= -3 && lvl <= 22)
+		if (lvl >= -3 && lvl <= 23)
 			return true;
 		return false;
 	}

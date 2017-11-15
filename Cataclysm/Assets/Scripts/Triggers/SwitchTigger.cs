@@ -29,7 +29,7 @@ public class SwitchTigger : MonoBehaviour, ITriggerBase
 
 	void Start()
 	{
-		position = 0.0f;
+		position = 0f;
 		globalAudio = GameObject.Find("GlobalAudio").GetComponent<GlobalAudioManager> ();
 	}
 

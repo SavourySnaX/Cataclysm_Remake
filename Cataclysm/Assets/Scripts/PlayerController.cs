@@ -187,8 +187,6 @@ public class PlayerController : MonoBehaviour
 		float hzMove = Input.GetAxis("Horizontal");
 		float vtMove = Input.GetAxis("Vertical");
 
-		Debug.Log (hzMove + "  " + vtMove + "  "+keyResponse);
-
 		if (hzMove < -keyResponse && position == transform.position)
 		{
 			transform.localRotation = Quaternion.AngleAxis(180, Vector3.up);
