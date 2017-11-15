@@ -78,6 +78,13 @@ public class PlayerController : MonoBehaviour
 					totalBlocks++;
 					hud.SetBlocks (totalBlocks);
 					break;
+				case "Pickup_Scatter":
+					weapon = Instantiate(weaponPrefab, transform).GetComponent<ProjectileTrigger>();
+					weapon.Init(bmpCol);
+					weapon.colMask = BitmapCollision.LayerMask.All & ~(BitmapCollision.LayerMask.Player|BitmapCollision.LayerMask.Water);
+					weapon.colType = BitmapCollision.LayerMask.Bullet;
+					hasWeapon = true;
+					break;
 				case "Pickup_Laser":
 					weapon = Instantiate(weaponPrefab, transform).GetComponent<ProjectileTrigger>();
 					weapon.Init(bmpCol);
@@ -171,7 +178,8 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetButton("Shoot") && hasWeapon)
 		{
 			weapon.spawnOffset = transform.localRotation * Vector3.right/2;
-			weapon.directionMax = transform.localRotation * Vector3.right;
+			weapon.directionMin.x = (transform.localRotation * Vector3.right).x;
+			weapon.directionMax.x = (transform.localRotation * Vector3.right).x;
 			GetComponentInChildren<ProjectileTrigger>().Trigger();
 		}
 		if (Input.GetButton("QuitLevel"))
