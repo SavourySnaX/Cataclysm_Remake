@@ -4998,8 +4998,8 @@ MonoBehaviour:
   triggerObjects: []
   backgroundMinColour: {r: 0.2930378, g: 0.14532872, b: 0.30882353, a: 1}
   backgroundMaxColour: {r: 0.74821836, g: 0.17246974, b: 0.8088235, a: 1}
-  goalMinColour: {r: 0.16862746, g: 0.92941177, b: 0.9647059, a: 1}
-  goalMaxColour: {r: 0.22352941, g: 0.2509804, b: 0.79607844, a: 1}
+  goalMinColour: {r: 0.9647059, g: 0.16862746, b: 0.18431373, a: 1}
+  goalMaxColour: {r: 0.5058824, g: 0.09019608, b: 0.09019608, a: 1}
 --- !u!1 &830844509
 GameObject:
   m_ObjectHideFlags: 0
