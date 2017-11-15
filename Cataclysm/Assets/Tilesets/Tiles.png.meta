@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1510761743
+timeCreated: 1510766326
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -157,6 +157,14 @@ TextureImporter:
     21300300: Tiles_TuningForkB
     21300302: Pickup_Scatter
     21300304: Pickup_Scatter2
+    21300306: Tiles_Diag1
+    21300308: Tiles_Diag2
+    21300310: Tiles_Diag3
+    21300312: Tiles_Diag4
+    21300314: Tiles_Diag5
+    21300316: Tiles_Diag6
+    21300318: Tiles_Diag7
+    21300320: Tiles_Diag8
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -3162,6 +3170,118 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 360
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag1
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag2
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag3
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag5
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag6
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag7
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 208
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tiles_Diag8
+      rect:
+        serializedVersion: 2
+        x: 480
         y: 208
         width: 24
         height: 24
