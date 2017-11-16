@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
 	ProjectileTrigger weapon;
 	float keyResponse = 0.0f;
-	readonly bool invincible=false;
+	readonly bool invincible=true;
 
 	GlobalAudioManager globalAudio;
 

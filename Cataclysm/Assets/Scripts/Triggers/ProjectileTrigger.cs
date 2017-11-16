@@ -24,6 +24,10 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 	public BitmapCollision.LayerMask colMask = BitmapCollision.LayerMask.All;
 	public BitmapCollision.LayerMask colType = BitmapCollision.LayerMask.None;
 
+	public bool playerSeeking = false;
+	public float playerDistance = 0f;
+	public float followScale = 0f;
+
 	float fireTime;
 	BitmapCollision bmpCol;
 
@@ -74,6 +78,9 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 				moveScript.drag = drag;
 				moveScript.colMask = colMask;
 				moveScript.colType = colType;
+				moveScript.playerDistance = playerDistance;
+				moveScript.playerSeeking = playerSeeking;
+				moveScript.followScale = followScale;
 			}
 		}
 	}

@@ -12,6 +12,10 @@ public class LinearProjectileMove : MonoBehaviour
 	public BitmapCollision.LayerMask colMask = BitmapCollision.LayerMask.All;
 	public BitmapCollision.LayerMask colType = BitmapCollision.LayerMask.None;
 
+	public bool playerSeeking = false;
+	public float playerDistance = 0f;
+	public float followScale = 0f;
+
 	Vector3 lastPosition;
 	EnemySpawner spawner;
 	void Start()
@@ -24,14 +28,20 @@ public class LinearProjectileMove : MonoBehaviour
 	{
 		BitmapCollision.LayerMask mask = BitmapCollision.LayerMask.None;
 
-		//bmpCol.RemoveSweep(lastPosition, transform.position, colType);
-		//bmpCol.RemovePixel(lastPosition, colType);
-
 		lastPosition = transform.position;
+
+		if (playerSeeking)
+		{
+			float distance = Vector3.Distance(player.transform.position, transform.position);
+			if (distance<playerDistance)
+			{
+				drag = Vector3.Normalize(player.transform.position - transform.position) * followScale * distance;
+			}
+		}
+
 		direction += drag * Time.deltaTime;
 		transform.position += direction * speed * Time.deltaTime;
 
-		//mask = bmpCol.GetCollisionMask (transform.position, colMask);
 		mask = bmpCol.SweepCollisionMask (lastPosition, transform.position, colMask);
 		if (mask!=BitmapCollision.LayerMask.None)
 		{
@@ -46,8 +56,5 @@ public class LinearProjectileMove : MonoBehaviour
 			DestroyObject(this.gameObject);
 			return;
 		}
-
-		//bmpCol.AddSweep(lastPosition, transform.position, colType);
-		//bmpCol.AddPixel(transform.position,colType);
 	}
 }
