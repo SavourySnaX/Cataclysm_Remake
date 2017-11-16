@@ -35,7 +35,7 @@ public class LinearProjectileMove : MonoBehaviour
 			float distance = Vector3.Distance(player.transform.position, transform.position);
 			if (distance<playerDistance)
 			{
-				drag = Vector3.Normalize(player.transform.position - transform.position) * followScale * distance;
+				drag = Vector3.Normalize(player.transform.position - transform.position) * followScale * (playerDistance/distance);
 			}
 		}
 
