@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4844205378065016}
   - component: {fileID: 114784879213835456}
   m_Layer: 0
-  m_Name: EnemyWeapon
+  m_Name: EnemyWeapon 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,22 +53,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: a5bdecff466411943aacf13be631a097, type: 3}
   player: {fileID: 0}
-  directionMin: {x: 1, y: 0, z: 0}
-  directionMax: {x: 1, y: 0, z: 0}
+  directionMin: {x: 1, y: -0.3, z: 0}
+  directionMax: {x: 1, y: 0.3, z: 0}
   directionWeighting:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -77,27 +77,27 @@ MonoBehaviour:
   speed: 12
   speedAdjust: 0
   drag: {x: 0, y: 0, z: 0}
-  bulletPrefab: {fileID: 1590271227625678, guid: 4c6abed67552ca34cbb84fc95dcf7eda,
+  bulletPrefab: {fileID: 1157335948967010, guid: e3e645b08c435344a91c5a87508409ce,
     type: 2}
   bulletPrefabs: []
   fireRateMin: 0.1
   fireRateMax: 0.2
   multiMin: 1
-  multiMax: 1
+  multiMax: 3
   fireRateWeighting:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -17,7 +17,7 @@ public class ShooterGoblinController : MonoBehaviour, IEnemyBase
 
 	public float speed = 5.0f;
 	public float chanceToRepeatAction = 0.10f;
-	public float detectionRange=6f;
+	public float verticalDetection=1f;
 	public bool lethal = false;
 	public bool diesToWater=false;
 	public BitmapCollision bmpCol;
@@ -108,14 +108,15 @@ public class ShooterGoblinController : MonoBehaviour, IEnemyBase
 		// Check if  player is directly horizontal to creature, if it is and its facing the right way, we can fire
 
 		float dirY = player.transform.position.y - transform.position.y;
-		if (Mathf.Abs( dirY ) < 1.0f)
+		if (Mathf.Abs( dirY ) < verticalDetection)
 		{
 			float dirX = transform.position.x - player.transform.position.x;
 
 			if ((lookingLeft && dirX > 0f)||(!lookingLeft && dirX < 0f))
 			{
 				weapon.spawnOffset = transform.localRotation * -Vector3.right/2;
-				weapon.directionMax = transform.localRotation * -Vector3.right;
+				weapon.directionMin.x = (transform.localRotation * -Vector3.right).x;
+				weapon.directionMax.x = (transform.localRotation * -Vector3.right).x;
 				GetComponentInChildren<ProjectileTrigger>().Trigger();
 			}
 		}
