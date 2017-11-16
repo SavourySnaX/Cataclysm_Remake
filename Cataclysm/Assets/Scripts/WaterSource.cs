@@ -8,6 +8,7 @@ public class WaterSource : MonoBehaviour
 
 	public List<Vector3> spawnLocations;
 
+	public float pipeDelay = 0f;
 	public int totalDrops = 500;
 	public float spawnTimer = 0.25f;
 	public int curSpawnLoc = 0;
@@ -34,6 +35,7 @@ public class WaterSource : MonoBehaviour
 	void Start()
 	{
 		curSpawnLoc = 0;
+		nextSpawn = -pipeDelay;
 
 		spawnLocations = new List<Vector3>();
 		spawnCols = new List<int> ();
