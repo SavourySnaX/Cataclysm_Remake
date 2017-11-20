@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1511189786
+timeCreated: 1511195284
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -171,6 +171,8 @@ TextureImporter:
     21300328: Tiles_ScatterSeekM
     21300330: Tiles_ScatterSeekR
     21300332: Pickup_Burst
+    21300334: TuningForkD
+    21300336: TuningForkC
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -3373,6 +3375,34 @@ TextureImporter:
         serializedVersion: 2
         x: 384
         y: 232
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TuningForkD
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 160
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TuningForkC
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 184
         width: 24
         height: 24
       alignment: 0
