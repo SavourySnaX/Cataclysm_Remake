@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 				case "Pickup_Scatter":
 				case "Pickup_Scatter2":
 				case "Pickup_Laser":
+				case "Pickup_Burst":
 					weapon = Instantiate(weaponPrefab, transform).GetComponent<ProjectileTrigger>();
 					weapon.Init(bmpCol);
 					weapon.colMask = BitmapCollision.LayerMask.All & ~(BitmapCollision.LayerMask.Player|BitmapCollision.LayerMask.Water);
