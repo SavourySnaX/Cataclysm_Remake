@@ -33,7 +33,7 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 
 	GlobalAudioManager globalAudio;
 
-	static readonly int MAX_MULTI=4;
+	static readonly int MAX_MULTI=5;
 
 	Vector3[] multiPosition=new Vector3[MAX_MULTI];
 	int multiCounter=0;
