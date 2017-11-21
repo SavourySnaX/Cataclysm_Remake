@@ -33,6 +33,11 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 
 	GlobalAudioManager globalAudio;
 
+	static readonly int MAX_MULTI=4;
+
+	Vector3[] multiPosition=new Vector3[MAX_MULTI];
+	int multiCounter=0;
+
 	void Start()
 	{
 		fireTime = 0.0f;
@@ -46,42 +51,52 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 
 	public void SetupBase(Vector3 wpos)
 	{
+		multiPosition[multiCounter] = wpos;
+		multiCounter++;
 	}
 
 	public void SetupTrigger(Vector3 wpos)
 	{
 	}
 
+	void MultiTrigger(int a,Vector3 pos)
+	{
+		GameObject go;
+		if (bulletPrefabs.Count > 0)
+		{
+			go = Instantiate(bulletPrefabs[a % bulletPrefabs.Count], pos + spawnOffset, transform.rotation);
+		}
+		else
+		{
+			go = Instantiate(bulletPrefab, pos + spawnOffset, transform.rotation);
+		}
+		LinearProjectileMove moveScript = go.GetComponent<LinearProjectileMove>();
+		moveScript.bmpCol = bmpCol;
+		moveScript.speed = speed + Random.Range(0f, speedAdjust);
+		moveScript.direction = Vector3.Lerp(directionMin, directionMax, directionWeighting.Evaluate(Random.value));
+		moveScript.player = player;
+		moveScript.drag = drag;
+		moveScript.colMask = colMask;
+		moveScript.colType = colType;
+		moveScript.playerDistance = playerDistance;
+		moveScript.playerSeeking = playerSeeking;
+		moveScript.followScale = followScale;
+	}
+
 	public void Trigger()
 	{
 		if (fireTime == 0.0f)
 		{
-			int num = Random.Range (multiMin, multiMax);
-			for (int a = 0; a < num; a++)
+			for (int b = 0; b < multiCounter; b++)
 			{
-				globalAudio.PlayClip (clip);
-				fireTime = Mathf.Lerp (fireRateMin, fireRateMax, fireRateWeighting.Evaluate (Random.value));
-				GameObject go;
-				if (bulletPrefabs.Count > 0)
+				int num = Random.Range(multiMin, multiMax);
+				for (int a = 0; a < num; a++)
 				{
-					go = Instantiate (bulletPrefabs [a % bulletPrefabs.Count], transform.position + spawnOffset, transform.rotation);
-				} 
-				else
-				{
-					go = Instantiate (bulletPrefab, transform.position + spawnOffset, transform.rotation);
+					globalAudio.PlayClip(clip);
+					MultiTrigger(a, multiPosition[b]);
 				}
-				LinearProjectileMove moveScript = go.GetComponent<LinearProjectileMove> ();
-				moveScript.bmpCol = bmpCol;
-				moveScript.speed = speed + Random.Range (0f, speedAdjust);
-				moveScript.direction = Vector3.Lerp (directionMin, directionMax, directionWeighting.Evaluate (Random.value));
-				moveScript.player = player;
-				moveScript.drag = drag;
-				moveScript.colMask = colMask;
-				moveScript.colType = colType;
-				moveScript.playerDistance = playerDistance;
-				moveScript.playerSeeking = playerSeeking;
-				moveScript.followScale = followScale;
 			}
+			fireTime = Mathf.Lerp(fireRateMin, fireRateMax, fireRateWeighting.Evaluate(Random.value));
 		}
 	}
 

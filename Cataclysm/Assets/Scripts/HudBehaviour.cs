@@ -39,6 +39,7 @@ public class HudBehaviour : MonoBehaviour
 
 	void Start()
 	{
+		gameTimeScale = 1f;
 		score = 0.0f;
 		timer = 0;
 		blocksCount = 8;
@@ -214,6 +215,7 @@ public class HudBehaviour : MonoBehaviour
 			currentPopup = null;
 		}
 		pause = false;
+		Time.timeScale = 1f;
 		Cursor.visible = false;
 	}
 
