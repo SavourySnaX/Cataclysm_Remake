@@ -87,13 +87,25 @@ public class ProjectileTrigger : MonoBehaviour, ITriggerBase
 	{
 		if (fireTime == 0.0f)
 		{
-			for (int b = 0; b < multiCounter; b++)
+			if (multiCounter>0)
+			{
+				for (int b = 0; b < multiCounter; b++)
+				{
+					int num = Random.Range(multiMin, multiMax);
+					for (int a = 0; a < num; a++)
+					{
+						globalAudio.PlayClip(clip);
+						MultiTrigger(a, multiPosition[b]);
+					}
+				}
+			}
+			else
 			{
 				int num = Random.Range(multiMin, multiMax);
 				for (int a = 0; a < num; a++)
 				{
 					globalAudio.PlayClip(clip);
-					MultiTrigger(a, multiPosition[b]);
+					MultiTrigger(a, transform.position);
 				}
 			}
 			fireTime = Mathf.Lerp(fireRateMin, fireRateMax, fireRateWeighting.Evaluate(Random.value));
