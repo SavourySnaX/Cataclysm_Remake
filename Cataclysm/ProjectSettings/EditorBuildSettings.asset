@@ -140,3 +140,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level39.unity
     guid: 7935a2dea99827142bb95398ac3b4ef8
+  - enabled: 1
+    path: Assets/Scenes/level40.unity
+    guid: be930d3396975234594ee20d17898df1

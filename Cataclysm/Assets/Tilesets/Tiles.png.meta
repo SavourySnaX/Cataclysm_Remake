@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 86f12186aedb9b942815b4f4b3d0b08b
-timeCreated: 1511195284
+timeCreated: 1511264133
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -173,6 +173,7 @@ TextureImporter:
     21300332: Pickup_Burst
     21300334: TuningForkD
     21300336: TuningForkC
+    21300338: Final_Weapon
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -3392,7 +3393,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3403,6 +3404,20 @@ TextureImporter:
         serializedVersion: 2
         x: 384
         y: 184
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Final_Weapon
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 136
         width: 24
         height: 24
       alignment: 0
