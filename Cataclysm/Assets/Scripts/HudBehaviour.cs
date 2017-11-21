@@ -13,6 +13,7 @@ public class HudBehaviour : MonoBehaviour
 	int blocksCount;
 	float score;
 	bool pause = false;
+	public float gameTimeScale = 1f;
 	public float enemyScore = 2.0f;
 	public float plugScore = 2.0f;
 	public float scoreDestroyBlock = 3.0f;
@@ -329,9 +330,9 @@ public class HudBehaviour : MonoBehaviour
 		blockObject.text = t;
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
-		timer += Time.deltaTime;
+		timer += Time.deltaTime*gameTimeScale;
 		UpdateWaterMeter();
 		UpdateFailMeter();
 		UpdateScore();
@@ -342,7 +343,7 @@ public class HudBehaviour : MonoBehaviour
 		}
 		else
 		{
-			Time.timeScale = 1.0f;
+			Time.timeScale = gameTimeScale;
 		}
 	}
 }

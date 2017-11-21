@@ -191,6 +191,26 @@ public class PlayerController : MonoBehaviour
 		float hzMove = Input.GetAxis("Horizontal");
 		float vtMove = Input.GetAxis("Vertical");
 
+		if (Input.GetKeyDown("1"))
+		{
+			hud.gameTimeScale = 1f;
+		}
+		if (Input.GetKeyDown("2"))
+		{
+			hud.gameTimeScale = 1.25f;
+		}
+		if (Input.GetKeyDown("3"))
+		{
+			hud.gameTimeScale = 1.5f;
+		}
+		if (Input.GetKeyDown("4"))
+		{
+			hud.gameTimeScale = 1.75f;
+		}
+		if (Input.GetKeyDown("5"))
+		{
+			hud.gameTimeScale = 2f;
+		}
 		if (hzMove < -keyResponse && position == transform.position)
 		{
 			transform.localRotation = Quaternion.AngleAxis(180, Vector3.up);
